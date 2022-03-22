@@ -20,7 +20,7 @@ public class TourController {
     @Autowired
     private TourService tourService;
     
-    @RequestMapping("/Tours")
+    @RequestMapping("/tours")
     public String index(Model model, 
             @RequestParam(name="toursearch", required = false) String search, 
             @RequestParam(name="page", defaultValue = "1") Integer page){

@@ -140,12 +140,12 @@ public class Tour implements Serializable {
     public void setOverview(String overview) {
         this.overview = overview;
     }
-    
-    public String getImg(){
+
+    public String getImg() {
         return img;
     }
-    
-    public void setImg(String img){
+
+    public void setImg(String img) {
         this.img = img;
     }
 

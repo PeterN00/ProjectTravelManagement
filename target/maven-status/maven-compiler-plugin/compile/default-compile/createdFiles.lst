@@ -15,6 +15,7 @@ com\tm\repository\impl\TourRepositoryImpl.class
 com\tm\config\HibernateConfig.class
 com\tm\pojo\TourReview.class
 com\tm\service\impl\TourServiceImpl.class
+com\tm\controller\UserController.class
 com\tm\pojo\TourHighlight.class
 com\tm\pojo\TourItinerary.class
 com\tm\pojo\Booking.class
@@ -25,4 +26,5 @@ com\tm\repository\impl\UserRepositoryImpl.class
 com\tm\pojo\User.class
 com\tm\pojo\Tour.class
 com\tm\controller\HomeController.class
+com\tm\controller\TourController.class
 com\tm\pojo\TicketType.class

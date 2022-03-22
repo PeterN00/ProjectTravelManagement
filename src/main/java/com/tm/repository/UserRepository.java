@@ -12,4 +12,5 @@ import com.tm.pojo.User;
  */
 public interface UserRepository {
     List<User> getUsers();
+    void addUser(User user);
 }

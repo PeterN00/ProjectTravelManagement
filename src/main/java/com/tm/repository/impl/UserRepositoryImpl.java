@@ -30,4 +30,10 @@ public class UserRepositoryImpl implements  UserRepository{
         Query q = session.createQuery("FROM User");
         return q.getResultList();
     }
+    
+    @Override
+    public void addUser(User user){
+        Session session = sessionFactory.getObject().getCurrentSession();
+        session.save(user);
+    }
 }
