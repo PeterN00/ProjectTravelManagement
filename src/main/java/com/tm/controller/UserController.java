@@ -32,13 +32,22 @@ public class UserController {
     }
     
     @PostMapping("/register")
-    public String registerHandler(
+    public String registerHandler(Model model,
             @ModelAttribute(value = "user") @Valid User user, 
             BindingResult result){
         if(result.hasErrors() == true){
             return "register";
         }
-        userService.addUser(user);
-        return "index";
+        
+        String msg;
+        if(user.getPassword().equals(user.getRetypePassword())){
+            userService.addUser(user);
+            return "redirect:/";
+        }else
+            msg = "Password does not match!";
+        
+        model.addAttribute("msg", msg);
+        
+        return "register";
     }
 }

@@ -26,8 +26,16 @@
         <label for="repsw"><b>Retype Password</b></label>
         <form:password placeholder="Retyped Password" path="retypePassword" name="repsw" />
 
+        <c:if test="${msg!=null}">
+            <div class="alert">
+                <span class="closebtnalert" 
+                      onclick="this.parentElement.style.display='none';">&times;
+                </span> 
+                ${msg}
+            </div>
+        </c:if>
+        
         <button type="submit" name="regbtn">Register</button>
-        <button type="button" onclick="history.back()" class="cancelbtn">Back</button>
     </div>
 </form:form>
 <c:forEach items="${users}" var="user">
