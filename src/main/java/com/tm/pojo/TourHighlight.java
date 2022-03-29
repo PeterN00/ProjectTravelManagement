@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -38,7 +39,9 @@ public class TourHighlight implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 100)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
     @Column(name = "highlight")
     private String highlight;
     @JoinColumn(name = "tour_id", referencedColumnName = "id")
@@ -50,6 +53,11 @@ public class TourHighlight implements Serializable {
 
     public TourHighlight(Integer id) {
         this.id = id;
+    }
+
+    public TourHighlight(Integer id, String highlight) {
+        this.id = id;
+        this.highlight = highlight;
     }
 
     public Integer getId() {

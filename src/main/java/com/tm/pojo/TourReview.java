@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -41,7 +42,9 @@ public class TourReview implements Serializable {
     private Integer id;
     @Column(name = "rate")
     private Short rate;
-    @Size(max = 255)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
     @Column(name = "comment")
     private String comment;
     @JoinColumn(name = "tour_id", referencedColumnName = "id")
@@ -56,6 +59,11 @@ public class TourReview implements Serializable {
 
     public TourReview(Integer id) {
         this.id = id;
+    }
+
+    public TourReview(Integer id, String comment) {
+        this.id = id;
+        this.comment = comment;
     }
 
     public Integer getId() {

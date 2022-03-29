@@ -9,6 +9,7 @@ import com.tm.repository.UserRepository;
 import com.tm.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,7 +20,9 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
-    
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+            
     @Override
     public List<User> getUsers() {
         return this.userRepository.getUsers();
@@ -27,6 +30,7 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public void addUser(User user){
+        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         userRepository.addUser(user);
     }
 }

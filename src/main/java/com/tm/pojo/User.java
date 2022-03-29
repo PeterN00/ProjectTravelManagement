@@ -16,6 +16,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -42,16 +44,24 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull(message = "{user.emptyFieldErr}")
+    @Size(min = 1, max = 50, message = "{user.lengthErr}")
     @Column(name = "username")
     private String username;
-    @Size(max = 100)
+    @Basic(optional = false)
+    @NotNull(message = "{user.emptyFieldErr}")
+    @Size(min = 1, max = 100, message = "{user.lengthErr}")
     @Column(name = "password")
     private String password;
-    @Size(max = 100)
+    @Transient
+    private String retypePassword;
+    @Basic(optional = false)
+    @NotNull(message = "{user.emptyFieldErr}")
+    @Size(min = 1, max = 100, message = "{user.lengthErr}")
     @Column(name = "full_name")
     private String fullName;
-    @Size(max = 10)
+    @Size(max = 10, message = "{user.lengthErr}")
     @Column(name = "role")
     private String role;
     @OneToMany(mappedBy = "userId")
@@ -64,6 +74,13 @@ public class User implements Serializable {
 
     public User(Integer id) {
         this.id = id;
+    }
+
+    public User(Integer id, String username, String password, String fullName) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.fullName = fullName;
     }
 
     public Integer getId() {
@@ -88,6 +105,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public String getRetypePassword() {
+        return retypePassword;
+    }
+
+    public void setRetypePassword(String retypePassword) {
+        this.retypePassword = retypePassword;
     }
 
     public String getFullName() {

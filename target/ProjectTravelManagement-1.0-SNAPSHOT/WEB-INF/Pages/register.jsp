@@ -9,16 +9,22 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <form:form action="/ProjectTravelManagement/register" method="post" modelAttribute="user">
-    <h1 class="text-center">CUSTOMER REGISTRATION FORM</h1>
+    <h1 class="text-center">REGISTRATION FORM</h1>
     <div class="container">
         <label for="usrname"><b>Username</b></label>
         <form:input placeholder="Enter Username" path="username" name="usrname" />
-
-        <label for="psw"><b>Password</b></label>
-        <form:password placeholder="Enter Password" path="password" name="psw" />
-
+        <form:errors path="username" cssClass="text-danger" />
+        
         <label for="fullname"><b>Full Name</b></label>
         <form:input placeholder="Enter Full Name" path="fullName" name="fullname" />
+        <form:errors path="fullName" cssClass="text-danger" />
+        
+        <label for="psw"><b>Password</b></label>
+        <form:password placeholder="Enter Password" path="password" name="psw" />
+        <form:errors path="password" cssClass="text-danger" />
+        
+        <label for="repsw"><b>Retype Password</b></label>
+        <form:password placeholder="Retyped Password" path="retypePassword" name="repsw" />
 
         <button type="submit" name="regbtn">Register</button>
         <button type="button" onclick="history.back()" class="cancelbtn">Back</button>

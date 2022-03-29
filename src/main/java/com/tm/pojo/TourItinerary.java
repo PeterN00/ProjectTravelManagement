@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -39,7 +40,9 @@ public class TourItinerary implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "name")
     private String name;
     @Size(max = 255)
@@ -54,6 +57,11 @@ public class TourItinerary implements Serializable {
 
     public TourItinerary(Integer id) {
         this.id = id;
+    }
+
+    public TourItinerary(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public Integer getId() {

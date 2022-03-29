@@ -27,6 +27,7 @@ com\tm\repository\impl\UserRepositoryImpl.class
 com\tm\pojo\News.class
 com\tm\pojo\User.class
 com\tm\pojo\Tour.class
+com\tm\config\SpringSecurityConfig.class
 com\tm\controller\HomeController.class
 com\tm\controller\TourController.class
 com\tm\pojo\TicketType.class

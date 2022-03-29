@@ -5,9 +5,9 @@ use travelmanagement;
 create table `User`
 (
 	id int auto_increment,
-    username varchar(50) unique,
-    `password` varchar(100),
-    full_name varchar(100),
+    username varchar(50) unique not null,
+    `password` varchar(100) not null,
+    full_name varchar(100) not null,
     `role` varchar(10),
     primary key(id)
 );
@@ -15,10 +15,10 @@ create table `User`
 create table Tour
 (
 	id int auto_increment,
-    title varchar(50),
-    price decimal(6,2),
+    title varchar(50) not null,
+    price decimal(6,2) default 0,
     duration int,
-    departure_point varchar(50),
+    departure_point varchar(50) default 'Unknown',
     departure_time datetime,
     overview varchar(255),
     img varchar(255),
@@ -29,7 +29,7 @@ create table Tour_Itinerary
 (
 	id int auto_increment,
     tour_id int,
-    `name` varchar(50),
+    `name` varchar(50) not null,
     `description` varchar(255),
     foreign key (tour_id) references Tour(id),
     primary key(id)
@@ -39,7 +39,7 @@ create table Tour_Highlight
 (
 	id int auto_increment,
     tour_id int,
-    highlight varchar(100),
+    highlight varchar(100) not null,
     foreign key (tour_id) references Tour(id),
     primary key(id)
 );
@@ -50,7 +50,7 @@ create table Tour_Review
 	user_id int,
 	tour_id int,
     rate tinyint,
-    `comment` varchar(255),
+    `comment` varchar(255) not null,
     foreign key (user_id) references `User`(id),
     foreign key (tour_id) references Tour(id),
     primary key(id)
@@ -86,8 +86,8 @@ create table Ticket
 create table News
 (
 	id int auto_increment,
-    title varchar(100),
-    `description` varchar(255),
+    title varchar(100) not null,
+    `description` varchar(255) not null,
     `date` datetime,
     primary key(id)
 );
