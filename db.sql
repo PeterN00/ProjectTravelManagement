@@ -6,7 +6,7 @@ create table `User`
 (
 	id int auto_increment,
     username varchar(50) unique,
-    `password` varchar(30),
+    `password` varchar(100),
     full_name varchar(100),
     `role` varchar(10),
     primary key(id)
@@ -20,8 +20,8 @@ create table Tour
     duration int,
     departure_point varchar(50),
     departure_time datetime,
-    overview varchar(200),
-    img varchar(200),
+    overview varchar(255),
+    img varchar(255),
     primary key(id)
 );
 
@@ -30,7 +30,7 @@ create table Tour_Itinerary
 	id int auto_increment,
     tour_id int,
     `name` varchar(50),
-    `description` varchar(200),
+    `description` varchar(255),
     foreign key (tour_id) references Tour(id),
     primary key(id)
 );
@@ -50,7 +50,7 @@ create table Tour_Review
 	user_id int,
 	tour_id int,
     rate tinyint,
-    `comment` varchar(200),
+    `comment` varchar(255),
     foreign key (user_id) references `User`(id),
     foreign key (tour_id) references Tour(id),
     primary key(id)
@@ -80,6 +80,15 @@ create table Ticket
     ticket_type bit(1),
     foreign key (booking_id) references Booking(id),
     foreign key (ticket_type) references Ticket_Type(`type`),
+    primary key(id)
+);
+
+create table News
+(
+	id int auto_increment,
+    title varchar(100),
+    `description` varchar(255),
+    `date` datetime,
     primary key(id)
 );
 

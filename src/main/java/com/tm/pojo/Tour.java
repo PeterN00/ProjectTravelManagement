@@ -63,10 +63,10 @@ public class Tour implements Serializable {
     @Column(name = "departure_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date departureTime;
-    @Size(max = 200)
+    @Size(max = 255)
     @Column(name = "overview")
     private String overview;
-    @Size(max = 200)
+    @Size(max = 255)
     @Column(name = "img")
     private String img;
     @OneToMany(mappedBy = "tourId")

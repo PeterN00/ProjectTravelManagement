@@ -41,7 +41,7 @@ public class TourReview implements Serializable {
     private Integer id;
     @Column(name = "rate")
     private Short rate;
-    @Size(max = 200)
+    @Size(max = 255)
     @Column(name = "comment")
     private String comment;
     @JoinColumn(name = "tour_id", referencedColumnName = "id")

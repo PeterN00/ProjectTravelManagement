@@ -42,7 +42,7 @@ public class TourItinerary implements Serializable {
     @Size(max = 50)
     @Column(name = "name")
     private String name;
-    @Size(max = 200)
+    @Size(max = 255)
     @Column(name = "description")
     private String description;
     @JoinColumn(name = "tour_id", referencedColumnName = "id")
