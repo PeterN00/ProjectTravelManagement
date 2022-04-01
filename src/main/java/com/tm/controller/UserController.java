@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     
-    @RequestMapping("/register")
+    @GetMapping("/register")
     public String register(Model model){
         model.addAttribute("user", new User());
         model.addAttribute("users", this.userService.getUsers());
@@ -40,9 +40,12 @@ public class UserController {
         }
         
         String msg;
+        String statusMsg;
         if(user.getPassword().equals(user.getRetypePassword())){
             userService.addUser(user);
-            return "redirect:/";
+            statusMsg = "New account registered!";
+            model.addAttribute("statusmsg", statusMsg);
+            return "register";
         }else
             msg = "Password does not match!";
         

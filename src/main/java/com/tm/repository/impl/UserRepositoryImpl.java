@@ -8,6 +8,9 @@ import com.tm.pojo.User;
 import com.tm.repository.UserRepository;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -35,5 +38,19 @@ public class UserRepositoryImpl implements  UserRepository{
     public void addUser(User user){
         Session session = sessionFactory.getObject().getCurrentSession();
         session.save(user);
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<User> cq = cb.createQuery(User.class);
+        Root root = cq.from(User.class);
+        cq.select(root);
+        cq.where(cb.equal(root.get("username"), username));
+        Query query = session.createQuery(cq);
+        
+        return (User) query.getSingleResult();
     }
 }

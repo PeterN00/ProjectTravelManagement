@@ -9,7 +9,7 @@ input[type=text], input[type=password] {
 label{
     display: block;
 }
-button {
+.button,button {
   background-color: #04AA6D;
   color: white;
   padding: 14px 20px;
@@ -17,9 +17,14 @@ button {
   border: none;
   cursor: pointer;
   width: 100%;
+  text-align: center;
+  font-weight: bold;
 }
-button:hover {
+.button,button:hover {
   opacity: 0.8;
+}
+.nav-item, .nav-link{
+    font-weight: bold;
 }
 .cancelbtn {
     width: 100%;

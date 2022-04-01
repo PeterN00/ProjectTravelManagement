@@ -6,12 +6,14 @@ package com.tm.service;
 
 import com.tm.pojo.User;
 import java.util.List;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *
  * @author Admin
  */
-public interface UserService {
+public interface UserService extends UserDetailsService{
     List<User> getUsers();
     void addUser(User user);
+    User getUserByUsername(String username);
 }

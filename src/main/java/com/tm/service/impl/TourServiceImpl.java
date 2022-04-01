@@ -29,4 +29,9 @@ public class TourServiceImpl implements TourService{
     public int tourCount(){
         return this.tourRepository.tourCount();
     }
+
+    @Override
+    public void addTour(Tour tour) {
+        this.tourRepository.addTour(tour);
+    }
 }

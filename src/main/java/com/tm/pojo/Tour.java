@@ -7,7 +7,6 @@ package com.tm.pojo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,14 +15,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -37,7 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Tour.findById", query = "SELECT t FROM Tour t WHERE t.id = :id"),
     @NamedQuery(name = "Tour.findByTitle", query = "SELECT t FROM Tour t WHERE t.title = :title"),
     @NamedQuery(name = "Tour.findByPrice", query = "SELECT t FROM Tour t WHERE t.price = :price"),
-    @NamedQuery(name = "Tour.findByDuration", query = "SELECT t FROM Tour t WHERE t.duration = :duration"),
+    @NamedQuery(name = "Tour.findByDay", query = "SELECT t FROM Tour t WHERE t.day = :day"),
+    @NamedQuery(name = "Tour.findByNight", query = "SELECT t FROM Tour t WHERE t.night = :night"),
     @NamedQuery(name = "Tour.findByDeparturePoint", query = "SELECT t FROM Tour t WHERE t.departurePoint = :departurePoint"),
     @NamedQuery(name = "Tour.findByDepartureTime", query = "SELECT t FROM Tour t WHERE t.departureTime = :departureTime"),
     @NamedQuery(name = "Tour.findByOverview", query = "SELECT t FROM Tour t WHERE t.overview = :overview"),
@@ -55,11 +56,13 @@ public class Tour implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "title")
     private String title;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Min(value = 1)
     @Column(name = "price")
     private BigDecimal price;
-    @Column(name = "duration")
-    private Integer duration;
+    @Column(name = "day")
+    private Short day;
+    @Column(name = "night")
+    private Short night;
     @Size(max = 50)
     @Column(name = "departure_point")
     private String departurePoint;
@@ -72,15 +75,9 @@ public class Tour implements Serializable {
     @Size(max = 255)
     @Column(name = "img")
     private String img;
-    @OneToMany(mappedBy = "tourId")
-    private List<TourHighlight> tourHighlightList;
-    @OneToMany(mappedBy = "tourId")
-    private List<Booking> bookingList;
-    @OneToMany(mappedBy = "tourId")
-    private List<TourReview> tourReviewList;
-    @OneToMany(mappedBy = "tourId")
-    private List<TourItinerary> tourItineraryList;
-
+    @Transient
+    private MultipartFile imgFile;
+    
     public Tour() {
     }
 
@@ -117,12 +114,20 @@ public class Tour implements Serializable {
         this.price = price;
     }
 
-    public Integer getDuration() {
-        return duration;
+    public Short getDay() {
+        return day;
     }
 
-    public void setDuration(Integer duration) {
-        this.duration = duration;
+    public void setDay(Short day) {
+        this.day = day;
+    }
+
+    public Short getNight() {
+        return night;
+    }
+
+    public void setNight(Short night) {
+        this.night = night;
     }
 
     public String getDeparturePoint() {
@@ -157,42 +162,6 @@ public class Tour implements Serializable {
         this.img = img;
     }
 
-    @XmlTransient
-    public List<TourHighlight> getTourHighlightList() {
-        return tourHighlightList;
-    }
-
-    public void setTourHighlightList(List<TourHighlight> tourHighlightList) {
-        this.tourHighlightList = tourHighlightList;
-    }
-
-    @XmlTransient
-    public List<Booking> getBookingList() {
-        return bookingList;
-    }
-
-    public void setBookingList(List<Booking> bookingList) {
-        this.bookingList = bookingList;
-    }
-
-    @XmlTransient
-    public List<TourReview> getTourReviewList() {
-        return tourReviewList;
-    }
-
-    public void setTourReviewList(List<TourReview> tourReviewList) {
-        this.tourReviewList = tourReviewList;
-    }
-
-    @XmlTransient
-    public List<TourItinerary> getTourItineraryList() {
-        return tourItineraryList;
-    }
-
-    public void setTourItineraryList(List<TourItinerary> tourItineraryList) {
-        this.tourItineraryList = tourItineraryList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -216,6 +185,20 @@ public class Tour implements Serializable {
     @Override
     public String toString() {
         return "com.tm.pojo.Tour[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the imgFile
+     */
+    public MultipartFile getImgFile() {
+        return imgFile;
+    }
+
+    /**
+     * @param imgFile the imgFile to set
+     */
+    public void setImgFile(MultipartFile imgFile) {
+        this.imgFile = imgFile;
     }
     
 }

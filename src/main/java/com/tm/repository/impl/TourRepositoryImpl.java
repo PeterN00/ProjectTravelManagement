@@ -65,4 +65,10 @@ public class TourRepositoryImpl implements TourRepository{
         int count = Integer.parseInt(obj.toString());
         return count;
     }
+
+    @Override
+    public void addTour(Tour tour) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        session.save(tour);
+    }
 }

@@ -23,4 +23,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <put-attribute name="title" value="Registration Form" />
         <put-attribute name="content" value="/WEB-INF/Pages/register.jsp" />
     </definition>
+    <definition name="newtour" extends="baseLayout">
+        <put-attribute name="title" value="New Tour" />
+        <put-attribute name="content" value="/WEB-INF/Pages/newtour.jsp" />
+    </definition>
 </tiles-definitions>
