@@ -40,9 +40,12 @@ public class UserController {
         }
         
         String msg;
+        String statusMsg;
         if(user.getPassword().equals(user.getRetypePassword())){
             userService.addUser(user);
-            return "redirect:/";
+            statusMsg = "New account registered!";
+            model.addAttribute("regstatus", statusMsg);
+            return "register";
         }else
             msg = "Password does not match!";
         

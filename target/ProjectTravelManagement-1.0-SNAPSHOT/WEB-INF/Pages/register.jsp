@@ -35,6 +35,15 @@
             </div>
         </c:if>
         
+        <c:if test="${statusmsg!=null}">
+            <div class="alert" style="background-color: green">
+                <span class="closebtnalert"
+                      onclick="this.parentElement.style.display='none';">&times;
+                </span> 
+                ${statusmsg}
+            </div>
+        </c:if>
+        
         <button type="submit" name="regbtn">Register</button>
     </div>
 </form:form>
