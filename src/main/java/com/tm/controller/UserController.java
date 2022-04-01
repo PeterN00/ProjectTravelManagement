@@ -44,7 +44,11 @@ public class UserController {
         if(user.getPassword().equals(user.getRetypePassword())){
             userService.addUser(user);
             statusMsg = "New account registered!";
+<<<<<<< HEAD
             model.addAttribute("statusmsg", statusMsg);
+=======
+            model.addAttribute("regstatus", statusMsg);
+>>>>>>> 262353658113d3120e61a1bd2c3978d62d5a7469
             return "register";
         }else
             msg = "Password does not match!";
