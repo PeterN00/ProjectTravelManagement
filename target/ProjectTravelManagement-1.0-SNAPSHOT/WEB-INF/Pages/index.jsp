@@ -34,6 +34,7 @@
                     <img class="card-img-top" src="${tour.img}" alt="${tour.id}">
                     <div class="card-body">
                         <h4 class="card-title">${tour.title}</h4>
+                        <h4 class="card-title">${tour.price}$</h4>
                         <p class="card-text">${tour.overview}</p>
                         <a href="#" class="btn btn-primary">See More</a>
                     </div>

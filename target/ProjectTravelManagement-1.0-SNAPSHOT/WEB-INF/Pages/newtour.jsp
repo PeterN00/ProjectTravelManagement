@@ -9,7 +9,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <c:url value="/tours/add" var="addtour" />
-<form:form action="${addtour}" method="post" modelAttribute="tour">
+<form:form action="${addtour}" method="post" modelAttribute="tour"
+           enctype="multipart/form-data">
     <h1 class="text-center">NEW TOUR</h1>
     <div class="container">
         <label for="title"><b>Title:</b></label>
@@ -77,9 +78,10 @@
             btn.appendChild(icon);
             btn.appendChild(text);
             btn.style.backgroundColor = "Red";
+            
             btn.addEventListener("click", function () {
               var img = document.getElementById("showimg");
-              img.setAttribute("src", '');
+              img.src = '';
               imgdiv.removeChild(btn);
             });
             imgdiv.appendChild(btn);

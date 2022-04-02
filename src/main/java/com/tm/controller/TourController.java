@@ -28,30 +28,32 @@ public class TourController {
     private TourService tourService;
     
     @GetMapping("")
-    public String index(Model model, 
-            @RequestParam(name="toursearch", required = false) String search, 
-            @RequestParam(name="page", defaultValue = "1") Integer page){
+    public String index(Model model,
+            @RequestParam(name = "toursearch", required = false) String search,
+            @RequestParam(name = "page", defaultValue = "1") Integer page) {
         model.addAttribute("tours", this.tourService.getTours(search, page));
         model.addAttribute("tourcount", tourService.tourCount());
         return "index";
     }
+
     @GetMapping("/add")
-    public String newTourView(Model model){
+    public String newTourView(Model model) {
         model.addAttribute("tour", new Tour());
         return "newtour";
     }
+
     @PostMapping("/add")
     public String newTourHandler(Model model,
             @ModelAttribute(value = "tour") @Valid Tour tour,
-            BindingResult result){
-        if(result.hasErrors()){
+            BindingResult result) {
+        if (result.hasErrors()) {
             return "newtour";
         }
-        
+
         tourService.addTour(tour);
         String msg = "New Tour Added!";
         model.addAttribute("msg", msg);
-        
+
         return "newtour";
     }
 }
