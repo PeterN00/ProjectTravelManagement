@@ -42,28 +42,16 @@
                 ${msg}
             </div>
         </c:if>
-<<<<<<< HEAD
-
-        <c:if test="${statusmsg!=null}">
-            <div class="alert" style="background-color: green">
-                <span class="closebtnalert" 
-                      onclick="this.parentElement.style.display = 'none';">&times;
-=======
         
         <c:if test="${statusmsg!=null}">
             <div class="alert" style="background-color: green">
                 <span class="closebtnalert"
                       onclick="this.parentElement.style.display='none';">&times;
->>>>>>> 262353658113d3120e61a1bd2c3978d62d5a7469
                 </span> 
                 ${statusmsg}
             </div>
         </c:if>
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> 262353658113d3120e61a1bd2c3978d62d5a7469
+            
         <button type="submit" name="regbtn">Register</button>
     </div>
 </form:form>
