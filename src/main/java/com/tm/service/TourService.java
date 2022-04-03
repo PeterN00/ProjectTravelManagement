@@ -15,4 +15,6 @@ public interface TourService {
     List<Tour> getTours(String search, int page);
     int tourCount();
     void addTour(Tour tour);
+    Tour getTourById(Integer id);
+    void deleteTour(Integer id);
 }

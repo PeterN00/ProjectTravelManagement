@@ -71,4 +71,19 @@ public class TourRepositoryImpl implements TourRepository{
         Session session = sessionFactory.getObject().getCurrentSession();
         session.save(tour);
     }
+
+    @Override
+    public Tour getTourById(Integer id) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("select t from Tour t where t.id = " + id);
+        Object obj = q.getSingleResult();
+        return (Tour) obj;
+    }
+
+    @Override
+    public void deleteTour(Integer id) {
+        Tour tour = getTourById(id);
+        Session session = sessionFactory.getObject().getCurrentSession();
+        session.delete(tour);
+    }
 }

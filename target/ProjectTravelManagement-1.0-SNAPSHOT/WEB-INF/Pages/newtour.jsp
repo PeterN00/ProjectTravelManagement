@@ -12,6 +12,16 @@
 <form:form action="${addtour}" method="post" modelAttribute="tour"
            enctype="multipart/form-data">
     <h1 class="text-center">NEW TOUR</h1>
+
+    <c:if test="${msg!=null}">
+        <div class="alert" style="background-color: green">
+            <span class="closebtnalert" 
+                  onclick="this.parentElement.style.display = 'none';">&times;
+            </span> 
+            ${msg}
+        </div>
+    </c:if>
+
     <div class="container">
         <label for="title"><b>Title:</b></label>
         <form:input placeholder="Enter Title" path="title" name="title" />
@@ -40,22 +50,15 @@
         <form:textarea placeholder="Enter Overview for Description" path="overview" name="overview" style="width: 100%; height: 25%" />
         <form:errors path="overview" cssClass="text-danger" />
 
-        <div id='imgdiv'>
-            <label for="img"><b>Select Image:</b></label>
-            <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="readURL(this)" />
-            <img id="showimg" />
-        </div>
-        
-        <c:if test="${msg!=null}">
-            <div class="alert" style="background-color: green">
-                <span class="closebtnalert" 
-                      onclick="this.parentElement.style.display = 'none';">&times;
-                </span> 
-                ${msg}
-            </div>
-        </c:if>
+        <label for="img"><b>Select Image:</b></label>
+        <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="readURL(this)" />
+        <img id="showimg" />
 
-        <button type="submit" name="submitbtn">Submit</button>
+        <div id='removebtndiv'>
+
+        </div>
+
+        <button id="btnsubmit" type="submit" name="submitbtn">Submit</button>
     </div>
 </form:form>
 
@@ -69,22 +72,28 @@
             };
 
             reader.readAsDataURL(input.files[0]);
-            
+
             var btn = document.createElement("button");
             var text = document.createTextNode(" Remove Image");
             var icon = document.createElement("i");
             icon.className = "fa fa-close";
-            var imgdiv = document.getElementById("imgdiv");
+
             btn.appendChild(icon);
             btn.appendChild(text);
             btn.style.backgroundColor = "Red";
-            
+            btn.id = 'removebtn';
+
+            var btndiv = document.getElementById("removebtndiv");
+
             btn.addEventListener("click", function () {
-              var img = document.getElementById("showimg");
-              img.src = '';
-              imgdiv.removeChild(btn);
+                var img = document.getElementById("showimg");
+                img.src = '';
+                btndiv.removeChild(btn);
             });
-            imgdiv.appendChild(btn);
+
+            if (document.getElementById('removebtn') == null) {
+                btndiv.appendChild(btn);
+            }
         }
     }
 </script>

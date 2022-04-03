@@ -10,7 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 <tiles-definitions>
     <definition name="baseLayout" template="/WEB-INF/layout/base.jsp">
-        <put-attribute name="title" value="" />
+        <put-attribute name="title" expression="" />
         <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
         <put-attribute name="content" value="" />
         <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
@@ -26,5 +26,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
     <definition name="newtour" extends="baseLayout">
         <put-attribute name="title" value="New Tour" />
         <put-attribute name="content" value="/WEB-INF/Pages/newtour.jsp" />
+    </definition>
+    <definition name="tourdetails" extends="baseLayout">
+        <put-attribute name="title" expression="${pageTitle}" />
+        <put-attribute name="content" value="/WEB-INF/Pages/tourdetails.jsp" />
     </definition>
 </tiles-definitions>

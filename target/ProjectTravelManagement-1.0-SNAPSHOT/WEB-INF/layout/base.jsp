@@ -20,7 +20,8 @@
             <%@include file="/resources/style.css"%>
         </style>
         
-        <title><tiles:insertAttribute name="title" /></title>
+        <title><tiles:getAsString name="title" /></title>
+            
     </head>
     <body>
         <tiles:insertAttribute name="header" />

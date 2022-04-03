@@ -9,7 +9,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <div class="container">
-    <h1 class="text-center">TOURS</h1>
+    <br>
+
+    <c:if test="${msg!=null}">
+        <div class="alert" style="background-color: green">
+            <span class="closebtnalert" 
+                  onclick="this.parentElement.style.display = 'none';">&times;
+            </span> 
+            ${msg}
+        </div>
+    </c:if>
 
     <div>
         <c:url value="/tours" var="tourSearch" />
@@ -31,12 +40,12 @@
         <c:forEach items="${tours}" var="tour">
             <div class="col-md-4 col-sm-12">
                 <div class="card">
-                    <img class="card-img-top" src="${tour.img}" alt="${tour.id}">
+                    <img class="card-img-top" src="${tour.img}" alt="${tour.id}" width="300" height="300">
                     <div class="card-body">
                         <h4 class="card-title">${tour.title}</h4>
                         <h4 class="card-title">${tour.price}$</h4>
                         <p class="card-text">${tour.overview}</p>
-                        <a href="#" class="btn btn-primary">See More</a>
+                        <a href="<c:url value = "/tours/${tour.id}" />" class="btn btn-primary">See More</a>
                     </div>
                 </div>
                 <br>

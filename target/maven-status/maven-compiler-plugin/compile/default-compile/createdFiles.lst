@@ -26,6 +26,7 @@ com\tm\pojo\TicketType_.class
 com\tm\pojo\User_.class
 com\tm\repository\impl\UserRepositoryImpl.class
 com\tm\pojo\News.class
+com\tm\formatter\DateFormatter.class
 com\tm\pojo\User.class
 com\tm\pojo\Tour.class
 com\tm\config\SpringSecurityConfig.class
