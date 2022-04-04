@@ -44,4 +44,9 @@ public class TourServiceImpl implements TourService{
     public void deleteTour(Integer id) {
         this.tourRepository.deleteTour(id);
     }
+
+    @Override
+    public void editTour(Tour tour) {
+        this.tourRepository.editTour(tour);
+    }
 }

@@ -17,4 +17,5 @@ public interface TourService {
     void addTour(Tour tour);
     Tour getTourById(Integer id);
     void deleteTour(Integer id);
+    void editTour(Tour tour);
 }

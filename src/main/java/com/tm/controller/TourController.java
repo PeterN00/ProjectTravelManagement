@@ -30,18 +30,34 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/tours")
 public class TourController {
+
     @Autowired
     private TourService tourService;
     @Autowired
     private Cloudinary cloudinary;
-    
-    @GetMapping("")
-    public String index(Model model,
-            @RequestParam(name = "toursearch", required = false) String search,
-            @RequestParam(name = "page", defaultValue = "1") Integer page) {
-        model.addAttribute("tours", this.tourService.getTours(search, page));
+
+    public void uploadImgFile(Tour tour) {
+        if (tour.getImgFile() != null) {
+            try {
+                Map res = cloudinary.uploader().upload(tour.getImgFile().getBytes(),
+                        ObjectUtils.asMap(
+                                "resource_type", "auto",
+                                "folder", "travelmanagementproject_tourimg"
+                        ));
+                tour.setImg((String) res.get("secure_url"));
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
+
+    @GetMapping
+    public String tours(Model model,
+            @RequestParam(name = "search", required = false) String search,
+            @RequestParam(name = "page", defaultValue = "1") Integer page){
+        model.addAttribute("tours", tourService.getTours(search, page));
         model.addAttribute("tourcount", tourService.tourCount());
-        return "index";
+        return "tours";
     }
 
     @GetMapping("/add")
@@ -55,42 +71,56 @@ public class TourController {
             @ModelAttribute(value = "tour") @Valid Tour tour,
             RedirectAttributes reAttr,
             BindingResult result) {
-        
+
         if (result.hasErrors()) {
             System.out.println(result.toString());
             return "newtour";
         }
-        
-        if(tour.getImgFile() != null){
-            try {
-                Map res = cloudinary.uploader().upload(tour.getImgFile().getBytes(),
-                        ObjectUtils.asMap(
-                                "resource_type", "auto", 
-                                "folder", "travelmanagementproject_tourimg"
-                        ));
-                tour.setImg((String) res.get("secure_url"));
-                } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
-                }
-        }
-        
+
+        uploadImgFile(tour);
+
         tourService.addTour(tour);
-        reAttr.addFlashAttribute("msg", "New tour added!");
+        reAttr.addFlashAttribute("msg", "New Tour Added!");
         return "redirect:/tours";
     }
-    
+
     @GetMapping("/{id}")
-    public String tourDetails(@PathVariable("id") Integer id, Model model){
+    public String tourDetails(@PathVariable("id") Integer id, Model model) {
         Tour tour = tourService.getTourById(id);
         model.addAttribute("tour", tour);
         model.addAttribute("pageTitle", tour.getTitle());
         return "tourdetails";
     }
-    
+
     @RequestMapping("/{id}/delete")
-    public String tourDelete(@PathVariable("id") Integer id, RedirectAttributes reAttr){
+    public String tourDelete(@PathVariable("id") Integer id, RedirectAttributes reAttr) {
         tourService.deleteTour(id);
-        reAttr.addFlashAttribute("msg", "Tour: {id: "+id+"} deleted!");
-        return "redirect:/";
+        reAttr.addFlashAttribute("msg", "Tour: {id: " + id + "} Deleted!");
+        return "redirect:/tours";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String tourEditView(@PathVariable("id") Integer id, Model model) {
+        Tour tour = tourService.getTourById(id);
+        model.addAttribute("tour", tour);
+        model.addAttribute("pageTitle", tour.getTitle());
+        return "touredit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String tourEditHandler(RedirectAttributes reAttr,
+            @ModelAttribute(value = "tour") @Valid Tour tour,
+            BindingResult result) {
+        System.out.println(tour);
+        if (result.hasErrors()) {
+            System.out.println(result);
+            return "redirect:/";
+        }
+
+        uploadImgFile(tour);
+
+        tourService.editTour(tour);
+        reAttr.addFlashAttribute("msg", "Tour: {id: " + tour.getId() + "} Edited!");
+        return "redirect:/tours/{id}";
     }
 }

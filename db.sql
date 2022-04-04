@@ -165,3 +165,8 @@ insert into Tour_Review(user_id, tour_id, rate, comment)
 values(6, 1, 4, 'User review'),
 (6, 2, 3, 'User review'),
 (7, 3, 4, 'User review');
+
+insert into News(title, `description`, `date`)
+values('News 1', 'This is news 1 description', now()),
+('News 2', 'This is news 2 description', now()),
+('News 3', 'This is news 3 description', now());

@@ -51,49 +51,13 @@
         <form:errors path="overview" cssClass="text-danger" />
 
         <label for="img"><b>Select Image:</b></label>
-        <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="readURL(this)" />
+        <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
         <img id="showimg" />
 
         <div id='removebtndiv'>
 
         </div>
 
-        <button id="btnsubmit" type="submit" name="submitbtn">Submit</button>
+        <button id="submitbtn" type="submit" name="submitbtn">Submit</button>
     </div>
 </form:form>
-
-<script>
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#showimg').attr('src', e.target.result);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-
-            var btn = document.createElement("button");
-            var text = document.createTextNode(" Remove Image");
-            var icon = document.createElement("i");
-            icon.className = "fa fa-close";
-
-            btn.appendChild(icon);
-            btn.appendChild(text);
-            btn.style.backgroundColor = "Red";
-            btn.id = 'removebtn';
-
-            var btndiv = document.getElementById("removebtndiv");
-
-            btn.addEventListener("click", function () {
-                var img = document.getElementById("showimg");
-                img.src = '';
-                btndiv.removeChild(btn);
-            });
-
-            if (document.getElementById('removebtn') == null) {
-                btndiv.appendChild(btn);
-            }
-        }
-    }
-</script>

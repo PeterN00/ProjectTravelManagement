@@ -10,8 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <br>
-<div class="row">
-    
+<div>
     <div class="container">     
         <img src="${tour.img}"  width="300" height="300" style="float:left; margin-right: 10px">
         <h4><b>${tour.title}</b></h4>
@@ -20,13 +19,16 @@
         <p>
             Departure Time: 
             <fmt:formatDate type = "both" 
-                        dateStyle = "long" timeStyle = "medium" 
-                        value = "${tour.departureTime}" />
+                            dateStyle = "long" timeStyle = "medium" 
+                            value = "${tour.departureTime}" />
         </p>
-        
-        <c:url value = "/tours/${tour.id}/delete" var="delAction" />
-        <form:form action ="${delAction}">
+
+        <c:url value = "/tours/${tour.id}/delete" var="deleteAction" />
+        <form:form action ="${deleteAction}">
             <button id="delsubmit" type="submit" name="delbtn">Delete</button>
         </form:form>
+
+        <c:url value = "/tours/${tour.id}/edit" var="editAction" />
+        <a href="${editAction}">Edit</a>
     </div>
 </div>
