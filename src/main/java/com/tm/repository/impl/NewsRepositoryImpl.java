@@ -70,18 +70,28 @@ public class NewsRepositoryImpl implements NewsRepository{
     @Override
     public News getNewsById(Integer id) {
         Session session = sessionFactory.getObject().getCurrentSession();
-        Query q = session.createQuery("select n from News n where n.id=:id");
-        return (News) q.getSingleResult();
+        Query q = session.createQuery("select n from News n where n.id="+id);
+        Object obj = q.getSingleResult();
+        return (News) obj;
     }
 
     @Override
     public void deleteNews(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        News news = getNewsById(id);
+        Session session = sessionFactory.getObject().getCurrentSession();
+        session.delete(news);
     }
 
     @Override
     public void editNews(News news) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Session session = sessionFactory.getObject().getCurrentSession();
+        session.update(news);
+    }
+
+    @Override
+    public void addNews(News news) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        session.save(news);
     }
     
 }

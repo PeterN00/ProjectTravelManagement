@@ -10,6 +10,16 @@
 
 <div class="container">
     <br>
+    
+    <c:if test="${msg!=null}">
+        <div class="alert" style="background-color: green">
+            <span class="closebtnalert" 
+                  onclick="this.parentElement.style.display = 'none';">&times;
+            </span> 
+            ${msg}
+        </div>
+    </c:if>
+    
     <form>
         <div class="form-group">
             <div>

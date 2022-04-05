@@ -37,12 +37,17 @@ public class NewsServiceImpl implements NewsService{
 
     @Override
     public void deleteNews(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.newsRepository.deleteNews(id);
     }
 
     @Override
     public void editNews(News news) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.newsRepository.editNews(news);
+    }
+
+    @Override
+    public void addNews(News news) {
+        this.newsRepository.addNews(news);
     }
     
 }

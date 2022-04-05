@@ -9,6 +9,16 @@
 
 <div class="container">
     <br>
+    
+    <c:if test="${msg!=null}">
+        <div class="alert" style="background-color: green">
+            <span class="closebtnalert" 
+                  onclick="this.parentElement.style.display = 'none';">&times;
+            </span> 
+            ${msg}
+        </div>
+    </c:if>
+    
     <form>
         <div class="form-group">
             <div>
@@ -25,11 +35,12 @@
             <h4><b>${news.title}</b></h4>
             <p>${news.description}</p>
             <p>
-                Created at: 
+                Last Modified: 
                 <fmt:formatDate type = "both" 
                                 dateStyle = "long" timeStyle = "medium" 
                                 value = "${news.date}" />
             </p>
+            <a href="<c:url value = "/news/${news.id}" />" class="btn btn-primary">Read</a>
         </div>
     </c:forEach>
 </div>

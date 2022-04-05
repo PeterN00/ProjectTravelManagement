@@ -89,7 +89,7 @@ create table News
 	id int auto_increment,
     title varchar(100) not null,
     `description` varchar(255) not null,
-    `date` datetime,
+    `date` datetime default now(),
     primary key(id)
 );
 

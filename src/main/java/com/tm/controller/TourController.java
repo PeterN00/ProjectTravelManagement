@@ -111,7 +111,7 @@ public class TourController {
     public String tourEditHandler(RedirectAttributes reAttr,
             @ModelAttribute(value = "tour") @Valid Tour tour,
             BindingResult result) {
-        System.out.println(tour);
+        
         if (result.hasErrors()) {
             System.out.println(result);
             return "redirect:/";

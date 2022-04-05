@@ -23,10 +23,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <put-attribute name="title" value="Tours" />
         <put-attribute name="content" value="/WEB-INF/Pages/tours.jsp" />
     </definition>
-    <definition name="news" extends="baseLayout">
-        <put-attribute name="title" value="News" />
-        <put-attribute name="content" value="/WEB-INF/Pages/news.jsp" />
-    </definition>
     <definition name="register" extends="baseLayout">
         <put-attribute name="title" value="Registration Form" />
         <put-attribute name="content" value="/WEB-INF/Pages/register.jsp" />
@@ -42,5 +38,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
     <definition name="touredit" extends="baseLayout">
         <put-attribute name="title" expression="${pageTitle} Edit" />
         <put-attribute name="content" value="/WEB-INF/Pages/touredit.jsp" />
+    </definition>
+    <definition name="news" extends="baseLayout">
+        <put-attribute name="title" value="News" />
+        <put-attribute name="content" value="/WEB-INF/Pages/news.jsp" />
+    </definition>
+    <definition name="newsdetails" extends="baseLayout">
+        <put-attribute name="title" value="${pageTitle}" />
+        <put-attribute name="content" value="/WEB-INF/Pages/newsdetails.jsp" />
+    </definition>
+    <definition name="addnews" extends="baseLayout">
+        <put-attribute name="title" value="Add News" />
+        <put-attribute name="content" value="/WEB-INF/Pages/addnews.jsp" />
+    </definition>
+    <definition name="newsedit" extends="baseLayout">
+        <put-attribute name="title" value="Edit News" />
+        <put-attribute name="content" value="/WEB-INF/Pages/newsedit.jsp" />
     </definition>
 </tiles-definitions>
