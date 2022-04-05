@@ -5,11 +5,13 @@ com\tm\pojo\TourItinerary_.class
 com\tm\pojo\Ticket.class
 com\tm\config\DispatcherServletInit.class
 com\tm\config\WebAppContextConfig.class
+com\tm\handlers\LogoutHandler.class
 com\tm\pojo\Tour_.class
 com\tm\config\WebSecurityAppContextInit.class
 com\tm\service\NewsService.class
 com\tm\service\impl\UserServiceImpl.class
 com\tm\service\UserService.class
+com\tm\handlers\LoginSuccessHandler.class
 com\tm\pojo\TourHighlight_.class
 com\tm\repository\UserRepository.class
 com\tm\service\TourService.class

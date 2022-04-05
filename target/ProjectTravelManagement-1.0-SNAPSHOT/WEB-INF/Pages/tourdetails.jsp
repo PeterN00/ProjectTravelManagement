@@ -10,25 +10,28 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <br>
-<div>
-    <div class="container">     
-        <img src="${tour.img}"  width="300" height="300" style="float:left; margin-right: 10px">
-        <h4><b>${tour.title}</b></h4>
-        <p>Price: ${tour.price} - ${tour.day} days ${tour.night} nights</p>
-        <p>Departure Point: ${tour.departurePoint}</p>
-        <p>
-            Departure Time: 
-            <fmt:formatDate type = "both" 
-                            dateStyle = "long" timeStyle = "medium" 
-                            value = "${tour.departureTime}" />
-        </p>
+<div class="container">  
+    <img src="${tour.img}"  width="300" height="300" style="float:left; margin-right: 10px">
+    <h4><b>${tour.title}</b></h4>
+    <p>Price: ${tour.price} - ${tour.day} days ${tour.night} nights</p>
+    <p>Departure Point: ${tour.departurePoint}</p>
+    <p>
+        Departure Time: 
+        <fmt:formatDate type = "both" 
+                        dateStyle = "long" timeStyle = "medium" 
+                        value = "${tour.departureTime}" />
+    </p>
 
-        <c:url value = "/tours/${tour.id}/delete" var="deleteAction" />
-        <form:form action ="${deleteAction}">
-            <button id="delsubmit" type="submit" name="delbtn">Delete</button>
-        </form:form>
-
+    <c:if test="${pageContext.request.userPrincipal.name != null
+                  && pageContext.request.userPrincipal.authorities != '[Customer]'}">
         <c:url value = "/tours/${tour.id}/edit" var="editAction" />
         <a href="${editAction}">Edit</a>
-    </div>
+
+        <c:if test="${pageContext.request.userPrincipal.authorities == '[Admin]'}">
+            <c:url value = "/tours/${tour.id}/delete" var="deleteAction" />
+            <form:form action ="${deleteAction}">
+                <button id="delsubmit" type="submit" name="delbtn">Delete</button>
+            </form:form>
+        </c:if>
+    </c:if>
 </div>

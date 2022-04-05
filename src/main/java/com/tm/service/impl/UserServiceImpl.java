@@ -47,9 +47,9 @@ public class UserServiceImpl implements UserService {
         if(user == null)
             throw new UsernameNotFoundException("User not found!");
         
-        Set<GrantedAuthority> authority = new HashSet<>();
-        authority.add(new SimpleGrantedAuthority(user.getRole()));
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authority);
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority(user.getRole()));
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
     }
 
     @Override

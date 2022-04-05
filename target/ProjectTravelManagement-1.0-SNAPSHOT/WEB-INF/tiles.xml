@@ -44,7 +44,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <put-attribute name="content" value="/WEB-INF/Pages/news.jsp" />
     </definition>
     <definition name="newsdetails" extends="baseLayout">
-        <put-attribute name="title" value="${pageTitle}" />
+        <put-attribute name="title" expression="${pageTitle}" />
         <put-attribute name="content" value="/WEB-INF/Pages/newsdetails.jsp" />
     </definition>
     <definition name="addnews" extends="baseLayout">
@@ -54,5 +54,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
     <definition name="newsedit" extends="baseLayout">
         <put-attribute name="title" value="Edit News" />
         <put-attribute name="content" value="/WEB-INF/Pages/newsedit.jsp" />
+    </definition>
+    <definition name="userprofile" extends="baseLayout">
+        <put-attribute name="title" expression="${pageTitle}" />
+        <put-attribute name="content" value="/WEB-INF/Pages/userprofile.jsp" />
     </definition>
 </tiles-definitions>

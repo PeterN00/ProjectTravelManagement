@@ -10,6 +10,7 @@ import com.tm.pojo.Tour;
 import com.tm.service.TourService;
 import java.io.IOException;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,11 +53,13 @@ public class TourController {
     }
 
     @GetMapping
-    public String tours(Model model,
+    public String tours(Model model, HttpServletRequest request,
             @RequestParam(name = "search", required = false) String search,
             @RequestParam(name = "page", defaultValue = "1") Integer page){
+        
         model.addAttribute("tours", tourService.getTours(search, page));
         model.addAttribute("tourcount", tourService.tourCount());
+        request.getSession().setAttribute("currentPage", "tours");
         return "tours";
     }
 
@@ -85,10 +88,13 @@ public class TourController {
     }
 
     @GetMapping("/{id}")
-    public String tourDetails(@PathVariable("id") Integer id, Model model) {
+    public String tourDetails(@PathVariable("id") Integer id, HttpServletRequest request,
+            Model model) {
+        
         Tour tour = tourService.getTourById(id);
         model.addAttribute("tour", tour);
         model.addAttribute("pageTitle", tour.getTitle());
+        request.getSession().setAttribute("currentPage", "tours/"+id);
         return "tourdetails";
     }
 

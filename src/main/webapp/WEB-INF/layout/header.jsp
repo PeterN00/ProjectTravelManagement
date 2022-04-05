@@ -3,6 +3,7 @@
     Created on : Mar 24, 2022, 3:31:40 PM
     Author     : Admin
 --%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -18,20 +19,43 @@
             </li>
         </ul>
     </div>
-            
+
     <c:if test="${pageContext.request.userPrincipal.name == null}">
         <button onclick="document.getElementById('login').style.display = 'block'" 
-            style="width: 100px">Sign In</button>
+                style="width: 100px">
+            Sign In
+        </button>
     </c:if>
-            
+
     <c:if test="${pageContext.request.userPrincipal.name != null}">
-        <a class="nav-link"
-           style="color: red"
-           href="#">
+        <c:if test="${pageContext.request.userPrincipal.authorities == '[Admin]'
+                      || pageContext.request.userPrincipal.authorities == '[Employee]'}">
+              <a class="nav-link"
+                 style="color: green; text-align: center"
+                 href="<c:url value="/tours/add" />">
+                  Add Tour
+              </a>
+              <a class="nav-link"
+                 style="color: green; text-align: center"
+                 href="<c:url value="/news/add" />">
+                  Add News
+              </a>
+              <a class="nav-link"
+                 style="color: green; text-align: center"
+                 href="<c:url value="/register" />">
+                  Register User
+              </a>
+        </c:if>
+        <a class="nav-link row"
+           style="color: red; text-align: center"
+           href="<c:url value="/user/${pageContext.request.userPrincipal.name}" />">
+            <img src="${pageContext.session.getAttribute("currentUser").img}" 
+                 class="rounded-circle" width="40" style="float:left" />
             ${pageContext.request.userPrincipal.name}
+            ${pageContext.request.userPrincipal.authorities}
         </a>
         <a class="nav-link button"
-           style="width: 120px"
+           style="width: 140px"
            href="<c:url value="/logout" />">
             Sign Out
         </a>

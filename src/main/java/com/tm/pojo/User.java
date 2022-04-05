@@ -5,7 +5,6 @@
 package com.tm.pojo;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,13 +13,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -35,7 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
     @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
     @NamedQuery(name = "User.findByFullName", query = "SELECT u FROM User u WHERE u.fullName = :fullName"),
-    @NamedQuery(name = "User.findByRole", query = "SELECT u FROM User u WHERE u.role = :role")})
+    @NamedQuery(name = "User.findByRole", query = "SELECT u FROM User u WHERE u.role = :role"),
+    @NamedQuery(name = "User.findByImg", query = "SELECT u FROM User u WHERE u.img = :img")})
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,30 +44,31 @@ public class User implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull(message = "{user.emptyFieldErr}")
-    @Size(min = 1, max = 50, message = "{user.lengthErr}")
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "username")
     private String username;
     @Basic(optional = false)
-    @NotNull(message = "{user.emptyFieldErr}")
-    @Size(min = 1, max = 100, message = "{user.lengthErr}")
+    @NotNull
+    @Size(min = 1, max = 100)
     @Column(name = "password")
     private String password;
     @Transient
     private String retypePassword;
     @Basic(optional = false)
-    @NotNull(message = "{user.emptyFieldErr}")
-    @Size(min = 1, max = 100, message = "{user.lengthErr}")
+    @NotNull
+    @Size(min = 1, max = 100)
     @Column(name = "full_name")
     private String fullName;
-    @Size(max = 10, message = "{user.lengthErr}")
+    @Size(max = 10)
     @Column(name = "role")
     private String role;
-    @OneToMany(mappedBy = "userId")
-    private List<Booking> bookingList;
-    @OneToMany(mappedBy = "userId")
-    private List<TourReview> tourReviewList;
-
+    @Size(max = 255)
+    @Column(name = "img")
+    private String img;
+    @Transient
+    private MultipartFile imgFile;
+    
     public User() {
     }
 
@@ -106,14 +106,6 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public String getRetypePassword() {
-        return retypePassword;
-    }
-
-    public void setRetypePassword(String retypePassword) {
-        this.retypePassword = retypePassword;
-    }
 
     public String getFullName() {
         return fullName;
@@ -131,22 +123,12 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    @XmlTransient
-    public List<Booking> getBookingList() {
-        return bookingList;
+    public String getImg() {
+        return img;
     }
 
-    public void setBookingList(List<Booking> bookingList) {
-        this.bookingList = bookingList;
-    }
-
-    @XmlTransient
-    public List<TourReview> getTourReviewList() {
-        return tourReviewList;
-    }
-
-    public void setTourReviewList(List<TourReview> tourReviewList) {
-        this.tourReviewList = tourReviewList;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     @Override
@@ -172,6 +154,34 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "com.tm.pojo.User[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the imgFile
+     */
+    public MultipartFile getImgFile() {
+        return imgFile;
+    }
+
+    /**
+     * @param imgFile the imgFile to set
+     */
+    public void setImgFile(MultipartFile imgFile) {
+        this.imgFile = imgFile;
+    }
+
+    /**
+     * @return the retypePassword
+     */
+    public String getRetypePassword() {
+        return retypePassword;
+    }
+
+    /**
+     * @param retypePassword the retypePassword to set
+     */
+    public void setRetypePassword(String retypePassword) {
+        this.retypePassword = retypePassword;
     }
     
 }

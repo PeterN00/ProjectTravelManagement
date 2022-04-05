@@ -4,6 +4,8 @@
  */
 package com.tm.config;
 
+import com.tm.handlers.LoginSuccessHandler;
+import com.tm.handlers.LogoutHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
@@ -25,11 +27,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan(basePackages = {
     "com.tm.service",
-    "com.tm.repository"
+    "com.tm.repository",
+    "com.tm.handlers"
 })
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired
+    private LoginSuccessHandler loginSuccessHandler;
+    @Autowired
+    private LogoutHandler logoutHandler;
     
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
@@ -47,7 +54,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
         http.formLogin().usernameParameter("username").passwordParameter("password");
         http.formLogin().defaultSuccessUrl("/");
         http.formLogin().failureUrl("/?error");
-        http.logout().logoutSuccessUrl("/");
+        http.formLogin().successHandler(loginSuccessHandler);
+        http.logout().logoutSuccessHandler(logoutHandler);
+        
+        http.exceptionHandling().accessDeniedPage("/?accessDenied");
+        
+        http.authorizeRequests().antMatchers("/").permitAll()
+                .antMatchers("/**/add").access("hasAnyAuthority('Admin', 'Employee')")
+                .antMatchers("/**/edit").access("hasAnyAuthority('Admin', 'Employee')")
+                .antMatchers("/**/delete").access("hasAuthority('Admin')");
+        
         http.csrf().disable();
     }
 }

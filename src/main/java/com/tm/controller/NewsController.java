@@ -8,6 +8,7 @@ import com.tm.pojo.News;
 import com.tm.service.NewsService;
 import java.sql.Timestamp;
 import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,11 +38,13 @@ public class NewsController {
     }
     
     @GetMapping
-    public String news(Model model,
+    public String news(Model model, HttpServletRequest request,
             @RequestParam(name = "search", required = false) String search,
             @RequestParam(name = "page", defaultValue = "1") Integer page) {
+        
         model.addAttribute("news", newsService.getNews(search, page));
         model.addAttribute("newscount", newsService.newsCount());
+        request.getSession().setAttribute("currentPage", "news");
         return "news";
     }
     
@@ -70,10 +73,13 @@ public class NewsController {
     }
     
     @GetMapping("/{id}")
-    public String newsDetails(@PathVariable("id") Integer id, Model model) {
+    public String newsDetails(@PathVariable("id") Integer id, HttpServletRequest request,
+            Model model) {
+        
         News news = newsService.getNewsById(id);
         model.addAttribute("news", news);
         model.addAttribute("pageTitle", news.getTitle());
+        request.getSession().setAttribute("currentPage", "news/"+id);
         return "newsdetails";
     }
     

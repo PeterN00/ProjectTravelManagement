@@ -52,7 +52,7 @@
 
         <label for="img"><b>Select Image:</b></label>
         <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
-        <img id="showimg" />
+        <img id="showimg" width="200" height="300" />
 
         <div id='removebtndiv'>
 

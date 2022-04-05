@@ -9,7 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <c:url value="/register" var="register" />
-<form:form action="${register}" method="post" modelAttribute="user">
+<form:form action="${register}" method="post" modelAttribute="user" enctype="multipart/form-data">
     <h1 class="text-center">REGISTRATION FORM</h1>
     <div class="container">
         <label for="usrname"><b>Username</b></label>
@@ -27,13 +27,30 @@
         <label for="repsw"><b>Retype Password</b></label>
         <form:password placeholder="Retyped Password" path="retypePassword" name="repsw" />
 
-        <label for="role"><b>Role:</b></label>
-        <form:select name="role" path="role" id="role">
-            <option value="Admin">Admin</option>
-            <option value="Employee">Employee</option>
-            <option value="Customer">Customer</option>
-        </form:select>
-            
+        <c:choose>
+            <c:when test="${pageContext.request.userPrincipal.name != null
+                            && pageContext.request.userPrincipal.authorities == '[Admin]'}">
+                    <label for="role"><b>Role:</b></label>
+                    <form:select name="role" path="role" id="role">
+                        <option value="Admin">Admin</option>
+                        <option value="Employee">Employee</option>
+                        <option value="Customer">Customer</option>
+                    </form:select>
+            </c:when>
+
+            <c:otherwise>
+                <form:input type="hidden" path="role" value="Customer" />
+            </c:otherwise>
+        </c:choose>
+
+        <label for="img"><b>Select Image:</b></label>
+        <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
+        <img id="showimg" width="300" height="300" />
+
+        <div id='removebtndiv'>
+
+        </div> 
+
         <c:if test="${msg!=null}">
             <div class="alert">
                 <span class="closebtnalert" 
@@ -42,16 +59,16 @@
                 ${msg}
             </div>
         </c:if>
-        
+
         <c:if test="${statusmsg!=null}">
             <div class="alert" style="background-color: green">
                 <span class="closebtnalert"
-                      onclick="this.parentElement.style.display='none';">&times;
+                      onclick="this.parentElement.style.display = 'none';">&times;
                 </span> 
                 ${statusmsg}
             </div>
         </c:if>
-            
+
         <button type="submit" name="regbtn">Register</button>
     </div>
 </form:form>

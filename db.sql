@@ -9,6 +9,7 @@ create table `User`
     `password` varchar(100) not null,
     full_name varchar(100) not null,
     `role` varchar(10),
+    img varchar(255),
     primary key(id)
 );
 
@@ -93,15 +94,6 @@ create table News
     primary key(id)
 );
 
-insert into `User`(username, `password`, full_name, role)
-values ('adminphuc', 'phucnguyen', 'Nguyen Tan Phuc', 'Admin'),
-('admindat', 'datnguyen', 'Nguyen Tien Dat', 'Admin'),
-('adminkhoe', 'khoengo', 'Ngo Minh Khoe', 'Admin'),
-('employee1', 'employee1', 'Employee 1', 'Employee'),
-('employee2', 'employee2', 'Employee 2', 'Employee'),
-('customer1', 'customer2', 'Customer 1', 'Customer'),
-('customer2', 'customer2', 'Customer 2', 'Customer');
-
 insert into Tour(title, overview, img) 
 values('Tour 1', 'Tour 1 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img1_knmwxo.jpg'),
 ('Tour 2', 'Tour 2 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img2_dvtdyh.jpg'),
@@ -149,22 +141,6 @@ values(1, 'Day 1: Go to...', 'Day 1 description'),
 
 insert into Ticket_Type(type, discount)
 values(0, 0), (1, 25);
-
-insert into Booking(user_id, tour_id)
-values(6, 1),
-(7, 3);
-
-insert into Ticket(booking_id, ticket_type)
-values(1, 1),
-(1, 0),
-(1, 0),
-(2, 0),
-(2, 0);
-
-insert into Tour_Review(user_id, tour_id, rate, comment)
-values(6, 1, 4, 'User review'),
-(6, 2, 3, 'User review'),
-(7, 3, 4, 'User review');
 
 insert into News(title, `description`, `date`)
 values('News 1', 'This is news 1 description', now()),

@@ -6,7 +6,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2022-04-05T08:47:03")
+@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2022-04-05T19:49:02")
 @StaticMetamodel(TicketType.class)
 public class TicketType_ { 
 

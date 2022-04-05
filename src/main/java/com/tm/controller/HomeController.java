@@ -5,6 +5,7 @@
 package com.tm.controller;
 
 import com.tm.service.TourService;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,12 +22,14 @@ public class HomeController {
     private TourService tourService;
 
     @GetMapping("/")
-    public String index(Model model, 
+    public String index(Model model, HttpServletRequest request,
             @RequestParam(name = "search", required = false) String search,
             @RequestParam(name = "page", defaultValue = "1") Integer page) {
         
         model.addAttribute("tours", tourService.getTours(search, page));
         model.addAttribute("tourcount", tourService.tourCount());
+        
+        request.getSession().setAttribute("currentPage", "/ProjectTravelManagement/");
         return "index";
     }
 }
