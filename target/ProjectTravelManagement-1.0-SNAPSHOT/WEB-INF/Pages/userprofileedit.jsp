@@ -8,9 +8,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<c:url value="/users/${user.username}/edit" var="editprofile" />
+<c:url value="/users/${pageContext.request.userPrincipal.name}/edit" var="editprofile" />
 <form:form action="${editprofile}" method="post" modelAttribute="user"
            enctype="multipart/form-data">
+    
     <h1 class="text-center">PROFILE EDIT</h1>
 
     <c:if test="${msg!=null}">
@@ -44,9 +45,7 @@
         <form:password placeholder="Retype New Password" path="retypePassword" name="repsw" />
         
         <label for="img"><b>Select Image:</b></label>
-        <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" 
-                    value = "${user.img}"
-                    onchange="displayImage(this)" />
+        <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
         <img id="showimg" src="${user.img}" class="rounded-circle" width="150" height="200" />
         
         <form:input type="hidden" path="role" value="${user.role}" />

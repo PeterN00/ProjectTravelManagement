@@ -6,13 +6,19 @@ package com.tm.controller;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.tm.pojo.Booking;
 import com.tm.pojo.Tour;
+import com.tm.pojo.User;
+import com.tm.service.BookingService;
 import com.tm.service.TourService;
+import com.tm.service.UserService;
 import java.io.IOException;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,15 +41,20 @@ public class TourController {
     @Autowired
     private TourService tourService;
     @Autowired
+    private UserService userSerivce;
+    @Autowired
+    private BookingService bookingSerivce;
+    @Autowired
     private Cloudinary cloudinary;
 
     public void uploadImgFile(Tour tour) {
-        if (tour.getImgFile() != null) {
+        if (!tour.getImgFile().isEmpty()) {
             try {
                 Map res = cloudinary.uploader().upload(tour.getImgFile().getBytes(),
                         ObjectUtils.asMap(
                                 "resource_type", "auto",
-                                "folder", "travelmanagementproject_tourimg"
+                                "folder", "travelmanagementproject_tourimg",
+                                "public_id", tour.getImgFile().getOriginalFilename()
                         ));
                 tour.setImg((String) res.get("secure_url"));
             } catch (IOException ex) {
@@ -109,7 +120,7 @@ public class TourController {
     public String tourEditView(@PathVariable("id") Integer id, Model model) {
         Tour tour = tourService.getTourById(id);
         model.addAttribute("tour", tour);
-        model.addAttribute("pageTitle", tour.getTitle());
+        model.addAttribute("pageTitle", tour.getTitle()+" Edit");
         return "touredit";
     }
 
@@ -120,12 +131,38 @@ public class TourController {
         
         if (result.hasErrors()) {
             System.out.println(result);
-            return "redirect:/{id}/edit";
+            return "redirect:/tours/{id}/edit";
         }
 
-        tourService.editTour(tour);
         uploadImgFile(tour);
+        tourService.editTour(tour);
         reAttr.addFlashAttribute("msg", "Tour: {id: " + tour.getId() + "} Edited!");
+        
         return "redirect:/tours/{id}";
+    }
+    
+    @GetMapping("/{id}/book")
+    public String tourBookView(@PathVariable("id") Integer tourId, Model model){
+        
+        Tour tour = tourService.getTourById(tourId);
+        model.addAttribute("booking", new Booking());
+        model.addAttribute("tour", tour);
+        model.addAttribute("pageTitle", tour.getTitle()+" Booking");
+        return "tourbook";
+    }
+    
+    @PostMapping("/{id}/book")
+    public String tourBookHandler(@PathVariable("id") Integer tourId, RedirectAttributes reAttr,
+            @ModelAttribute(value = "booking") Booking booking){
+        
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userSerivce.getUserByUsername(authentication.getName());
+        Tour tour = tourService.getTourById(tourId);
+        
+        booking.setTourId(tour);
+        booking.setUserId(user);
+        bookingSerivce.booking(booking);
+        reAttr.addFlashAttribute("msg", "Tour: (id: " + tour.getId() + ") Booking Successful!");
+        return "redirect:/tours";
     }
 }

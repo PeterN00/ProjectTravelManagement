@@ -53,7 +53,6 @@ public class User implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "password")
     private String password;
-    @NotNull
     @Transient
     private String retypePassword;
     @Basic(optional = false)

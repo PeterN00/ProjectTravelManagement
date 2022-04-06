@@ -36,8 +36,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <put-attribute name="content" value="/WEB-INF/Pages/tourdetails.jsp" />
     </definition>
     <definition name="touredit" extends="baseLayout">
-        <put-attribute name="title" expression="${pageTitle} Edit" />
+        <put-attribute name="title" expression="${pageTitle}" />
         <put-attribute name="content" value="/WEB-INF/Pages/touredit.jsp" />
+    </definition>
+    <definition name="tourbook" extends="baseLayout">
+        <put-attribute name="title" expression="${pageTitle}" />
+        <put-attribute name="content" value="/WEB-INF/Pages/tourbook.jsp" />
     </definition>
     <definition name="news" extends="baseLayout">
         <put-attribute name="title" value="News" />

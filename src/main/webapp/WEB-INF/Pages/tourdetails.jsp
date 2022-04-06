@@ -34,4 +34,7 @@
             </form:form>
         </c:if>
     </c:if>
+
+    <c:url value = "/tours/${tour.id}/book" var="bookAction" />
+    <a href="${bookAction}">Book</a>
 </div>

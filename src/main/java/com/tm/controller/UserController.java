@@ -37,12 +37,13 @@ public class UserController {
     private Cloudinary cloudinary;
 
     public void uploadImgFile(User user) {
-        if (user.getImgFile() != null) {
+        if (!user.getImgFile().isEmpty()) {
             try {
                 Map res = cloudinary.uploader().upload(user.getImgFile().getBytes(),
                         ObjectUtils.asMap(
                                 "resource_type", "auto",
-                                "folder", "travelmanagementproject_userimg"
+                                "folder", "travelmanagementproject_userimg",
+                                "public_id", user.getImgFile().getOriginalFilename()
                         ));
                 user.setImg((String) res.get("secure_url"));
             } catch (IOException ex) {
@@ -67,7 +68,7 @@ public class UserController {
             System.out.println(result);
             return "register";
         }
-        
+
         String msg;
         String statusMsg;
         if (user.getPassword().equals(user.getRetypePassword())) {
@@ -98,29 +99,29 @@ public class UserController {
         User user = userService.getUserByUsername(username);
         user.setPassword("");
         model.addAttribute("user", user);
-        model.addAttribute("pageTitle", username+" Edit");
+        model.addAttribute("pageTitle", username + " Edit");
         return "userprofileedit";
     }
 
     @PostMapping("/{username}/edit")
     public String userProfileEditHandler(RedirectAttributes reAttr,
-            @ModelAttribute("user") @Valid User user,
+            @ModelAttribute(value = "user") @Valid User user,
             BindingResult result) {
-
+        
         if (result.hasErrors()) {
             System.out.println(result);
             return "redirect:/users/{username}/edit";
         }
         
         if (user.getPassword().equals(user.getRetypePassword())) {
-            userService.editUser(user);
             uploadImgFile(user);
+            userService.editUser(user);
             reAttr.addFlashAttribute("msg", "User (id: " + user.getId() + "} Edited!");
             return "redirect:/users/{username}";
         } else {
             reAttr.addFlashAttribute("errmsg", "Password does not match!");
         }
-        
+
         return "redirect:/users/{username}/edit";
     }
 }

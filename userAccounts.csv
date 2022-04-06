@@ -1,4 +1,4 @@
 "id";"username";"password";"full_name";"role";"img"
-1;"admin";"$2a$10$KCil0VD.YLnOMmbRCXkQq.3OItOu2n84VYgzynrnB32fFKfG3J/bm";"admin";"Admin";"https://res.cloudinary.com/petern/image/upload/v1649163590/travelmanagementproject_userimg/r1q6i7vaxlsixcfxrmkn.png"
-2;"employee";"$2a$10$aebmg0yaVbcOT4IODVtxp.lOp3L4d3IWLs8xUiVQK81R97AulNlh6";"employee";"Employee";"https://res.cloudinary.com/petern/image/upload/v1649166204/travelmanagementproject_userimg/xlv50rxjiuyvjqxbwshw.png"
-3;"customer";"$2a$10$AWELYxoME3tsrQAcL.57VO9Yf0uPuGv7ej2DLlcrKqDJvhJtkMsga";"customer";"Customer";"https://res.cloudinary.com/petern/image/upload/v1649166233/travelmanagementproject_userimg/up5cqoylh19gfazeo2fz.jpg"
+1;"admin";"$2a$10$Dt6CQu8D9bKZHr5g1gJLnO4MNlD2uAgEjO2dPJTYJqjzSA/gA.m7C";"admin";"Admin";"https://res.cloudinary.com/petern/image/upload/v1649237698/travelmanagementproject_userimg/icon1.png.png"
+2;"employee";"$2a$10$JIZl2S6UhDpwzSybGU7khO.XXeQUx2L9upIikHbCjO4w1HcTNsR8G";"employee";"Employee";"https://res.cloudinary.com/petern/image/upload/v1649237720/travelmanagementproject_userimg/icon2.jpg.jpg"
+3;"customer";"$2a$10$PCOrH7OxbYX.oxC0Mnj1qO0LVn0xLrGOiIjWTyB7nnrKYj2eWDBSe";"customer";"Customer";"https://res.cloudinary.com/petern/image/upload/v1649237734/travelmanagementproject_userimg/icon3.jpg.jpg"
