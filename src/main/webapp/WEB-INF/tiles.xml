@@ -59,4 +59,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <put-attribute name="title" expression="${pageTitle}" />
         <put-attribute name="content" value="/WEB-INF/Pages/userprofile.jsp" />
     </definition>
+    <definition name="userprofileedit" extends="baseLayout">
+        <put-attribute name="title" expression="${pageTitle}" />
+        <put-attribute name="content" value="/WEB-INF/Pages/userprofileedit.jsp" />
+    </definition>
 </tiles-definitions>

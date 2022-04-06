@@ -28,6 +28,7 @@ function displayImage(input) {
 
         btn.addEventListener("click", function () {
             var img = document.getElementById("showimg");
+            input.value = '';
             img.src = '';
             btndiv.removeChild(btn);
         });

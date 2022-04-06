@@ -56,4 +56,9 @@ public class UserServiceImpl implements UserService {
     public User getUserByUsername(String username) {
         return this.userRepository.getUserByUsername(username);
     }
+
+    @Override
+    public void editUser(User user) {
+        this.userRepository.editUser(user);
+    }
 }

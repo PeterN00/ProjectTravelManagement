@@ -11,7 +11,7 @@
 
 <br>
 <div class="container">  
-    <img src="${tour.img}"  width="300" height="300" style="float:left; margin-right: 10px">
+    <img src="${tour.img}"  width="300" height="300" alt="tour img" style="float:left; margin-right: 10px">
     <h4><b>${tour.title}</b></h4>
     <p>Price: ${tour.price} - ${tour.day} days ${tour.night} nights</p>
     <p>Departure Point: ${tour.departurePoint}</p>

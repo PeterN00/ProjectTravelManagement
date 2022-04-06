@@ -9,7 +9,7 @@
 
 <div class="container">
     <br>
-    
+
     <c:if test="${msg!=null}">
         <div class="alert" style="background-color: green">
             <span class="closebtnalert" 
@@ -18,7 +18,7 @@
             ${msg}
         </div>
     </c:if>
-    
+
     <form>
         <div class="form-group">
             <div>
@@ -32,16 +32,18 @@
 
     <c:forEach items="${news}" var="news">
         <div class="container">
-            <h4><b>${news.title}</b></h4>
-            <p>${news.description}</p>
-            <p>
-                Last Modified: 
-                <fmt:formatDate type = "both" 
-                                dateStyle = "long" timeStyle = "medium" 
-                                value = "${news.date}" />
-            </p>
-            <a href="<c:url value = "/news/${news.id}" />" class="btn btn-primary">Read</a>
+            <a href="<c:url value = "/news/${news.id}" />" class="btn btn-primary">
+                <h4><b>${news.title}</b></h4>
+                <p>${news.description}</p>
+                <p>
+                    Last Modified: 
+                    <fmt:formatDate type = "both" 
+                                    dateStyle = "long" timeStyle = "medium" 
+                                    value = "${news.date}" />
+                </p>
+            </a>
         </div>
+        <br>
     </c:forEach>
 </div>
 

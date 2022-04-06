@@ -24,12 +24,11 @@
 
     <div class="container">
         <label for="title"><b>Title:</b></label>
-        <form:input path="title" name="title" value="${news.title}" />
+        <form:input path="title" name="title" />
         <form:errors path="title" cssClass="text-danger" />
 
         <label for="overview"><b>Description:</b></label>
         <form:textarea path="description" name="description" 
-                       value="${news.description}"
                        style="width: 100%; height: 25%" />
         <form:errors path="description" cssClass="text-danger" />
 

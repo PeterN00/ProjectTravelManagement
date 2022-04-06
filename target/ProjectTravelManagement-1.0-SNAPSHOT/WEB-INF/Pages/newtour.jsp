@@ -52,7 +52,7 @@
 
         <label for="img"><b>Select Image:</b></label>
         <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
-        <img id="showimg" width="200" height="300" />
+        <img id="showimg" width="300" height="300" />
 
         <div id='removebtndiv'>
 
@@ -61,3 +61,11 @@
         <button id="submitbtn" type="submit" name="submitbtn">Submit</button>
     </div>
 </form:form>
+
+<script>
+    var imgfile = document.getElementById("img");
+    var img = document.getElementById("showimg");
+    if (imgfile.value == '') {
+        img.src = 'https://res.cloudinary.com/petern/image/upload/v1649223641/travelmanagementproject_tourimg/Empty_k2jyq6.jpg';
+    }
+</script>

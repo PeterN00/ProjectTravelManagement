@@ -25,37 +25,36 @@
 
     <div class="container">
         <label for="title"><b>Title:</b></label>
-        <form:input path="title" name="title" value="${tour.title}" />
+        <form:input path="title" name="title" />
         <form:errors path="title" cssClass="text-danger" />
 
         <label for="price"><b>Price:</b></label>
-        <form:input path="price" name="price" value="${tour.price}" />
+        <form:input path="price" name="price" />
         <form:errors path="price" cssClass="text-danger" />
 
         <label for="day"><b>Number of Day:</b></label>
-        <form:input path="day" name="day" style="width:10%" value="${tour.day}" />
+        <form:input path="day" name="day" style="width:10%" />
         <form:errors path="day" cssClass="text-danger" />
 
         <label for="night"><b>Number of Night:</b></label>
-        <form:input path="night" name="night" style="width:10%" value="${tour.night}" />
+        <form:input path="night" name="night" style="width:10%" />
         <form:errors path="night" cssClass="text-danger" />
 
         <label for="deppoint"><b>Departure Point:</b></label>
-        <form:input path="departurePoint" name="deppoint" value="${tour.departurePoint}" />
+        <form:input path="departurePoint" name="deppoint" />
         <form:errors path="departurePoint" cssClass="text-danger" />
 
         <label for="deptime"><b>Departure Time:</b></label>
-        <form:input type="datetime-local" path="departureTime" id="deptime" name="deptime" value="${tour.departureTime}" />
+        <form:input type="datetime-local" path="departureTime" id="deptime" name="deptime" />
 
         <label for="overview"><b>Description Overview:</b></label>
         <form:textarea path="overview" name="overview" 
-                       value="${tour.overview}"
                        style="width: 100%; height: 25%" />
         <form:errors path="overview" cssClass="text-danger" />
 
         <label for="img"><b>Select Image:</b></label>
         <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
-        <img id="showimg" src="${tour.img}"/>
+        <img id="showimg" src="${tour.img}" />
 
         <div id='removebtndiv'>
 

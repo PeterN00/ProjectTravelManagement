@@ -14,4 +14,5 @@ public interface UserRepository {
     List<User> getUsers();
     void addUser(User user);
     User getUserByUsername(String username);
+    void editUser(User user);
 }

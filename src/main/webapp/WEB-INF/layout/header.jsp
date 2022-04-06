@@ -42,13 +42,13 @@
               </a>
               <a class="nav-link"
                  style="color: green; text-align: center"
-                 href="<c:url value="/register" />">
+                 href="<c:url value="/users/register" />">
                   Register User
               </a>
         </c:if>
         <a class="nav-link row"
            style="color: red; text-align: center"
-           href="<c:url value="/user/${pageContext.request.userPrincipal.name}" />">
+           href="<c:url value="/users/${pageContext.request.userPrincipal.name}" />">
             <img src="${pageContext.session.getAttribute("currentUser").img}" 
                  class="rounded-circle" width="40" style="float:left" />
             ${pageContext.request.userPrincipal.name}
@@ -76,7 +76,7 @@
             <button type="submit" name="logbtn">Login</button>
             <a class="btn btn-primary text-center d-flex justify-content-center" 
                style="font-weight: bold"
-               href="<c:url value="/register" />">Register</a>
+               href="<c:url value="/users/register" />">Register</a>
             <button type="button" onclick="document.getElementById('login').style.display = 'none'" class="cancelbtn">Cancel</button>
         </div>
     </form>

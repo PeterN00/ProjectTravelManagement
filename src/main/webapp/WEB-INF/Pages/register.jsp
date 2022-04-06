@@ -8,7 +8,7 @@
 <%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<c:url value="/register" var="register" />
+<c:url value="/users/register" var="register" />
 <form:form action="${register}" method="post" modelAttribute="user" enctype="multipart/form-data">
     <h1 class="text-center">REGISTRATION FORM</h1>
     <div class="container">
@@ -45,7 +45,7 @@
 
         <label for="img"><b>Select Image:</b></label>
         <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
-        <img id="showimg" width="300" height="300" />
+        <img id="showimg" class="rounded-circle" width="150" height="200" />
 
         <div id='removebtndiv'>
 
@@ -72,9 +72,12 @@
         <button type="submit" name="regbtn">Register</button>
     </div>
 </form:form>
-<c:forEach items="${users}" var="user">
-    <p class="text-center">
-        ${user.id}, ${user.username}, ${user.password}, 
-        ${user.fullName}, ${user.role}
-    </p>
-</c:forEach>
+    
+<script>
+    var imgfile = document.getElementById("img");
+    var img = document.getElementById("showimg");
+    if (imgfile.value == '') {
+        img.src = 'https://res.cloudinary.com/petern/image/upload/v1649223665/travelmanagementproject_userimg/Empty_oqkskc.jpg';
+    }
+</script>
+    

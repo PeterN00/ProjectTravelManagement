@@ -81,9 +81,9 @@ public class TourController {
         }
 
         uploadImgFile(tour);
-
         tourService.addTour(tour);
         reAttr.addFlashAttribute("msg", "New Tour Added!");
+        
         return "redirect:/tours";
     }
 
@@ -120,12 +120,11 @@ public class TourController {
         
         if (result.hasErrors()) {
             System.out.println(result);
-            return "redirect:/";
+            return "redirect:/{id}/edit";
         }
 
-        uploadImgFile(tour);
-
         tourService.editTour(tour);
+        uploadImgFile(tour);
         reAttr.addFlashAttribute("msg", "Tour: {id: " + tour.getId() + "} Edited!");
         return "redirect:/tours/{id}";
     }

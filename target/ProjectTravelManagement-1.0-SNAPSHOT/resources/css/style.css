@@ -9,6 +9,9 @@ input[type=text], input[type=password] {
 label{
     display: block;
 }
+img{
+  border: 5px solid #555;
+}
 .button,button {
   background-color: #04AA6D;
   color: white;
