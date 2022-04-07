@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author PHUC
+ * @author Admin
  */
 @Entity
 @Table(name = "ticket_type")

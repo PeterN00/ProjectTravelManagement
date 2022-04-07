@@ -10,6 +10,7 @@ import com.tm.pojo.Booking;
 import com.tm.pojo.Tour;
 import com.tm.pojo.User;
 import com.tm.service.BookingService;
+import com.tm.service.TicketTypeService;
 import com.tm.service.TourService;
 import com.tm.service.UserService;
 import java.io.IOException;
@@ -44,6 +45,8 @@ public class TourController {
     private UserService userSerivce;
     @Autowired
     private BookingService bookingSerivce;
+    @Autowired
+    private TicketTypeService ticketTypeService;
     @Autowired
     private Cloudinary cloudinary;
 
@@ -143,16 +146,18 @@ public class TourController {
     
     @GetMapping("/{id}/book")
     public String tourBookView(@PathVariable("id") Integer tourId, Model model){
-        
         Tour tour = tourService.getTourById(tourId);
         model.addAttribute("booking", new Booking());
         model.addAttribute("tour", tour);
+        model.addAttribute("ticketType", ticketTypeService.getTicketType(true));
         model.addAttribute("pageTitle", tour.getTitle()+" Booking");
         return "tourbook";
     }
     
     @PostMapping("/{id}/book")
     public String tourBookHandler(@PathVariable("id") Integer tourId, RedirectAttributes reAttr,
+            @RequestParam(name = "adultticket") int adult,
+            @RequestParam(name = "childrenticket", required = false) int children,
             @ModelAttribute(value = "booking") Booking booking){
         
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -161,8 +166,21 @@ public class TourController {
         
         booking.setTourId(tour);
         booking.setUserId(user);
-        bookingSerivce.booking(booking);
-        reAttr.addFlashAttribute("msg", "Tour: (id: " + tour.getId() + ") Booking Successful!");
-        return "redirect:/tours";
+        
+        for(int i=1;i<=adult;i++){
+            booking.setTicketType(ticketTypeService.getTicketType(false));
+            bookingSerivce.booking(booking);
+        }
+        
+        if(children>0){
+            for(int i=1;i<=children;i++){
+                booking.setTicketType(ticketTypeService.getTicketType(true));
+                bookingSerivce.booking(booking);
+            }
+        }
+        
+        reAttr.addFlashAttribute("msg", "Tour: (id: " + booking.getTourId() + ") Booking Successful!");
+        
+        return "redirect:/tours/{id}";
     }
 }

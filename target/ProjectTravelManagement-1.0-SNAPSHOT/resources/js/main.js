@@ -38,3 +38,12 @@ function displayImage(input) {
         }
     }
 }
+
+function calculatePrice(tourPrice, discount){
+    var price = 0;
+    var priceDisplay = document.getElementById("price");
+    var adult = document.getElementById("adultticket").value;
+    var children = document.getElementById("childrenticket").value;
+    price = tourPrice*adult + (tourPrice*children - tourPrice*children*discount/100);
+    priceDisplay.textContent = price+'$';
+}

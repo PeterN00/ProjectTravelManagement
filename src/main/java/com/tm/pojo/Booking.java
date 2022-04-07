@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author PHUC
+ * @author Admin
  */
 @Entity
 @Table(name = "booking")
@@ -36,7 +36,7 @@ public class Booking implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @JoinColumn(name = "ticketType", referencedColumnName = "type")
+    @JoinColumn(name = "ticket_type", referencedColumnName = "type")
     @ManyToOne
     private TicketType ticketType;
     @JoinColumn(name = "tour_id", referencedColumnName = "id")

@@ -4,6 +4,7 @@ com\tm\config\WebSecurityAppContextInit.class
 com\tm\service\impl\UserServiceImpl.class
 com\tm\service\UserService.class
 com\tm\handlers\LoginSuccessHandler.class
+com\tm\repository\impl\TicketTypeRepositoryImpl.class
 com\tm\service\impl\BookingServiceImpl.class
 com\tm\controller\NewsController.class
 com\tm\config\HibernateConfig.class
@@ -20,11 +21,13 @@ com\tm\repository\impl\NewsRepositoryImpl.class
 com\tm\pojo\Tour.class
 com\tm\service\BookingService.class
 com\tm\controller\TourController.class
+com\tm\service\TicketTypeService.class
 com\tm\pojo\TourItinerary_.class
 com\tm\config\DispatcherServletInit.class
 com\tm\config\WebAppContextConfig.class
 com\tm\handlers\LogoutHandler.class
 com\tm\pojo\Tour_.class
+com\tm\repository\TicketTypeRepository.class
 com\tm\service\NewsService.class
 com\tm\pojo\TourHighlight_.class
 com\tm\repository\UserRepository.class
@@ -40,6 +43,7 @@ com\tm\pojo\Booking_.class
 com\tm\repository\impl\UserRepositoryImpl.class
 com\tm\config\SpringSecurityConfig.class
 com\tm\controller\HomeController.class
+com\tm\service\impl\TicketTypeServiceImpl.class
 com\tm\service\impl\NewsServiceImpl.class
 com\tm\pojo\TicketType.class
 com\tm\config\TilesConfig.class

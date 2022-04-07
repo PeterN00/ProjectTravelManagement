@@ -12,7 +12,6 @@
 <c:url value="/tours/${tour.id}/book" var="tourbooking" />
 <form:form method="post" modelAttribute="booking" action="${tourbooking}">
     <h2 class="text-center"><b>TOUR BOOKING</b></h2>
-
     <c:if test="${msg != null}">
         <div class="alert" style="background-color: green">
             <span class="closebtnalert" 
@@ -39,21 +38,27 @@
 
     <<h3 class="text-center"><b>User Information</b></h3>
 
-    <div class="container align-items-center d-flex flex-column">
+    <div class="container align-items-center d-flex flex-column text-center">
         <div>
             <label for="adultticket">Adult Ticket</label>
-            <input type="number" id="adultticket" name="adultticket" placeholder="1" min="1" />
+            <input type="number" id="adultticket" id= "adultticket" name="adultticket" 
+                   placeholder="1" min="1" value="1"
+                   onchange="calculatePrice('${tour.price}', '${ticketType.discount}')" />
         </div>
 
         <div>
-            <label for="childrenticket">Children Ticket</label>
-            <input type="number" id="childrenticket" name="childrenticket" placeholder="0" min="0" />
+            <label for="childrenticket">Children Ticket (Discount: <span id="childrendiscount">${ticketType.discount}%</span>)
+            </label>
+            <input type="number" id="childrenticket" id="childrenticket" name="childrenticket" 
+                   placeholder="0" min="0"
+                   onchange="calculatePrice('${tour.price}', '${ticketType.discount}')" />
         </div>
 
+        <br>
+        
         <div>
-            <p id="price">Price: </p>
+            <p><b>Price: <span id="price"></span></b></p>
         </div>
-
-        <button type="submit">Book Now</button>
+        <button id="submitbtn" type="submit" name="submitbtn">Book Now</button>
     </div>
 </form:form>

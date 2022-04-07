@@ -70,10 +70,10 @@ create table Booking
 	id int auto_increment,
     user_id int,
     tour_id int,
-    ticketType bit(1),
+    ticket_type bit(1),
     foreign key (user_id) references `User`(id),
     foreign key (tour_id) references Tour(id),
-    foreign key (ticketType) references Ticket_Type(`type`),
+    foreign key (ticket_type) references Ticket_Type(`type`),
     primary key(id)
 );
 
@@ -86,16 +86,16 @@ create table News
     primary key(id)
 );
 
-insert into Tour(title, overview, img) 
-values('Tour 1', 'Tour 1 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img1_knmwxo.jpg'),
-('Tour 2', 'Tour 2 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img2_dvtdyh.jpg'),
-('Tour 3', 'Tour 3 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img3_bxk0we.jpg'),
-('Tour 4', 'Tour 4 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img4_qsmmvd.jpg'),
-('Tour 5', 'Tour 5 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png'),
-('Tour 6', 'Tour 6 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png'),
-('Tour 7', 'Tour 7 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png'),
-('Tour 8', 'Tour 8 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png'),
-('Tour 9', 'Tour 9 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png');
+insert into Tour(title, price, overview, img) 
+values('Tour 1', 11, 'Tour 1 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img1_knmwxo.jpg'),
+('Tour 2', 12, 'Tour 2 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img2_dvtdyh.jpg'),
+('Tour 3', 13, 'Tour 3 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img3_bxk0we.jpg'),
+('Tour 4', 14, 'Tour 4 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img4_qsmmvd.jpg'),
+('Tour 5', 15, 'Tour 5 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png'),
+('Tour 6', 16, 'Tour 6 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png'),
+('Tour 7', 17, 'Tour 7 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png'),
+('Tour 8', 18, 'Tour 8 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png'),
+('Tour 9', 19, 'Tour 9 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png');
 
 insert into Tour_Highlight(tour_id, highlight)
 values(1, 'Highlight 1-1'),

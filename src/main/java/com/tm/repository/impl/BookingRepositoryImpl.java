@@ -21,11 +21,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class BookingRepositoryImpl implements BookingRepository {
 
     @Autowired
-    private LocalSessionFactoryBean localSessionFactoryBean;
+    private LocalSessionFactoryBean sessionFactory;
     
     @Override
     public void booking(Booking booking) {
-        Session session = localSessionFactoryBean.getObject().getCurrentSession();
+        Session session = sessionFactory.getObject().getCurrentSession();
         session.save(booking);
     }
     

@@ -25,12 +25,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
- * @author PHUC
+ * @author Admin
  */
 @Entity
 @Table(name = "tour")
@@ -71,7 +70,6 @@ public class Tour implements Serializable {
     private String departurePoint;
     @Column(name = "departure_time")
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date departureTime;
     @Size(max = 255)
     @Column(name = "overview")
@@ -80,10 +78,16 @@ public class Tour implements Serializable {
     @Column(name = "img")
     private String img;
     @OneToMany(mappedBy = "tourId")
+    private List<TourHighlight> tourHighlightList;
+    @OneToMany(mappedBy = "tourId")
     private List<Booking> bookingList;
+    @OneToMany(mappedBy = "tourId")
+    private List<TourReview> tourReviewList;
+    @OneToMany(mappedBy = "tourId")
+    private List<TourItinerary> tourItineraryList;
     @Transient
     private MultipartFile imgFile;
-
+    
     public Tour() {
     }
 
@@ -169,12 +173,39 @@ public class Tour implements Serializable {
     }
 
     @XmlTransient
+    public List<TourHighlight> getTourHighlightList() {
+        return tourHighlightList;
+    }
+
+    public void setTourHighlightList(List<TourHighlight> tourHighlightList) {
+        this.tourHighlightList = tourHighlightList;
+    }
+
+    @XmlTransient
     public List<Booking> getBookingList() {
         return bookingList;
     }
 
     public void setBookingList(List<Booking> bookingList) {
         this.bookingList = bookingList;
+    }
+
+    @XmlTransient
+    public List<TourReview> getTourReviewList() {
+        return tourReviewList;
+    }
+
+    public void setTourReviewList(List<TourReview> tourReviewList) {
+        this.tourReviewList = tourReviewList;
+    }
+
+    @XmlTransient
+    public List<TourItinerary> getTourItineraryList() {
+        return tourItineraryList;
+    }
+
+    public void setTourItineraryList(List<TourItinerary> tourItineraryList) {
+        this.tourItineraryList = tourItineraryList;
     }
 
     @Override
