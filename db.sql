@@ -58,16 +58,6 @@ create table Tour_Review
     primary key(id)
 );
 
-create table Booking
-(
-	id int auto_increment,
-    user_id int,
-    tour_id int,
-    foreign key (user_id) references `User`(id),
-    foreign key (tour_id) references Tour(id),
-    primary key(id)
-);
-
 create table Ticket_Type
 (
 	`type` bit(1),
@@ -75,13 +65,15 @@ create table Ticket_Type
     primary key(`type`)
 );
 
-create table Ticket
+create table Booking
 (
 	id int auto_increment,
-	booking_id int,
-    ticket_type bit(1),
-    foreign key (booking_id) references Booking(id),
-    foreign key (ticket_type) references Ticket_Type(`type`),
+    user_id int,
+    tour_id int,
+    ticketType bit(1),
+    foreign key (user_id) references `User`(id),
+    foreign key (tour_id) references Tour(id),
+    foreign key (ticketType) references Ticket_Type(`type`),
     primary key(id)
 );
 

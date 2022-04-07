@@ -7,6 +7,7 @@ package com.tm.pojo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,20 +16,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
- * @author Admin
+ * @author PHUC
  */
 @Entity
 @Table(name = "tour")
@@ -57,7 +59,7 @@ public class Tour implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "title")
     private String title;
-    @Min(value = 1)
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "price")
     private BigDecimal price;
     @Column(name = "day")
@@ -77,9 +79,11 @@ public class Tour implements Serializable {
     @Size(max = 255)
     @Column(name = "img")
     private String img;
+    @OneToMany(mappedBy = "tourId")
+    private List<Booking> bookingList;
     @Transient
     private MultipartFile imgFile;
-    
+
     public Tour() {
     }
 
@@ -162,6 +166,15 @@ public class Tour implements Serializable {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    @XmlTransient
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 
     @Override

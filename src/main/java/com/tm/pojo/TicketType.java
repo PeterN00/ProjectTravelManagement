@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Admin
+ * @author PHUC
  */
 @Entity
 @Table(name = "ticket_type")
@@ -40,7 +40,7 @@ public class TicketType implements Serializable {
     @Column(name = "discount")
     private Short discount;
     @OneToMany(mappedBy = "ticketType")
-    private List<Ticket> ticketList;
+    private List<Booking> bookingList;
 
     public TicketType() {
     }
@@ -66,12 +66,12 @@ public class TicketType implements Serializable {
     }
 
     @XmlTransient
-    public List<Ticket> getTicketList() {
-        return ticketList;
+    public List<Booking> getBookingList() {
+        return bookingList;
     }
 
-    public void setTicketList(List<Ticket> ticketList) {
-        this.ticketList = ticketList;
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 
     @Override

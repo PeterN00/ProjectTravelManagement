@@ -5,6 +5,7 @@
 package com.tm.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,16 +14,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
- * @author Admin
+ * @author PHUC
  */
 @Entity
 @Table(name = "user")
@@ -66,6 +69,8 @@ public class User implements Serializable {
     @Size(max = 255)
     @Column(name = "img")
     private String img;
+    @OneToMany(mappedBy = "userId")
+    private List<Booking> bookingList;
     @Transient
     private MultipartFile imgFile;
     
@@ -131,6 +136,15 @@ public class User implements Serializable {
         this.img = img;
     }
 
+    @XmlTransient
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -157,20 +171,6 @@ public class User implements Serializable {
     }
 
     /**
-     * @return the imgFile
-     */
-    public MultipartFile getImgFile() {
-        return imgFile;
-    }
-
-    /**
-     * @param imgFile the imgFile to set
-     */
-    public void setImgFile(MultipartFile imgFile) {
-        this.imgFile = imgFile;
-    }
-
-    /**
      * @return the retypePassword
      */
     public String getRetypePassword() {
@@ -182,6 +182,20 @@ public class User implements Serializable {
      */
     public void setRetypePassword(String retypePassword) {
         this.retypePassword = retypePassword;
+    }
+
+    /**
+     * @return the imgFile
+     */
+    public MultipartFile getImgFile() {
+        return imgFile;
+    }
+
+    /**
+     * @param imgFile the imgFile to set
+     */
+    public void setImgFile(MultipartFile imgFile) {
+        this.imgFile = imgFile;
     }
     
 }

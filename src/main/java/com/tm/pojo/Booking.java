@@ -5,7 +5,6 @@
 package com.tm.pojo;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,14 +15,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Admin
+ * @author PHUC
  */
 @Entity
 @Table(name = "booking")
@@ -39,14 +36,15 @@ public class Booking implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @JoinColumn(name = "ticketType", referencedColumnName = "type")
+    @ManyToOne
+    private TicketType ticketType;
     @JoinColumn(name = "tour_id", referencedColumnName = "id")
     @ManyToOne
     private Tour tourId;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne
     private User userId;
-    @OneToMany(mappedBy = "bookingId")
-    private List<Ticket> ticketList;
 
     public Booking() {
     }
@@ -63,6 +61,14 @@ public class Booking implements Serializable {
         this.id = id;
     }
 
+    public TicketType getTicketType() {
+        return ticketType;
+    }
+
+    public void setTicketType(TicketType ticketType) {
+        this.ticketType = ticketType;
+    }
+
     public Tour getTourId() {
         return tourId;
     }
@@ -77,15 +83,6 @@ public class Booking implements Serializable {
 
     public void setUserId(User userId) {
         this.userId = userId;
-    }
-
-    @XmlTransient
-    public List<Ticket> getTicketList() {
-        return ticketList;
-    }
-
-    public void setTicketList(List<Ticket> ticketList) {
-        this.ticketList = ticketList;
     }
 
     @Override
