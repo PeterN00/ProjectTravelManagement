@@ -12,7 +12,7 @@
     <a class="btn btn-primary" href="<c:url value="/statistics/bookingcount" />">
         Booking Count Statistic
     </a>
-    <a class="btn btn-primary" href="#">
-        Booking Revenue
+    <a class="btn btn-primary" href="<c:url value="/statistics/bookingrevenue" />">
+        Booking Revenue Statistic
     </a>
 </div>

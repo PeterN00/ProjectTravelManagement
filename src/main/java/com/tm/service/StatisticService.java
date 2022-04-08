@@ -11,5 +11,6 @@ import java.util.List;
  * @author Admin
  */
 public interface StatisticService {
-    List<Object[]> tourBookingCount(int limit);
+    List<Object[]> tourBookingCount(int limit, String search);
+    List<Object[]> tourBookRevenue(int limit, String fromDate, String toDate, String search);
 }

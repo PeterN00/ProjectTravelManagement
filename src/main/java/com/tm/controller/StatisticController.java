@@ -5,6 +5,7 @@
 package com.tm.controller;
 
 import com.tm.service.StatisticService;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,15 +30,41 @@ public class StatisticController {
     }
     
     @GetMapping("/bookingcount")
-    public String bookingCountView(Model model, @RequestParam(name = "limit", defaultValue = "5") int limit){
-        model.addAttribute("statistic", statisticService.tourBookingCount(limit));
+    public String bookingCountView(Model model, 
+            @RequestParam(name = "limit", defaultValue = "5") int limit, 
+            @RequestParam(name = "search", required = false) String search){
+        
+        model.addAttribute("statistic", statisticService.tourBookingCount(limit, search));
         return "bookingcountstatistic";
     }
     
     @PostMapping("/bookingcount")
-    public String bookingCountLimitHandler(Model model, @RequestParam(name = "limit", defaultValue = "5") int limit){
-        model.addAttribute("statistic", statisticService.tourBookingCount(limit));
-        model.addAttribute("selectedLimit", limit);
+    public String bookingCountLimitHandler(Model model, 
+            @RequestParam(name = "limit", defaultValue = "5") int limit, 
+            @RequestParam(name = "search", required = false) String search){
+        model.addAttribute("statistic", statisticService.tourBookingCount(limit, search));
         return "bookingcountstatistic";
+    }
+    
+    @GetMapping("/bookingrevenue")
+    public String bookingRevenueView(Model model, 
+            @RequestParam(name = "limit", defaultValue = "5") int limit, 
+            @RequestParam(name = "search", required = false) String search,
+            @RequestParam(name = "fromdate", required = false) String fromDate,
+            @RequestParam(name = "todate", required = false) String toDate){
+        
+        model.addAttribute("statistic", statisticService.tourBookRevenue(limit, fromDate, toDate, search));
+        return "bookingrevenuestatistic";
+    }
+    
+    @PostMapping("/bookingrevenue")
+    public String bookingRevenueLimitHandler(Model model, 
+            @RequestParam(name = "limit", defaultValue = "5") int limit, 
+            @RequestParam(name = "search", required = false) String search,
+            @RequestParam(name = "fromdate", required = false) String fromDate,
+            @RequestParam(name = "todate", required = false) String toDate){
+        
+        model.addAttribute("statistic", statisticService.tourBookRevenue(limit, fromDate, toDate, search));
+        return "bookingrevenuestatistic";
     }
 }

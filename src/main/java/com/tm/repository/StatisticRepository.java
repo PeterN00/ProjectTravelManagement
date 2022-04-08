@@ -4,6 +4,7 @@
  */
 package com.tm.repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,5 +12,6 @@ import java.util.List;
  * @author Admin
  */
 public interface StatisticRepository {
-    List<Object[]> tourBookingCount(int limit);
+    List<Object[]> tourBookingCount(int limit, String search);
+    List<Object[]> tourBookRevenue(int limit, Date fromDate, Date toDate, String search);
 }

@@ -38,7 +38,7 @@ public class TicketType implements Serializable {
     @Column(name = "type")
     private Boolean type;
     @Column(name = "discount")
-    private Short discount;
+    private Integer discount;
     @OneToMany(mappedBy = "ticketType")
     private List<Booking> bookingList;
 
@@ -57,11 +57,11 @@ public class TicketType implements Serializable {
         this.type = type;
     }
 
-    public Short getDiscount() {
+    public Integer getDiscount() {
         return discount;
     }
 
-    public void setDiscount(Short discount) {
+    public void setDiscount(Integer discount) {
         this.discount = discount;
     }
 

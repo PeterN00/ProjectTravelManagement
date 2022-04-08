@@ -5,7 +5,6 @@
 package com.tm.pojo;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -61,7 +60,7 @@ public class Tour implements Serializable {
     private String title;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "price")
-    private BigDecimal price;
+    private Float price;
     @Column(name = "day")
     private Short day;
     @Column(name = "night")
@@ -89,6 +88,7 @@ public class Tour implements Serializable {
     private List<TourItinerary> tourItineraryList;
     @Transient
     private MultipartFile imgFile;
+    
     
     public Tour() {
     }
@@ -118,11 +118,11 @@ public class Tour implements Serializable {
         this.title = title;
     }
 
-    public BigDecimal getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

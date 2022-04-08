@@ -4,14 +4,13 @@ import com.tm.pojo.Booking;
 import com.tm.pojo.TourHighlight;
 import com.tm.pojo.TourItinerary;
 import com.tm.pojo.TourReview;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2022-04-08T15:32:21")
+@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2022-04-08T20:58:29")
 @StaticMetamodel(Tour.class)
 public class Tour_ { 
 
@@ -24,7 +23,7 @@ public class Tour_ {
     public static volatile ListAttribute<Tour, TourReview> tourReviewList;
     public static volatile SingularAttribute<Tour, String> departurePoint;
     public static volatile ListAttribute<Tour, TourHighlight> tourHighlightList;
-    public static volatile SingularAttribute<Tour, BigDecimal> price;
+    public static volatile SingularAttribute<Tour, Float> price;
     public static volatile ListAttribute<Tour, Booking> bookingList;
     public static volatile SingularAttribute<Tour, Integer> id;
     public static volatile SingularAttribute<Tour, Short> day;

@@ -60,19 +60,37 @@ function getCurrentDateTime() {
     bookDate.value = year + "-" + month + "-" + day + "T" + hours + ":" + mins;
 }
 
-function drawChart(ctx, labels, data) {
+function drawChart(ctx, labels, data, type, label) {
     const myChart = new Chart(ctx, {
-        type: 'bar',
+        type: type,
         data: {
             labels: labels,
             datasets: [{
-                    label: 'Booking',
+                    label: label,
                     data: data,
                     backgroundColor: [
-                        '#96D4D4'
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 88, 35, 0.2)',
+                        'rgba(122, 139, 44, 0.2)',
+                        'rgba(200, 159, 24, 0.2)',
+                        'rgba(48, 79, 64, 0.2)'
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 1)'
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 88, 35, 1)',
+                        'rgba(122, 139, 44, 1)',
+                        'rgba(200, 159, 24, 1)',
+                        'rgba(48, 79, 64, 1)'
                     ],
                     borderWidth: 1
                 }]
@@ -82,7 +100,9 @@ function drawChart(ctx, labels, data) {
                 y: {
                     beginAtZero: true
                 }
-            }
+            },
+            responsive: true,
+            maintainAspectRatio: false
         }
     });
 }

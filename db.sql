@@ -17,7 +17,7 @@ create table Tour
 (
 	id int auto_increment,
     title varchar(50) not null,
-    price decimal(6,2) default 0,
+    price float default 0,
     `day` tinyint,
     night tinyint,
     departure_point varchar(50) default 'Unknown',
@@ -61,7 +61,7 @@ create table Tour_Review
 create table Ticket_Type
 (
 	`type` bit(1),
-    discount tinyint,
+    discount int,
     primary key(`type`)
 );
 
@@ -139,3 +139,15 @@ insert into News(title, `description`, `date`)
 values('News 1', 'This is news 1 description', now()),
 ('News 2', 'This is news 2 description', now()),
 ('News 3', 'This is news 3 description', now());
+
+insert into Booking(user_id, tour_id, ticket_type, book_date)
+values(3, 1, 0, '2022-03-12 12:54'),
+(3, 1, 0, '2022-01-12 12:54'),
+(3, 1, 1, '2022-01-12 12:54'),
+(3, 1, 1, '2022-07-12 12:54'),
+(3, 3, 0, '2022-05-12 8:54'),
+(3, 3, 0, '2022-06-12 8:54'),
+(3, 2, 0, '2022-06-12 5:54'),
+(3, 2, 0, '2022-06-12 5:54'),
+(3, 4, 0, '2022-06-12 1:33'),
+(3, 5, 0, '2022-04-12 7:54');

@@ -24,6 +24,7 @@
                 </tr>
             </c:forEach>
         </table>
+        
         <form id = "limitform">
             <select onchange="limitSubmit()" id="limit" name = "limit">
                 <option value ="" selected>Choose limit</option>
@@ -31,9 +32,21 @@
                 <option value ="10">Top 10</option>
             </select>
         </form>
+        
+        <form>
+            <div class="form-group">
+                <div>
+                    <input class="form-control text-center" id="toursearch" placeholder="Search by titles..." name="search">
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-success">Search</button>
+                </div>
+            </div>
+        </form>
     </div>
+    
     <div class="col-md-7">
-        <canvas id="myChart"></canvas>
+        <canvas id="myChart" width="500" height="500"></canvas>
     </div>
 </div>
 
@@ -47,7 +60,7 @@
 
     window.onload = () => {
         const ctx = document.getElementById('myChart').getContext('2d');
-        drawChart(ctx, labels, data);
+        drawChart(ctx, labels, data, 'bar', 'Booking');
     }
 </script>
 
