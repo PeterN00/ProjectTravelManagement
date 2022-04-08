@@ -21,8 +21,8 @@ public class BookingServiceImpl implements BookingService {
     private BookingRepository bookingRepository;
     
     @Override
-    public void booking(Booking booking) {
-        this.bookingRepository.booking(booking);
+    public void booking(Booking booking, Integer tourId) {
+        this.bookingRepository.booking(booking, tourId);
     }
     
 }

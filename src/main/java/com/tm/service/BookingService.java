@@ -11,5 +11,5 @@ import com.tm.pojo.Booking;
  * @author Admin
  */
 public interface BookingService {
-    void booking(Booking booking);
+    void booking(Booking booking, Integer tourId);
 }

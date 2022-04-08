@@ -71,6 +71,7 @@ create table Booking
     user_id int,
     tour_id int,
     ticket_type bit(1),
+    book_date datetime,
     foreign key (user_id) references `User`(id),
     foreign key (tour_id) references Tour(id),
     foreign key (ticket_type) references Ticket_Type(`type`),

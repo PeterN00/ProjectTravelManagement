@@ -8,18 +8,14 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.tm.pojo.Booking;
 import com.tm.pojo.Tour;
-import com.tm.pojo.User;
 import com.tm.service.BookingService;
 import com.tm.service.TicketTypeService;
 import com.tm.service.TourService;
-import com.tm.service.UserService;
 import java.io.IOException;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,8 +37,6 @@ public class TourController {
 
     @Autowired
     private TourService tourService;
-    @Autowired
-    private UserService userSerivce;
     @Autowired
     private BookingService bookingSerivce;
     @Autowired
@@ -156,26 +150,19 @@ public class TourController {
     
     @PostMapping("/{id}/book")
     public String tourBookHandler(@PathVariable("id") Integer tourId, RedirectAttributes reAttr,
-            @RequestParam(name = "adultticket") int adult,
-            @RequestParam(name = "childrenticket", required = false) int children,
+            @RequestParam(name = "adultticket") int adultTicket,
+            @RequestParam(name = "childrenticket", required = false) int childrenTicket,
             @ModelAttribute(value = "booking") Booking booking){
         
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = userSerivce.getUserByUsername(authentication.getName());
-        Tour tour = tourService.getTourById(tourId);
-        
-        booking.setTourId(tour);
-        booking.setUserId(user);
-        
-        for(int i=1;i<=adult;i++){
+        for(int i=1; i<=adultTicket; i++){
             booking.setTicketType(ticketTypeService.getTicketType(false));
-            bookingSerivce.booking(booking);
+            bookingSerivce.booking(booking, tourId);
         }
         
-        if(children>0){
-            for(int i=1;i<=children;i++){
+        if(childrenTicket>0){
+            for(int i=1; i<=childrenTicket; i++){
                 booking.setTicketType(ticketTypeService.getTicketType(true));
-                bookingSerivce.booking(booking);
+                bookingSerivce.booking(booking, tourId);
             }
         }
         

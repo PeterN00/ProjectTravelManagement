@@ -27,6 +27,14 @@
         </button>
     </c:if>
 
+    <c:if test="${pageContext.request.userPrincipal.authorities == '[Admin]'}">
+        <a class="nav-link"
+           style="color: green; text-align: center"
+           href="<c:url value="/statistics" />">
+            Statistics
+        </a>
+    </c:if>
+
     <c:if test="${pageContext.request.userPrincipal.name != null}">
         <c:if test="${pageContext.request.userPrincipal.authorities == '[Admin]'
                       || pageContext.request.userPrincipal.authorities == '[Employee]'}">

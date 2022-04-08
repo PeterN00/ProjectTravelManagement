@@ -11,7 +11,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2022-04-07T21:10:57")
+@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2022-04-08T15:32:21")
 @StaticMetamodel(Tour.class)
 public class Tour_ { 
 

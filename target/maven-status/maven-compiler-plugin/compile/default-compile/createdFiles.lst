@@ -1,6 +1,7 @@
 com\tm\pojo\TourReview_.class
 com\tm\repository\TourRepository.class
 com\tm\config\WebSecurityAppContextInit.class
+com\tm\service\StatisticService.class
 com\tm\service\impl\UserServiceImpl.class
 com\tm\service\UserService.class
 com\tm\handlers\LoginSuccessHandler.class
@@ -17,8 +18,11 @@ com\tm\pojo\User_.class
 com\tm\pojo\News.class
 com\tm\formatter\DateFormatter.class
 com\tm\pojo\User.class
+com\tm\service\impl\StatisticServiceImpl.class
 com\tm\repository\impl\NewsRepositoryImpl.class
 com\tm\pojo\Tour.class
+com\tm\repository\StatisticRepository.class
+com\tm\repository\impl\StatisticRepositoryImpl.class
 com\tm\service\BookingService.class
 com\tm\controller\TourController.class
 com\tm\service\TicketTypeService.class
@@ -30,6 +34,7 @@ com\tm\pojo\Tour_.class
 com\tm\repository\TicketTypeRepository.class
 com\tm\service\NewsService.class
 com\tm\pojo\TourHighlight_.class
+com\tm\controller\StatisticController.class
 com\tm\repository\UserRepository.class
 com\tm\service\TourService.class
 com\tm\repository\impl\TourRepositoryImpl.class

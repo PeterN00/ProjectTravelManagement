@@ -67,4 +67,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <put-attribute name="title" expression="${pageTitle}" />
         <put-attribute name="content" value="/WEB-INF/Pages/userprofileedit.jsp" />
     </definition>
+    <definition name="statistics" extends="baseLayout">
+        <put-attribute name="title" value="Statistics" />
+        <put-attribute name="content" value="/WEB-INF/Pages/statistics.jsp" />
+    </definition>
+    <definition name="bookingcountstatistic" extends="baseLayout">
+        <put-attribute name="title" value="Booking Count" />
+        <put-attribute name="content" value="/WEB-INF/Pages/bookingcountstatistic.jsp" />
+    </definition>
 </tiles-definitions>

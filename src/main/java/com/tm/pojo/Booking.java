@@ -5,6 +5,7 @@
 package com.tm.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +17,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -27,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Booking.findAll", query = "SELECT b FROM Booking b"),
-    @NamedQuery(name = "Booking.findById", query = "SELECT b FROM Booking b WHERE b.id = :id")})
+    @NamedQuery(name = "Booking.findById", query = "SELECT b FROM Booking b WHERE b.id = :id"),
+    @NamedQuery(name = "Booking.findByBookDate", query = "SELECT b FROM Booking b WHERE b.bookDate = :bookDate")})
 public class Booking implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,6 +41,10 @@ public class Booking implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Column(name = "book_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private Date bookDate;
     @JoinColumn(name = "ticket_type", referencedColumnName = "type")
     @ManyToOne
     private TicketType ticketType;
@@ -59,6 +68,14 @@ public class Booking implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Date getBookDate() {
+        return bookDate;
+    }
+
+    public void setBookDate(Date bookDate) {
+        this.bookDate = bookDate;
     }
 
     public TicketType getTicketType() {

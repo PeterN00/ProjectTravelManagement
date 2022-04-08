@@ -11,6 +11,15 @@
 
 <br>
 <div class="container">  
+    <c:if test="${msg != null}">
+        <div class="alert" style="background-color: green">
+            <span class="closebtnalert" 
+                  onclick="this.parentElement.style.display = 'none';">&times;
+            </span> 
+            ${msg}
+        </div>
+    </c:if>
+    
     <img src="${tour.img}"  width="300" height="300" alt="tour img" style="float:left; margin-right: 10px">
     <h4><b>${tour.title}</b></h4>
     <p>Price: ${tour.price} - ${tour.day} days ${tour.night} nights</p>

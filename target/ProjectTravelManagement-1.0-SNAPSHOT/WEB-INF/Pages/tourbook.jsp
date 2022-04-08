@@ -50,15 +50,20 @@
             <label for="childrenticket">Children Ticket (Discount: <span id="childrendiscount">${ticketType.discount}%</span>)
             </label>
             <input type="number" id="childrenticket" id="childrenticket" name="childrenticket" 
-                   placeholder="0" min="0"
+                   placeholder="0" min="0" value="0"
                    onchange="calculatePrice('${tour.price}', '${ticketType.discount}')" />
         </div>
 
         <br>
-        
+
         <div>
-            <p><b>Price: <span id="price"></span></b></p>
+            <p><b>Price: <span id="price">${tour.price}$</span></b></p>
         </div>
+        <form:input type="hidden" path="bookDate" id="currentDate" />
         <button id="submitbtn" type="submit" name="submitbtn">Book Now</button>
     </div>
 </form:form>
+
+<script>
+    document.getElementById('currentDate').onload = getCurrentDateTime();
+</script>

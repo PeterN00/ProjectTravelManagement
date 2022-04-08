@@ -98,3 +98,7 @@ img{
 .closebtnalert:hover {
   color: black;
 }
+th, td{
+    border-style:solid;
+    border-color: #96D4D4;
+}

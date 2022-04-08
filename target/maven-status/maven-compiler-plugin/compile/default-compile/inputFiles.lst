@@ -16,14 +16,18 @@ C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\pojo\TicketType.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\repository\impl\BookingRepositoryImpl.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\service\TicketTypeService.java
+C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\repository\impl\StatisticRepositoryImpl.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\pojo\TourItinerary.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\pojo\User.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\repository\NewsRepository.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\service\impl\TicketTypeServiceImpl.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\pojo\Booking.java
+C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\controller\StatisticController.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\service\impl\BookingServiceImpl.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\handlers\LoginSuccessHandler.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\pojo\TourHighlight.java
+C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\repository\StatisticRepository.java
+C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\service\StatisticService.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\service\impl\UserServiceImpl.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\formatter\DateFormatter.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\controller\NewsController.java
@@ -31,6 +35,7 @@ C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\service\impl\TourServiceImpl.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\controller\TourController.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\config\HibernateConfig.java
+C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\service\impl\StatisticServiceImpl.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\repository\impl\NewsRepositoryImpl.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\repository\UserRepository.java
 C:\Users\Admin\Documents\NetBeansProjects\ProjectTravelManagement\src\main\java\com\tm\config\WebAppContextConfig.java

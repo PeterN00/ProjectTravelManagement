@@ -182,20 +182,6 @@ public class User implements Serializable {
     }
 
     /**
-     * @return the retypePassword
-     */
-    public String getRetypePassword() {
-        return retypePassword;
-    }
-
-    /**
-     * @param retypePassword the retypePassword to set
-     */
-    public void setRetypePassword(String retypePassword) {
-        this.retypePassword = retypePassword;
-    }
-
-    /**
      * @return the imgFile
      */
     public MultipartFile getImgFile() {
@@ -207,6 +193,20 @@ public class User implements Serializable {
      */
     public void setImgFile(MultipartFile imgFile) {
         this.imgFile = imgFile;
+    }
+
+    /**
+     * @return the retypePassword
+     */
+    public String getRetypePassword() {
+        return retypePassword;
+    }
+
+    /**
+     * @param retypePassword the retypePassword to set
+     */
+    public void setRetypePassword(String retypePassword) {
+        this.retypePassword = retypePassword;
     }
     
 }
