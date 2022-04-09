@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author PHUC
  */
 @Controller
-@RequestMapping("tours")
+@RequestMapping("/tours")
 public class TourReviewController {
     @Autowired
     private TourReviewService tourReviewService;

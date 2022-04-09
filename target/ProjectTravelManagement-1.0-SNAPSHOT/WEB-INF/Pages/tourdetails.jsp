@@ -77,7 +77,12 @@
                 <p>${reviews[3]}</p>
             </div>
             <div class="col-md-3">
-                <p>At: ${reviews[4]}</p>
+                <p>
+                    At: 
+                    <fmt:formatDate type = "both" 
+                        dateStyle = "long" timeStyle = "medium" 
+                        value = "${reviews[4]}" />
+                </p>
             </div>
         </div>
     </c:forEach>

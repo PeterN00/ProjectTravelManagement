@@ -34,3 +34,33 @@
     </c:if>
 
 </div>
+    
+<div class="container">
+    <h2><b>Comments</b></h2>
+    <c:url value="/news/${news.id}/comment" var = "comment" />
+    <form:form action="${comment}" method="post" modelAttribute="comment">
+        <form:textarea placeholder="Comment Here..." path="comment" name="comment" style="width: 100%; height: 25%" />
+        <form:errors path="comment" cssClass="text-danger" />
+        
+        <button id="submitbtn" type="submit" name="submitbtn">Submit</button>
+    </form:form>
+    
+    <br>
+    
+    <c:forEach items="${comments}" var = "comments">
+        <div class="row">
+            <div class="col-md-7">
+                <p><b>${comments[1]}</b></p>
+                <p>${comments[2]}</p>
+            </div>
+            <div class="col-md-3">
+                <p>
+                    At: 
+                    <fmt:formatDate type = "both" 
+                        dateStyle = "long" timeStyle = "medium" 
+                        value = "${comments[3]}" />
+                </p>
+            </div>
+        </div>
+    </c:forEach>
+</div>

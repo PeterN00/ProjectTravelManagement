@@ -7,6 +7,7 @@ package com.tm.service.impl;
 import com.tm.pojo.NewsComment;
 import com.tm.repository.NewsCommentRepository;
 import com.tm.service.NewsCommentService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,11 @@ public class NewsCommentServiceImpl implements NewsCommentService{
     @Override
     public void comment(NewsComment newsComment, Integer newsId) {
         newsCommentRepository.comment(newsComment, newsId);
+    }
+
+    @Override
+    public List<Object[]> getCommentsByNewsId(Integer newsId) {
+        return newsCommentRepository.getCommentsByNewsId(newsId);
     }
     
 }

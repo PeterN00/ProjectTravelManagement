@@ -5,6 +5,8 @@
 package com.tm.controller;
 
 import com.tm.pojo.News;
+import com.tm.pojo.NewsComment;
+import com.tm.service.NewsCommentService;
 import com.tm.service.NewsService;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -31,6 +33,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class NewsController {
     @Autowired
     private NewsService newsService;
+    @Autowired
+    private NewsCommentService newsCommentService;
     
     public void setEditDateTime(News news){
         Timestamp date = new Timestamp(new Date().getTime());
@@ -78,6 +82,8 @@ public class NewsController {
         
         News news = newsService.getNewsById(id);
         model.addAttribute("news", news);
+        model.addAttribute("comment", new NewsComment());
+        model.addAttribute("comments", newsCommentService.getCommentsByNewsId(id));
         model.addAttribute("pageTitle", news.getTitle());
         request.getSession().setAttribute("currentPage", "news/"+id);
         return "newsdetails";

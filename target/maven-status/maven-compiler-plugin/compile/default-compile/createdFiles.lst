@@ -41,6 +41,7 @@ com\tm\handlers\LogoutHandler.class
 com\tm\pojo\Tour_.class
 com\tm\repository\TicketTypeRepository.class
 com\tm\service\NewsService.class
+com\tm\controller\NewsCommentController.class
 com\tm\pojo\TourHighlight_.class
 com\tm\controller\StatisticController.class
 com\tm\repository\UserRepository.class

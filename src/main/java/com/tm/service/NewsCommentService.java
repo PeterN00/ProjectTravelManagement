@@ -5,6 +5,7 @@
 package com.tm.service;
 
 import com.tm.pojo.NewsComment;
+import java.util.List;
 
 /**
  *
@@ -12,4 +13,5 @@ import com.tm.pojo.NewsComment;
  */
 public interface NewsCommentService {
     void comment(NewsComment newsComment, Integer newsId);
+    List<Object[]> getCommentsByNewsId(Integer newsId);
 }
