@@ -75,7 +75,7 @@ public class TourReviewRepositoryImpl implements TourReviewRepository{
         preList.add(cb.equal(rootT.get("id"), rootTR.get("tourId")));
         preList.add(cb.equal(rootTR.get("tourId"), tourId));
         
-        cq.multiselect(rootTR.get("id"), rootU.get("username"), rootTR.get("rate"), 
+        cq.multiselect(rootTR.get("id"), rootU.get("username"), rootU.get("img"), rootTR.get("rate"), 
                 rootTR.get("comment"), rootTR.get("time"));
         cq.where(preList.toArray(new Predicate[] {}));
         

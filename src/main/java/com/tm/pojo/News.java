@@ -27,7 +27,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
- * @author PHUC
+ * @author Admin
  */
 @Entity
 @Table(name = "news")

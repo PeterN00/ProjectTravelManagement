@@ -8,9 +8,11 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.tm.pojo.Booking;
 import com.tm.pojo.Tour;
+import com.tm.pojo.TourHighlight;
 import com.tm.pojo.TourReview;
 import com.tm.service.BookingService;
 import com.tm.service.TicketTypeService;
+import com.tm.service.TourHighlightService;
 import com.tm.service.TourReviewService;
 import com.tm.service.TourService;
 import java.io.IOException;
@@ -46,6 +48,8 @@ public class TourController {
     private TicketTypeService ticketTypeService;
     @Autowired
     private TourReviewService tourReviewService;
+    @Autowired
+    private TourHighlightService tourHighlightService;
     @Autowired
     private Cloudinary cloudinary;
 
@@ -83,18 +87,24 @@ public class TourController {
     }
 
     @PostMapping("/add")
-    public String newTourHandler(
+    public String newTourHandler(@RequestParam(name = "highlight[]") String[] highlights ,
             @ModelAttribute(value = "tour") @Valid Tour tour,
             RedirectAttributes reAttr,
             BindingResult result) {
-
+        
         if (result.hasErrors()) {
             System.out.println(result.toString());
             return "newtour";
         }
-
+        
         uploadImgFile(tour);
         tourService.addTour(tour);
+        
+        for(String highlight : highlights){
+            tourHighlightService.addHighlight(tour, highlight);
+        }
+        
+        
         reAttr.addFlashAttribute("msg", "New Tour Added!");
         
         return "redirect:/tours";
@@ -109,6 +119,7 @@ public class TourController {
         model.addAttribute("tour", tour);
         model.addAttribute("review", new TourReview());
         model.addAttribute("reviews", reviews);
+        model.addAttribute("highlights", tourHighlightService.getHighlightByTourId(id));
         model.addAttribute("pageTitle", tour.getTitle());
         request.getSession().setAttribute("currentPage", "tours/"+id);
         return "tourdetails";

@@ -21,6 +21,7 @@
     </c:if>
     
     <img src="${tour.img}"  width="300" height="300" alt="tour img" style="float:left; margin-right: 10px">
+    
     <h4><b>${tour.title}</b></h4>
     <p>Price: ${tour.price} - ${tour.day} days ${tour.night} nights</p>
     <p>Departure Point: ${tour.departurePoint}</p>
@@ -30,6 +31,7 @@
                         dateStyle = "long" timeStyle = "medium" 
                         value = "${tour.departureTime}" />
     </p>
+    
 
     <c:if test="${pageContext.request.userPrincipal.name != null
                   && pageContext.request.userPrincipal.authorities != '[Customer]'}">
@@ -51,10 +53,18 @@
 <hr>
 
 <div class="container">
+    <h2><b>Highlights</b></h2>
+    <c:forEach items='${highlights}' var='highlight'>
+        <h3><b>${highlight}</b></h3>
+    </c:forEach>
+</div>
+
+<hr>
+<!-- Review -->
+<div class="container">
     <h2><b>Reviews</b></h2>
     <c:url value="/tours/${tour.id}/review" var = "review" />
     <form:form action="${review}" method="post" modelAttribute="review">
-        <p>Rate:</p>
         <div class="rating"> 
             <input type="radio" name="rating" value="5" id="5star"><label for="5star">☆</label> 
             <input type="radio" name="rating" value="4" id="4star"><label for="4star">☆</label> 
@@ -73,15 +83,15 @@
     <c:forEach items="${reviews}" var = "reviews">
         <div class="row">
             <div class="col-md-7">
-                <p><b>${reviews[1]} - ${reviews[2]}/5</b></p>
-                <p>${reviews[3]}</p>
+                <img src="${reviews[2]}" class="rounded-circle" width="40" style="float:left" />
+                <p><b>${reviews[1]} - ${reviews[3]}/5</b></p>
+                <p>${reviews[4]}</p>
             </div>
             <div class="col-md-3">
                 <p>
-                    At: 
                     <fmt:formatDate type = "both" 
                         dateStyle = "long" timeStyle = "medium" 
-                        value = "${reviews[4]}" />
+                        value = "${reviews[5]}" />
                 </p>
             </div>
         </div>

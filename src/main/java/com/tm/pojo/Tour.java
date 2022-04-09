@@ -59,9 +59,8 @@ public class Tour implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "title")
     private String title;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Min(value = 0)
     @Column(name = "price")
-    @Min(value = 1)
     private Float price;
     @Column(name = "day")
     private Short day;
@@ -80,6 +79,8 @@ public class Tour implements Serializable {
     @Size(max = 255)
     @Column(name = "img")
     private String img;
+    @Transient
+    private MultipartFile imgFile;
     @OneToMany(mappedBy = "tourId")
     private List<TourHighlight> tourHighlightList;
     @OneToMany(mappedBy = "tourId")
@@ -88,10 +89,7 @@ public class Tour implements Serializable {
     private List<TourReview> tourReviewList;
     @OneToMany(mappedBy = "tourId")
     private List<TourItinerary> tourItineraryList;
-    @Transient
-    private MultipartFile imgFile;
-    
-    
+
     public Tour() {
     }
 

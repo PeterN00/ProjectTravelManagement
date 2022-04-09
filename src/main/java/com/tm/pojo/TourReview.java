@@ -35,7 +35,8 @@ import org.springframework.format.annotation.DateTimeFormat;
     @NamedQuery(name = "TourReview.findAll", query = "SELECT t FROM TourReview t"),
     @NamedQuery(name = "TourReview.findById", query = "SELECT t FROM TourReview t WHERE t.id = :id"),
     @NamedQuery(name = "TourReview.findByRate", query = "SELECT t FROM TourReview t WHERE t.rate = :rate"),
-    @NamedQuery(name = "TourReview.findByComment", query = "SELECT t FROM TourReview t WHERE t.comment = :comment")})
+    @NamedQuery(name = "TourReview.findByComment", query = "SELECT t FROM TourReview t WHERE t.comment = :comment"),
+    @NamedQuery(name = "TourReview.findByTime", query = "SELECT t FROM TourReview t WHERE t.time = :time")})
 public class TourReview implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -98,6 +99,14 @@ public class TourReview implements Serializable {
         this.comment = comment;
     }
 
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
     public Tour getTourId() {
         return tourId;
     }
@@ -137,20 +146,6 @@ public class TourReview implements Serializable {
     @Override
     public String toString() {
         return "com.tm.pojo.TourReview[ id=" + id + " ]";
-    }
-
-    /**
-     * @return the time
-     */
-    public Date getTime() {
-        return time;
-    }
-
-    /**
-     * @param time the time to set
-     */
-    public void setTime(Date time) {
-        this.time = time;
     }
     
 }

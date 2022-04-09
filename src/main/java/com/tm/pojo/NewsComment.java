@@ -19,13 +19,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
- * @author PHUC
+ * @author Admin
  */
 @Entity
 @Table(name = "news_comment")
@@ -43,7 +44,9 @@ public class NewsComment implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 100)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
     @Column(name = "comment")
     private String comment;
     @Column(name = "time")
@@ -62,6 +65,11 @@ public class NewsComment implements Serializable {
 
     public NewsComment(Integer id) {
         this.id = id;
+    }
+
+    public NewsComment(Integer id, String comment) {
+        this.id = id;
+        this.comment = comment;
     }
 
     public Integer getId() {

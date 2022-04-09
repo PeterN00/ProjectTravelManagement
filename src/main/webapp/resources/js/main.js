@@ -106,3 +106,17 @@ function drawChart(ctx, labels, data, type, label) {
         }
     });
 }
+
+function addHighlightInput() {
+    var input = document.createElement("input");
+    input.id = 'highlight[]';
+    input.name = 'highlight[]';
+    input.placeholder = 'Highlight...';
+    document.getElementById("highlightdiv").appendChild(input);
+}
+function removeLastHighlight() {
+    var highlightdiv = document.getElementById('highlightdiv');
+    var childs = highlightdiv.childNodes;
+    if (childs.length > 0)
+        highlightdiv.removeChild(highlightdiv.lastChild);
+}

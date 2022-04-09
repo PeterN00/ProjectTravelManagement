@@ -25,7 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
- * @author PHUC
+ * @author Admin
  */
 @Entity
 @Table(name = "user")
@@ -69,11 +69,15 @@ public class User implements Serializable {
     @Size(max = 255)
     @Column(name = "img")
     private String img;
-    @OneToMany(mappedBy = "userId")
-    private List<NewsComment> newsCommentList;
     @Transient
     private MultipartFile imgFile;
-    
+    @OneToMany(mappedBy = "userId")
+    private List<Booking> bookingList;
+    @OneToMany(mappedBy = "userId")
+    private List<NewsComment> newsCommentList;
+    @OneToMany(mappedBy = "userId")
+    private List<TourReview> tourReviewList;
+
     public User() {
     }
 
@@ -137,12 +141,30 @@ public class User implements Serializable {
     }
 
     @XmlTransient
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
+    }
+
+    @XmlTransient
     public List<NewsComment> getNewsCommentList() {
         return newsCommentList;
     }
 
     public void setNewsCommentList(List<NewsComment> newsCommentList) {
         this.newsCommentList = newsCommentList;
+    }
+
+    @XmlTransient
+    public List<TourReview> getTourReviewList() {
+        return tourReviewList;
+    }
+
+    public void setTourReviewList(List<TourReview> tourReviewList) {
+        this.tourReviewList = tourReviewList;
     }
 
     @Override

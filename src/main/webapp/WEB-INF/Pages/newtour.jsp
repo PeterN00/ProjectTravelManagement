@@ -49,7 +49,17 @@
         <label for="overview"><b>Description Overview:</b></label>
         <form:textarea placeholder="Enter Overview for Description" path="overview" name="overview" style="width: 100%; height: 25%" />
         <form:errors path="overview" cssClass="text-danger" />
+        
+        <!-- Highlight -->
+        <label style="margin-top: 10px"><b>-HIGHLIGHTS-</b></label>
 
+        <div id ="highlightdiv" class="d-flex flex-column">
+
+        </div>
+        <button type="button" onclick="addHighlightInput()" style="width:auto">+</button>
+        <button type="button" onclick="removeLastHighlight()" style="width:auto">-</button>
+        
+        <!-- Image -->
         <label for="img"><b>Select Image:</b></label>
         <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
         <img id="showimg" width="300" height="300" />

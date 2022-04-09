@@ -33,7 +33,7 @@ create table Tour_Itinerary
     tour_id int,
     `name` varchar(50) not null,
     `description` varchar(255),
-    foreign key (tour_id) references Tour(id),
+    foreign key (tour_id) references Tour(id) ON DELETE CASCADE,
     primary key(id)
 );
 
@@ -42,7 +42,7 @@ create table Tour_Highlight
 	id int auto_increment,
     tour_id int,
     highlight varchar(100) not null,
-    foreign key (tour_id) references Tour(id),
+    foreign key (tour_id) references Tour(id) ON DELETE CASCADE,
     primary key(id)
 );
 
@@ -54,8 +54,8 @@ create table Tour_Review
     rate tinyint,
     `comment` varchar(255) not null,
     `time` datetime,
-    foreign key (user_id) references `User`(id),
-    foreign key (tour_id) references Tour(id),
+    foreign key (user_id) references `User`(id) ON DELETE CASCADE,
+    foreign key (tour_id) references Tour(id) ON DELETE CASCADE,
     primary key(id)
 );
 
@@ -73,9 +73,9 @@ create table Booking
     tour_id int,
     ticket_type bit(1),
     book_date datetime,
-    foreign key (user_id) references `User`(id),
-    foreign key (tour_id) references Tour(id),
-    foreign key (ticket_type) references Ticket_Type(`type`),
+    foreign key (user_id) references `User`(id) ON DELETE CASCADE,
+    foreign key (tour_id) references Tour(id) ON DELETE CASCADE,
+    foreign key (ticket_type) references Ticket_Type(`type`) ON DELETE CASCADE,
     primary key(id)
 );
 
@@ -95,8 +95,8 @@ create table News_Comment
     news_id int,
     `comment` varchar(100) not null,
     `time` datetime,
-    foreign key (user_id) references `User`(id),
-    foreign key (news_id) references News(id),
+    foreign key (user_id) references `User`(id) ON DELETE CASCADE,
+    foreign key (news_id) references News(id) ON DELETE CASCADE,
     primary key(id)
 );
 
@@ -179,5 +179,5 @@ insert into Tour_Review(user_id, tour_id, rate, `comment`, `time`)
 values(3, 1, 4, 'Review comment', '2022-04-05 6:35'),
 (3, 1, 4, 'Review comment 2', '2022-04-05 8:44'),
 (3, 1, 4, 'Review comment 3', '2022-04-05 9:22'),
-(3, 2, 4, 'Review comment 1', '2022-04-05 8:34'),
-(3, 2, 4, 'Review comment 2', '2022-04-05 15:30');
+(3, 2, 3, 'Review comment 1', '2022-04-05 8:34'),
+(3, 2, 3, 'Review comment 2', '2022-04-05 15:30');
