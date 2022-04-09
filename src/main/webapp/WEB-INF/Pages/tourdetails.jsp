@@ -47,3 +47,36 @@
     <c:url value = "/tours/${tour.id}/book" var="bookAction" />
     <a href="${bookAction}">Book</a>
 </div>
+
+<hr>
+
+<div class="container">
+    <h2><b>Reviews</b></h2>
+    <c:url value="/tours/${tour.id}/review" var = "review" />
+    <form:form action="${review}" method="post" modelAttribute="review">
+        <div class="rating"> 
+            <input type="radio" name="rating" value="5" id="5star"><label for="5star">☆</label> 
+            <input type="radio" name="rating" value="4" id="4star"><label for="4star">☆</label> 
+            <input type="radio" name="rating" value="3" id="3star"><label for="3star">☆</label> 
+            <input type="radio" name="rating" value="2" id="2star"><label for="2star">☆</label> 
+            <input type="radio" name="rating" value="1" id="1star"><label for="1star">☆</label> 
+        </div>
+        <form:textarea placeholder="Review Here..." path="comment" name="comment" style="width: 100%; height: 25%" />
+        <form:errors path="comment" cssClass="text-danger" />
+        
+        <button id="submitbtn" type="submit" name="submitbtn">Submit</button>
+    </form:form>
+    
+    <br>
+    
+    <c:forEach items="${reviews}" var = "reviews">
+        <div class="row">
+            <div class="col-md-7">
+                <h1><b></b></h1>
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+        </div>
+    </c:forEach>
+</div>

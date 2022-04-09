@@ -1,4 +1,0 @@
-"id";"username";"password";"full_name";"role";"img"
-1;"admin";"$2a$10$Dt6CQu8D9bKZHr5g1gJLnO4MNlD2uAgEjO2dPJTYJqjzSA/gA.m7C";"admin";"Admin";"https://res.cloudinary.com/petern/image/upload/v1649237698/travelmanagementproject_userimg/icon1.png.png"
-2;"employee";"$2a$10$JIZl2S6UhDpwzSybGU7khO.XXeQUx2L9upIikHbCjO4w1HcTNsR8G";"employee";"Employee";"https://res.cloudinary.com/petern/image/upload/v1649237720/travelmanagementproject_userimg/icon2.jpg.jpg"
-3;"customer";"$2a$10$PCOrH7OxbYX.oxC0Mnj1qO0LVn0xLrGOiIjWTyB7nnrKYj2eWDBSe";"customer";"Customer";"https://res.cloudinary.com/petern/image/upload/v1649237734/travelmanagementproject_userimg/icon3.jpg.jpg"

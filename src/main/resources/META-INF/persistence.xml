@@ -11,6 +11,7 @@
     <class>com.tm.pojo.TourItinerary</class>
     <class>com.tm.pojo.Booking</class>
     <class>com.tm.pojo.News</class>
+    <class>com.tm.pojo.NewsComment</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/travelmanagement?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

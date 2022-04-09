@@ -25,7 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
- * @author Admin
+ * @author PHUC
  */
 @Entity
 @Table(name = "user")
@@ -70,9 +70,7 @@ public class User implements Serializable {
     @Column(name = "img")
     private String img;
     @OneToMany(mappedBy = "userId")
-    private List<Booking> bookingList;
-    @OneToMany(mappedBy = "userId")
-    private List<TourReview> tourReviewList;
+    private List<NewsComment> newsCommentList;
     @Transient
     private MultipartFile imgFile;
     
@@ -139,21 +137,12 @@ public class User implements Serializable {
     }
 
     @XmlTransient
-    public List<Booking> getBookingList() {
-        return bookingList;
+    public List<NewsComment> getNewsCommentList() {
+        return newsCommentList;
     }
 
-    public void setBookingList(List<Booking> bookingList) {
-        this.bookingList = bookingList;
-    }
-
-    @XmlTransient
-    public List<TourReview> getTourReviewList() {
-        return tourReviewList;
-    }
-
-    public void setTourReviewList(List<TourReview> tourReviewList) {
-        this.tourReviewList = tourReviewList;
+    public void setNewsCommentList(List<NewsComment> newsCommentList) {
+        this.newsCommentList = newsCommentList;
     }
 
     @Override
@@ -182,20 +171,6 @@ public class User implements Serializable {
     }
 
     /**
-     * @return the imgFile
-     */
-    public MultipartFile getImgFile() {
-        return imgFile;
-    }
-
-    /**
-     * @param imgFile the imgFile to set
-     */
-    public void setImgFile(MultipartFile imgFile) {
-        this.imgFile = imgFile;
-    }
-
-    /**
      * @return the retypePassword
      */
     public String getRetypePassword() {
@@ -207,6 +182,20 @@ public class User implements Serializable {
      */
     public void setRetypePassword(String retypePassword) {
         this.retypePassword = retypePassword;
+    }
+
+    /**
+     * @return the imgFile
+     */
+    public MultipartFile getImgFile() {
+        return imgFile;
+    }
+
+    /**
+     * @param imgFile the imgFile to set
+     */
+    public void setImgFile(MultipartFile imgFile) {
+        this.imgFile = imgFile;
     }
     
 }

@@ -87,6 +87,18 @@ create table News
     primary key(id)
 );
 
+create table News_Comment
+(
+	id int auto_increment,
+    user_id int,
+    news_id int,
+    `comment` varchar(100),
+    `time` datetime,
+    foreign key (user_id) references `User`(id),
+    foreign key (news_id) references News(id),
+    primary key(id)
+);
+
 insert into Tour(title, price, overview, img) 
 values('Tour 1', 11, 'Tour 1 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img1_knmwxo.jpg'),
 ('Tour 2', 12, 'Tour 2 Overview', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img2_dvtdyh.jpg'),
@@ -139,6 +151,16 @@ insert into News(title, `description`, `date`)
 values('News 1', 'This is news 1 description', now()),
 ('News 2', 'This is news 2 description', now()),
 ('News 3', 'This is news 3 description', now());
+
+insert into `User`(username, `password`, full_name, `role`, img)
+values("admin","$2a$10$Dt6CQu8D9bKZHr5g1gJLnO4MNlD2uAgEjO2dPJTYJqjzSA/gA.m7C","admin","Admin",
+	"https://res.cloudinary.com/petern/image/upload/v1649237698/travelmanagementproject_userimg/icon1.png.png"),
+	
+    ("employee","$2a$10$JIZl2S6UhDpwzSybGU7khO.XXeQUx2L9upIikHbCjO4w1HcTNsR8G","employee","Employee",
+	"https://res.cloudinary.com/petern/image/upload/v1649237720/travelmanagementproject_userimg/icon2.jpg.jpg"),
+	
+    ("customer","$2a$10$PCOrH7OxbYX.oxC0Mnj1qO0LVn0xLrGOiIjWTyB7nnrKYj2eWDBSe","customer","Customer",
+	"https://res.cloudinary.com/petern/image/upload/v1649237734/travelmanagementproject_userimg/icon3.jpg.jpg");
 
 insert into Booking(user_id, tour_id, ticket_type, book_date)
 values(3, 1, 0, '2022-03-12 12:54'),

@@ -60,8 +60,8 @@
     const labels = [];
     const data = [];
     <c:forEach items="${statistic}" var="statistic">
-        labels.push('${statistic[1]}');
-        data.push('${statistic[3]}');
+        labels.push('${statistic[1]} (${statistic[2]},${statistic[3]})');
+        data.push('${statistic[4]}');
     </c:forEach>
 
     window.onload = () => {

@@ -8,6 +8,7 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.tm.pojo.Booking;
 import com.tm.pojo.Tour;
+import com.tm.pojo.TourReview;
 import com.tm.service.BookingService;
 import com.tm.service.TicketTypeService;
 import com.tm.service.TourService;
@@ -101,6 +102,7 @@ public class TourController {
         
         Tour tour = tourService.getTourById(id);
         model.addAttribute("tour", tour);
+        model.addAttribute("review", new TourReview());
         model.addAttribute("pageTitle", tour.getTitle());
         request.getSession().setAttribute("currentPage", "tours/"+id);
         return "tourdetails";

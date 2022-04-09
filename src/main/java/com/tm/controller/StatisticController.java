@@ -31,7 +31,7 @@ public class StatisticController {
     
     @GetMapping("/bookingcount")
     public String bookingCountView(Model model, 
-            @RequestParam(name = "limit", defaultValue = "5") int limit, 
+            @RequestParam(name = "limit", defaultValue = "10") int limit, 
             @RequestParam(name = "search", required = false) String search){
         
         model.addAttribute("statistic", statisticService.tourBookingCount(limit, search));
@@ -40,7 +40,7 @@ public class StatisticController {
     
     @PostMapping("/bookingcount")
     public String bookingCountLimitHandler(Model model, 
-            @RequestParam(name = "limit", defaultValue = "5") int limit, 
+            @RequestParam(name = "limit", defaultValue = "10") int limit, 
             @RequestParam(name = "search", required = false) String search){
         model.addAttribute("statistic", statisticService.tourBookingCount(limit, search));
         return "bookingcountstatistic";
@@ -48,7 +48,7 @@ public class StatisticController {
     
     @GetMapping("/bookingrevenue")
     public String bookingRevenueView(Model model, 
-            @RequestParam(name = "limit", defaultValue = "5") int limit, 
+            @RequestParam(name = "limit", defaultValue = "10") int limit, 
             @RequestParam(name = "search", required = false) String search,
             @RequestParam(name = "fromdate", required = false) String fromDate,
             @RequestParam(name = "todate", required = false) String toDate){
@@ -59,7 +59,7 @@ public class StatisticController {
     
     @PostMapping("/bookingrevenue")
     public String bookingRevenueLimitHandler(Model model, 
-            @RequestParam(name = "limit", defaultValue = "5") int limit, 
+            @RequestParam(name = "limit", defaultValue = "10") int limit, 
             @RequestParam(name = "search", required = false) String search,
             @RequestParam(name = "fromdate", required = false) String fromDate,
             @RequestParam(name = "todate", required = false) String toDate){
