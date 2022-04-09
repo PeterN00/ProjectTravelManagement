@@ -92,6 +92,7 @@ public class StatisticRepositoryImpl implements StatisticRepository{
                 sum);
         cq.where(preList.toArray(new Predicate[] {}));
         cq.groupBy(exList.toArray(new Expression[] {}));
+        cq.orderBy(cb.desc(sum));
         
         Query query = session.createQuery(cq);
         query.setMaxResults(limit);

@@ -54,6 +54,7 @@
     <h2><b>Reviews</b></h2>
     <c:url value="/tours/${tour.id}/review" var = "review" />
     <form:form action="${review}" method="post" modelAttribute="review">
+        <p>Rate:</p>
         <div class="rating"> 
             <input type="radio" name="rating" value="5" id="5star"><label for="5star">☆</label> 
             <input type="radio" name="rating" value="4" id="4star"><label for="4star">☆</label> 
@@ -72,10 +73,11 @@
     <c:forEach items="${reviews}" var = "reviews">
         <div class="row">
             <div class="col-md-7">
-                <h1><b></b></h1>
+                <p><b>${reviews[1]} - ${reviews[2]}/5</b></p>
+                <p>${reviews[3]}</p>
             </div>
             <div class="col-md-3">
-                
+                <p>At: ${reviews[4]}</p>
             </div>
         </div>
     </c:forEach>

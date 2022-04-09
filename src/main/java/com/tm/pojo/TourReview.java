@@ -5,6 +5,7 @@
 package com.tm.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +17,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -47,6 +51,10 @@ public class TourReview implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "comment")
     private String comment;
+    @Column(name = "time")
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private Date time;
     @JoinColumn(name = "tour_id", referencedColumnName = "id")
     @ManyToOne
     private Tour tourId;
@@ -129,6 +137,20 @@ public class TourReview implements Serializable {
     @Override
     public String toString() {
         return "com.tm.pojo.TourReview[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the time
+     */
+    public Date getTime() {
+        return time;
+    }
+
+    /**
+     * @param time the time to set
+     */
+    public void setTime(Date time) {
+        this.time = time;
     }
     
 }

@@ -11,8 +11,10 @@ import com.tm.pojo.Tour;
 import com.tm.pojo.TourReview;
 import com.tm.service.BookingService;
 import com.tm.service.TicketTypeService;
+import com.tm.service.TourReviewService;
 import com.tm.service.TourService;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -42,6 +44,8 @@ public class TourController {
     private BookingService bookingSerivce;
     @Autowired
     private TicketTypeService ticketTypeService;
+    @Autowired
+    private TourReviewService tourReviewService;
     @Autowired
     private Cloudinary cloudinary;
 
@@ -101,8 +105,10 @@ public class TourController {
             Model model) {
         
         Tour tour = tourService.getTourById(id);
+        List<Object[]> reviews = tourReviewService.getReviewsByTourId(id);
         model.addAttribute("tour", tour);
         model.addAttribute("review", new TourReview());
+        model.addAttribute("reviews", reviews);
         model.addAttribute("pageTitle", tour.getTitle());
         request.getSession().setAttribute("currentPage", "tours/"+id);
         return "tourdetails";

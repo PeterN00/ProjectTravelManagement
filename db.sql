@@ -53,6 +53,7 @@ create table Tour_Review
 	tour_id int,
     rate tinyint,
     `comment` varchar(255) not null,
+    `time` datetime,
     foreign key (user_id) references `User`(id),
     foreign key (tour_id) references Tour(id),
     primary key(id)
@@ -92,7 +93,7 @@ create table News_Comment
 	id int auto_increment,
     user_id int,
     news_id int,
-    `comment` varchar(100),
+    `comment` varchar(100) not null,
     `time` datetime,
     foreign key (user_id) references `User`(id),
     foreign key (news_id) references News(id),
@@ -173,3 +174,10 @@ values(3, 1, 0, '2022-03-12 12:54'),
 (3, 2, 0, '2022-06-12 5:54'),
 (3, 4, 0, '2022-06-12 1:33'),
 (3, 5, 0, '2022-04-12 7:54');
+
+insert into Tour_Review(user_id, tour_id, rate, `comment`, `time`)
+values(3, 1, 4, 'Review comment', '2022-04-05 6:35'),
+(3, 1, 4, 'Review comment 2', '2022-04-05 8:44'),
+(3, 1, 4, 'Review comment 3', '2022-04-05 9:22'),
+(3, 2, 4, 'Review comment 1', '2022-04-05 8:34'),
+(3, 2, 4, 'Review comment 2', '2022-04-05 15:30');

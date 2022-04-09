@@ -10,7 +10,9 @@ import com.tm.pojo.User;
 import com.tm.repository.TourReviewRepository;
 import com.tm.service.TourService;
 import com.tm.service.UserService;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -47,6 +49,9 @@ public class TourReviewRepositoryImpl implements TourReviewRepository{
         User user = userService.getUserByUsername(authentication.getName());
         Tour tour = tourService.getTourById(tourId);
         
+        Timestamp date = new Timestamp(new Date().getTime());
+        
+        tourReview.setTime(date);
         tourReview.setTourId(tour);
         tourReview.setUserId(user);
         tourReview.setRate(rate);
@@ -58,8 +63,6 @@ public class TourReviewRepositoryImpl implements TourReviewRepository{
     public List<Object[]> getReviewsByTourId(Integer tourId) {
         Session session = sessionFactory.getObject().getCurrentSession();
         
-        Tour tour = tourService.getTourById(tourId);
-        
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<Object[]> cq = cb.createQuery(Object[].class);
         
@@ -70,8 +73,10 @@ public class TourReviewRepositoryImpl implements TourReviewRepository{
         List<Predicate> preList = new ArrayList();
         preList.add(cb.equal(rootTR.get("userId"), rootU.get("id")));
         preList.add(cb.equal(rootT.get("id"), rootTR.get("tourId")));
+        preList.add(cb.equal(rootTR.get("tourId"), tourId));
         
-        cq.multiselect(rootTR.get("id"), rootTR.get("rate"), rootTR.get("comment"), rootU.get("username"));
+        cq.multiselect(rootTR.get("id"), rootU.get("username"), rootTR.get("rate"), 
+                rootTR.get("comment"), rootTR.get("time"));
         cq.where(preList.toArray(new Predicate[] {}));
         
         Query query = session.createQuery(cq);
