@@ -8,14 +8,16 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.tm.pojo.Booking;
 import com.tm.pojo.Tour;
-import com.tm.pojo.TourHighlight;
+import com.tm.pojo.TourItinerary;
 import com.tm.pojo.TourReview;
 import com.tm.service.BookingService;
 import com.tm.service.TicketTypeService;
 import com.tm.service.TourHighlightService;
+import com.tm.service.TourItineraryService;
 import com.tm.service.TourReviewService;
 import com.tm.service.TourService;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +52,8 @@ public class TourController {
     private TourReviewService tourReviewService;
     @Autowired
     private TourHighlightService tourHighlightService;
+    @Autowired
+    private TourItineraryService tourItineraryService;
     @Autowired
     private Cloudinary cloudinary;
 
@@ -87,7 +91,10 @@ public class TourController {
     }
 
     @PostMapping("/add")
-    public String newTourHandler(@RequestParam(name = "highlight[]") String[] highlights ,
+    public String newTourHandler(
+            @RequestParam(name = "highlight[]") String[] highlights,
+            @RequestParam(name = "itineraryname[]") String[] itineraryName,
+            @RequestParam(name = "itinerarydescription[]") String[] itineraryDescription,
             @ModelAttribute(value = "tour") @Valid Tour tour,
             RedirectAttributes reAttr,
             BindingResult result) {
@@ -104,6 +111,14 @@ public class TourController {
             tourHighlightService.addHighlight(tour, highlight);
         }
         
+        HashMap<String, String> itinerary = new HashMap<String, String>();
+        for(int i=0; i<itineraryName.length; i++){
+            itinerary.put(itineraryName[i], itineraryDescription[i]);
+        }
+        
+        for(String i : itinerary.keySet()){
+            tourItineraryService.addItinerary(tour, i, itinerary.get(i));
+        }
         
         reAttr.addFlashAttribute("msg", "New Tour Added!");
         
@@ -114,14 +129,19 @@ public class TourController {
     public String tourDetails(@PathVariable("id") Integer id, HttpServletRequest request,
             Model model) {
         
-        Tour tour = tourService.getTourById(id);
-        List<Object[]> reviews = tourReviewService.getReviewsByTourId(id);
-        model.addAttribute("tour", tour);
-        model.addAttribute("review", new TourReview());
-        model.addAttribute("reviews", reviews);
-        model.addAttribute("highlights", tourHighlightService.getHighlightByTourId(id));
-        model.addAttribute("pageTitle", tour.getTitle());
-        request.getSession().setAttribute("currentPage", "tours/"+id);
+//        Tour tour = tourService.getTourById(id);
+//        List<Object[]> reviews = tourReviewService.getReviewsByTourId(id);
+//        model.addAttribute("tour", tour);
+//        model.addAttribute("review", new TourReview());
+//        model.addAttribute("reviews", reviews);
+//        model.addAttribute("highlights", tourHighlightService.getHighlightByTourId(id));
+//        model.addAttribute("itinerary", tourItineraryService.getItineraryByTourId(id));
+//        model.addAttribute("pageTitle", tour.getTitle());
+//        request.getSession().setAttribute("currentPage", "tours/"+id);
+        List<TourItinerary> list = tourItineraryService.getItineraryByTourId(id);
+        for(TourItinerary ti : list){
+            System.out.println(ti.getName() + " " + ti.getDescription());
+        }
         return "tourdetails";
     }
 

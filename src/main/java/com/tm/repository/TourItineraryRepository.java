@@ -4,10 +4,15 @@
  */
 package com.tm.repository;
 
+import com.tm.pojo.Tour;
+import com.tm.pojo.TourItinerary;
+import java.util.List;
+
 /**
  *
  * @author Admin
  */
 public interface TourItineraryRepository {
-    
+    void addItinerary(Tour tour, String name, String description);
+    List<TourItinerary> getItineraryByTourId(Integer tourId);
 }

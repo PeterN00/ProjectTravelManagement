@@ -109,6 +109,7 @@ function drawChart(ctx, labels, data, type, label) {
 
 function addHighlightInput() {
     var input = document.createElement("input");
+    input.style.cssText = 'margin-bottom: 1rem';
     input.id = 'highlight[]';
     input.name = 'highlight[]';
     input.placeholder = 'Highlight...';
@@ -119,4 +120,31 @@ function removeLastHighlight() {
     var childs = highlightdiv.childNodes;
     if (childs.length > 0)
         highlightdiv.removeChild(highlightdiv.lastChild);
+}
+
+function addItineraryInput() {
+    var div = document.createElement("div");
+    div.style.cssText = 'display: flex; flex-direction: column; margin-bottom: 2rem;';
+    var inputName = document.createElement("input");
+    inputName.id = 'itineraryname[]';
+    inputName.name = 'itineraryname[]';
+    inputName.placeholder = 'Itinerary...';
+    
+    var inputDescription = document.createElement("textarea");
+    inputDescription.id = 'itinerarydescription[]';
+    inputDescription.name = 'itinerarydescription[]';
+    inputDescription.placeholder = 'Itinerary Description...';
+    inputDescription.rows = 3;
+    inputDescription.cols = 70;
+    
+    div.appendChild(inputName);
+    div.appendChild(inputDescription);
+    
+    document.getElementById("itinerarydiv").appendChild(div);
+}
+function removeLastItinerary() {
+    var itinerarydiv = document.getElementById('itinerarydiv');
+    var childs = itinerarydiv.childNodes;
+    if (childs.length > 0)
+        itinerarydiv.removeChild(itinerarydiv.lastChild);
 }

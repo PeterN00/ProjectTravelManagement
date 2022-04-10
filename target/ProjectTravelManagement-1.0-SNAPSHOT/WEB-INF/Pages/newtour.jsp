@@ -59,6 +59,15 @@
         <button type="button" onclick="addHighlightInput()" style="width:auto">+</button>
         <button type="button" onclick="removeLastHighlight()" style="width:auto">-</button>
         
+        <!-- Itinerary -->
+        <label style="margin-top: 10px"><b>-ITINERARY-</b></label>
+
+        <div id ="itinerarydiv" class="d-flex flex-column">
+
+        </div>
+        <button type="button" onclick="addItineraryInput()" style="width:auto">+</button>
+        <button type="button" onclick="removeLastItinerary()" style="width:auto">-</button>
+        
         <!-- Image -->
         <label for="img"><b>Select Image:</b></label>
         <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />

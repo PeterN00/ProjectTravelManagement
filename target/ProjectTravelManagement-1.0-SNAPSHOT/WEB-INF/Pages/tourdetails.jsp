@@ -59,6 +59,14 @@
     </c:forEach>
 </div>
 
+<div class="container">
+    <h2><b>Itinerary</b></h2>
+    <c:forEach items='${itinerary}' var='itinerary'>
+        <h3><b>${itinerary.name}</b></h3>
+        <p>${itinerary.description}</p>
+    </c:forEach>
+</div>
+
 <hr>
 <!-- Review -->
 <div class="container">

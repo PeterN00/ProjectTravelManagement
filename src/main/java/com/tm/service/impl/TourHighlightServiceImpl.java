@@ -5,7 +5,6 @@
 package com.tm.service.impl;
 
 import com.tm.pojo.Tour;
-import com.tm.pojo.TourHighlight;
 import com.tm.repository.TourHighlightRepository;
 import com.tm.service.TourHighlightService;
 import java.util.List;
