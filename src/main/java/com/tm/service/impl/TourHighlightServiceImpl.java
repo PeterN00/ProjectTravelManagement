@@ -5,6 +5,7 @@
 package com.tm.service.impl;
 
 import com.tm.pojo.Tour;
+import com.tm.pojo.TourHighlight;
 import com.tm.repository.TourHighlightRepository;
 import com.tm.service.TourHighlightService;
 import java.util.List;
@@ -26,8 +27,13 @@ public class TourHighlightServiceImpl implements TourHighlightService {
     }
     
     @Override
-    public List<String> getHighlightByTourId(Integer tourId) {
+    public List<TourHighlight> getHighlightByTourId(Integer tourId) {
         return tourHighlightRepository.getHighlightByTourId(tourId);
+    }
+
+    @Override
+    public void deleteHighlights(Tour tour) {
+        tourHighlightRepository.deleteHighlights(tour);
     }
     
 }

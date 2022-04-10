@@ -7,7 +7,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<div class="container">
+<div class="container justify-content-center text-center">
     <h2 class="text-center"><b>STATISTICS</b></h2>
     <a class="btn btn-primary" href="<c:url value="/statistics/bookingcount" />">
         Booking Count Statistic

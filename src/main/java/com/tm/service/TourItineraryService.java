@@ -15,4 +15,5 @@ import java.util.List;
 public interface TourItineraryService {
     void addItinerary(Tour tour, String name, String description);
     List<TourItinerary> getItineraryByTourId(Integer tourId);
+    void deleteItinerary(Tour tour);
 }

@@ -31,5 +31,10 @@ public class TourItineraryServiceImpl implements TourItineraryService {
     public List<TourItinerary> getItineraryByTourId(Integer tourId) {
         return tourItineraryRepository.getItineraryByTourId(tourId);
     }
+
+    @Override
+    public void deleteItinerary(Tour tour) {
+        tourItineraryRepository.deleteItinerary(tour);
+    }
     
 }

@@ -60,6 +60,12 @@ function getCurrentDateTime() {
     bookDate.value = year + "-" + month + "-" + day + "T" + hours + ":" + mins;
 }
 
+function displayMaxPriceRangeValue() {
+    var range = document.getElementById("pricerange");
+    var value = document.getElementById("maxvalue");
+    value.textContent = range.value;
+}
+
 function drawChart(ctx, labels, data, type, label) {
     const myChart = new Chart(ctx, {
         type: type,
@@ -128,18 +134,18 @@ function addItineraryInput() {
     var inputName = document.createElement("input");
     inputName.id = 'itineraryname[]';
     inputName.name = 'itineraryname[]';
-    inputName.placeholder = 'Itinerary...';
-    
+    inputName.placeholder = 'Day (?): Doing?...';
+
     var inputDescription = document.createElement("textarea");
     inputDescription.id = 'itinerarydescription[]';
     inputDescription.name = 'itinerarydescription[]';
     inputDescription.placeholder = 'Itinerary Description...';
     inputDescription.rows = 3;
     inputDescription.cols = 70;
-    
+
     div.appendChild(inputName);
     div.appendChild(inputDescription);
-    
+
     document.getElementById("itinerarydiv").appendChild(div);
 }
 function removeLastItinerary() {

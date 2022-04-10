@@ -5,6 +5,7 @@
 package com.tm.repository;
 
 import com.tm.pojo.Tour;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,10 +13,11 @@ import java.util.List;
  * @author Admin
  */
 public interface TourRepository {
-    List<Tour> getTours(String search, int page);
+    List<Tour> getTours(String search, int page, Float maxPrice, Date fromDate, Date toDate);
     int tourCount();
     void addTour(Tour tour);
     Tour getTourById(Integer id);
     void deleteTour(Integer id);
     void editTour(Tour tour);
+    Float getHighestPrice();
 }

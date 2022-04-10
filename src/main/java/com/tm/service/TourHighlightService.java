@@ -5,6 +5,7 @@
 package com.tm.service;
 
 import com.tm.pojo.Tour;
+import com.tm.pojo.TourHighlight;
 import java.util.List;
 
 /**
@@ -13,5 +14,6 @@ import java.util.List;
  */
 public interface TourHighlightService {
     void addHighlight(Tour tour, String highlight);
-    List<String> getHighlightByTourId(Integer tourId);
+    List<TourHighlight> getHighlightByTourId(Integer tourId);
+    void deleteHighlights(Tour tour);
 }

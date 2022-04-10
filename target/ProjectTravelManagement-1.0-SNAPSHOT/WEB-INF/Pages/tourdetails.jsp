@@ -10,44 +10,51 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <br>
-<div class="container">  
+<div class="container">
     <c:if test="${msg != null}">
-        <div class="alert" style="background-color: green">
-            <span class="closebtnalert" 
-                  onclick="this.parentElement.style.display = 'none';">&times;
-            </span> 
-            ${msg}
-        </div>
-    </c:if>
-    
-    <img src="${tour.img}"  width="300" height="300" alt="tour img" style="float:left; margin-right: 10px">
-    
-    <h4><b>${tour.title}</b></h4>
-    <p>Price: ${tour.price} - ${tour.day} days ${tour.night} nights</p>
-    <p>Departure Point: ${tour.departurePoint}</p>
-    <p>
-        Departure Time: 
-        <fmt:formatDate type = "both" 
-                        dateStyle = "long" timeStyle = "medium" 
-                        value = "${tour.departureTime}" />
-    </p>
-    
-
-    <c:if test="${pageContext.request.userPrincipal.name != null
-                  && pageContext.request.userPrincipal.authorities != '[Customer]'}">
-        <c:url value = "/tours/${tour.id}/edit" var="editAction" />
-        <a href="${editAction}">Edit</a>
-
-        <c:if test="${pageContext.request.userPrincipal.authorities == '[Admin]'}">
-            <c:url value = "/tours/${tour.id}/delete" var="deleteAction" />
-            <form:form action ="${deleteAction}">
-                <button id="delsubmit" type="submit" name="delbtn">Delete</button>
-            </form:form>
+            <div class="alert" style="background-color: green">
+                <span class="closebtnalert" 
+                      onclick="this.parentElement.style.display = 'none';">&times;
+                </span> 
+                ${msg}
+            </div>
         </c:if>
-    </c:if>
+    <div class="row">  
+        <img src="${tour.img}"  width="700" height="300" alt="tour img" style="float:left; margin-right: 10px">
+        <div class="col-md-4">
+            <h4><b>${tour.title} (${tour.day} days ${tour.night} nights)</b></h4>
+            <p>Price: ${tour.price}$</p>
+            <p>Departure Point: ${tour.departurePoint}</p>
+            <p>
+                Departure Time: 
+                <fmt:formatDate type = "both" 
+                                dateStyle = "long" timeStyle = "medium" 
+                                value = "${tour.departureTime}" />
+            </p>
+            <c:url value = "/tours/${tour.id}/book" var="bookAction" />
+            <a href="${bookAction}">Book</a>
+        </div>
 
-    <c:url value = "/tours/${tour.id}/book" var="bookAction" />
-    <a href="${bookAction}">Book</a>
+        <div class="col-md-4">
+            <c:if test="${pageContext.request.userPrincipal.name != null
+                          && pageContext.request.userPrincipal.authorities != '[Customer]'}">
+                <c:url value = "/tours/${tour.id}/edit" var="editAction" />
+                <a href="${editAction}" class="btn btn-primary">Edit</a>
+
+                <c:if test="${pageContext.request.userPrincipal.authorities == '[Admin]'}">
+                    <c:url value = "/tours/${tour.id}/delete" var="deleteAction" />
+                    <form:form action ="${deleteAction}">
+                        <button id="delsubmit" type="submit" name="delbtn">Delete</button>
+                    </form:form>
+                </c:if>
+            </c:if> 
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2><b>Overview</b></h2>
+    <p>${tour.overview}</p>
 </div>
 
 <hr>
@@ -55,9 +62,11 @@
 <div class="container">
     <h2><b>Highlights</b></h2>
     <c:forEach items='${highlights}' var='highlight'>
-        <h3><b>${highlight}</b></h3>
+        <p>- ${highlight.highlight}</p>
     </c:forEach>
 </div>
+
+<hr>
 
 <div class="container">
     <h2><b>Itinerary</b></h2>
@@ -82,12 +91,12 @@
         </div>
         <form:textarea placeholder="Review Here..." path="comment" name="comment" style="width: 100%; height: 25%" />
         <form:errors path="comment" cssClass="text-danger" />
-        
+
         <button id="submitbtn" type="submit" name="submitbtn">Submit</button>
     </form:form>
-    
+
     <br>
-    
+
     <c:forEach items="${reviews}" var = "reviews">
         <div class="row">
             <div class="col-md-7">
@@ -98,8 +107,8 @@
             <div class="col-md-3">
                 <p>
                     <fmt:formatDate type = "both" 
-                        dateStyle = "long" timeStyle = "medium" 
-                        value = "${reviews[5]}" />
+                                    dateStyle = "long" timeStyle = "medium" 
+                                    value = "${reviews[5]}" />
                 </p>
             </div>
         </div>

@@ -7,13 +7,13 @@ package com.tm.repository.impl;
 import com.tm.pojo.Tour;
 import com.tm.pojo.TourHighlight;
 import com.tm.repository.TourHighlightRepository;
-import java.util.ArrayList;
+import com.tm.service.TourService;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.Root;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -29,7 +29,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class TourHighlightRepositoryImpl implements TourHighlightRepository{
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
-
+    @Autowired
+    private TourService tourService;
+    
     @Override
     public void addHighlight(Tour tour, String highlight) {
         Session session = sessionFactory.getObject().getCurrentSession();
@@ -41,24 +43,28 @@ public class TourHighlightRepositoryImpl implements TourHighlightRepository{
     }
     
     @Override
-    public List<String> getHighlightByTourId(Integer tourId) {
+    public List<TourHighlight> getHighlightByTourId(Integer tourId) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        
+        Tour tour = tourService.getTourById(tourId);
+        List<TourHighlight> list = tour.getTourHighlightList();
+        Hibernate.initialize(list);
+        return list;
+    }
+
+    @Override
+    public void deleteHighlights(Tour tour) {
         Session session = sessionFactory.getObject().getCurrentSession();
         
         CriteriaBuilder cb = session.getCriteriaBuilder();
-        CriteriaQuery<String> cq = cb.createQuery(String.class);
-        Root rootT = cq.from(Tour.class);
-        Root rootTH = cq.from(TourHighlight.class);
+        CriteriaDelete<TourHighlight> cd = cb.createCriteriaDelete(TourHighlight.class);
         
-        List<Predicate> preList = new ArrayList();
-        preList.add(cb.equal(rootTH.get("tourId"), rootT.get("id")));
-        preList.add(cb.equal(rootTH.get("tourId"), tourId));
+        Root rootTH = cd.from(TourHighlight.class);
         
-        cq.select(rootTH.get("highlight"));
-        cq.where(preList.toArray(new Predicate[] {}));
+        cd.where(cb.equal(rootTH.get("tourId"), tour.getId()));
         
-        Query query = session.createQuery(cq);
-        
-        return query.getResultList();
+        Query query = session.createQuery(cd);
+        query.executeUpdate();
     }
     
 }

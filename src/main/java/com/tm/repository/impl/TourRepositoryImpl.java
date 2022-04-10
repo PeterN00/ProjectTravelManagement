@@ -6,6 +6,8 @@ package com.tm.repository.impl;
 
 import com.tm.pojo.Tour;
 import com.tm.repository.TourRepository;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -34,17 +36,26 @@ public class TourRepositoryImpl implements TourRepository{
     private Environment env;
     
     @Override
-    public List<Tour> getTours(String search, int page) {
+    public List<Tour> getTours(String search, int page, Float maxPrice, Date fromDate, Date toDate) {
         Session session = sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<Tour> cq = cb.createQuery(Tour.class);
         Root root = cq.from(Tour.class);
         cq.select(root);
         
-        if(search != null && !search.isEmpty()){
-            Predicate p = cb.like(root.get("title").as(String.class), String.format("%%%s%%", search));
-            cq.where(p);
-        }
+        List<Predicate> preList = new ArrayList();
+        if(search != null && !search.isEmpty())
+            preList.add(cb.like(root.get("title").as(String.class), String.format("%%%s%%", search)));
+        
+        preList.add(cb.lessThanOrEqualTo(root.get("price"), maxPrice));
+        
+        if(fromDate != null)
+            preList.add(cb.greaterThanOrEqualTo(root.get("departureTime"), fromDate));
+        if(toDate != null)
+            preList.add(cb.lessThanOrEqualTo(root.get("departureTime"), toDate));
+        
+        
+        cq.where(preList.toArray(new Predicate[]{}));
         
         Query q = session.createQuery(cq);
         
@@ -91,5 +102,21 @@ public class TourRepositoryImpl implements TourRepository{
     public void editTour(Tour tour) {
         Session session = sessionFactory.getObject().getCurrentSession();
         session.update(tour);
+    }
+
+    @Override
+    public Float getHighestPrice() {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<Float> cq = cb.createQuery(Float.class);
+        
+        Root root = cq.from(Tour.class);
+        cq.select(root.get("price"));
+        cq.orderBy(cb.desc(root.get("price")));
+        
+        Query query = session.createQuery(cq);
+        query.setMaxResults(1);
+        
+        return (Float) query.getSingleResult();
     }
 }

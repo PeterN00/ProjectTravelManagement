@@ -32,7 +32,7 @@
 
     <c:forEach items="${news}" var="news">
         <div class="container">
-            <a href="<c:url value = "/news/${news.id}" />" class="btn btn-primary">
+            <a href="<c:url value = "/news/${news.id}" />" class="btn btn-primary d-flex flex-column">
                 <h4><b>${news.title}</b></h4>
                 <p>${news.description}</p>
                 <p>

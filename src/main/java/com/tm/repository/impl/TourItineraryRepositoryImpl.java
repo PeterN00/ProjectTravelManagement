@@ -7,14 +7,11 @@ package com.tm.repository.impl;
 import com.tm.pojo.Tour;
 import com.tm.pojo.TourItinerary;
 import com.tm.repository.TourItineraryRepository;
-import com.tm.service.TourItineraryService;
 import com.tm.service.TourService;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.Root;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
@@ -54,5 +51,20 @@ public class TourItineraryRepositoryImpl implements TourItineraryRepository {
         List<TourItinerary> list = tour.getTourItineraryList();
         Hibernate.initialize(list);
         return list;
+    }
+
+    @Override
+    public void deleteItinerary(Tour tour) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaDelete<TourItinerary> cd = cb.createCriteriaDelete(TourItinerary.class);
+        
+        Root rootTI = cd.from(TourItinerary.class);
+        
+        cd.where(cb.equal(rootTI.get("tourId"), tour.getId()));
+        
+        Query query = session.createQuery(cd);
+        query.executeUpdate();
     }
 }

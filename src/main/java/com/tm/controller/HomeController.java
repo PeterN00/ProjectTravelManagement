@@ -24,10 +24,14 @@ public class HomeController {
     @GetMapping("/")
     public String index(Model model, HttpServletRequest request,
             @RequestParam(name = "search", required = false) String search,
+            @RequestParam(name = "pricerange", required = false, defaultValue = "1") String priceRange,
+            @RequestParam(name = "fromdate", required = false) String fromDate,
+            @RequestParam(name = "todate", required = false) String toDate,
             @RequestParam(name = "page", defaultValue = "1") Integer page) {
         
-        model.addAttribute("tours", tourService.getTours(search, page));
+        model.addAttribute("tours", tourService.getTours(search, page, priceRange, fromDate, toDate));
         model.addAttribute("tourcount", tourService.tourCount());
+        model.addAttribute("highestprice", tourService.getHighestPrice());
         
         request.getSession().setAttribute("currentPage", "/ProjectTravelManagement/");
         return "index";

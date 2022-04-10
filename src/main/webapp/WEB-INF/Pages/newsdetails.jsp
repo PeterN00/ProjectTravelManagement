@@ -23,7 +23,7 @@
     <c:if test="${pageContext.request.userPrincipal.name != null
                   && pageContext.request.userPrincipal.authorities != '[Customer]'}">
         <c:url value = "/news/${news.id}/edit" var="editAction" />
-        <a href="${editAction}">Edit</a>
+        <a href="${editAction}" class="btn btn-primary">Edit</a>
 
         <c:if test="${pageContext.request.userPrincipal.authorities == '[Admin]'}">
             <c:url value = "/news/${news.id}/delete" var="deleteAction" />

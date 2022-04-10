@@ -8,7 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <nav class="navbar navbar-expand-sm navbar-toggleable-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="<c:url value="/" />">HOME</a>
+    <a class="navbar-brand" href="<c:url value="/" />">GlobTourism</a>
     <div class="container-fluid">
         <ul class="navbar-nav">
             <li class="nav-item">
