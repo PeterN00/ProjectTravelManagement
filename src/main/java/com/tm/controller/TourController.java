@@ -164,6 +164,7 @@ public class TourController {
 
     @PostMapping("/{id}/edit")
     public String tourEditHandler(RedirectAttributes reAttr,
+            @RequestParam(name = "currentimg") String currentImg,
             @RequestParam(name = "highlight[]") String[] highlights,
             @RequestParam(name = "itineraryname[]") String[] itineraryName,
             @RequestParam(name = "itinerarydescription[]") String[] itineraryDescription,
@@ -191,7 +192,11 @@ public class TourController {
             tourItineraryService.addItinerary(tour, i, itinerary.get(i));
         }
         
-        uploadImgFile(tour);
+        if(!tour.getImgFile().isEmpty()){
+            uploadImgFile(tour);
+        }else{
+            tour.setImg(currentImg);
+        }
         tourService.editTour(tour);
         
         reAttr.addFlashAttribute("msg", "Tour: {id: " + tour.getId() + "} Edited!");

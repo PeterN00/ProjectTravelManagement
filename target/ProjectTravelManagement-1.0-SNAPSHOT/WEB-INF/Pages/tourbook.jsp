@@ -22,7 +22,7 @@
     </c:if>
 
     <div class="container align-items-center d-flex flex-column"> 
-        <img src="${tour.img}"  width="300" height="300" alt="tour img" style="float:left; margin-right: 10px">
+        <img src="${tour.img}"  width="700" height="300" alt="tour img" style="float:left; margin-right: 10px">
         <h4><b>${tour.title}</b></h4>
         <p>
             Departure Time: 

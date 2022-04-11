@@ -13,7 +13,7 @@ function displayImage(input) {
         };
 
         reader.readAsDataURL(input.files[0]);
-
+        
         var btn = document.createElement("button");
         var text = document.createTextNode(" Remove Image");
         var icon = document.createElement("i");
@@ -28,8 +28,13 @@ function displayImage(input) {
 
         btn.addEventListener("click", function () {
             var img = document.getElementById("showimg");
-            input.value = '';
-            img.src = '';
+            input.value = null;
+            var curImg = document.getElementById("currentimg");
+            if(curImg!=null){
+                img.src = curImg.value;
+            }else{
+                img.src = 'https://res.cloudinary.com/petern/image/upload/v1649504989/travelmanagementproject_tourimg/Empty.jpg.jpg';
+            }
             btndiv.removeChild(btn);
         });
 

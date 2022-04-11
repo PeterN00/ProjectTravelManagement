@@ -32,17 +32,17 @@
                 <input type="range" min="1" max="${highestprice}" value="${highestprice/2}" class="slider" 
                        id="pricerange" name="pricerange"
                        onchange="displayMaxPriceRangeValue()"
-                       style="width: 30%; margin-left: 10px; margin-right: 10px">
+                       style="width: 50%; margin-left: 10px; margin-right: 10px">
                 <p><b>Max: <span id="maxvalue"></span></b>$</p>
             </div>
-            <div class="d-flex flex-column">
-                <div class="col-md-5">
+            <div class="row justify-content-center align-items-center text-center">
+                <div class="col-md-6">
                     <label for="fromdate" style="margin-right: 10px"><b>-From-</b></label>
-                    <input type="date" id="fromdate" name="fromdate" style="width:30%">
+                    <input type="date" id="fromdate" name="fromdate">
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <label for="todate" style="margin-right: 10px"><b>-To-</b></label>
-                    <input type="date" id="todate" name="todate" style="width:30%">
+                    <input type="date" id="todate" name="todate">
                 </div>
             </div>
             <div>

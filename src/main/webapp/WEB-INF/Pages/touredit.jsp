@@ -73,12 +73,12 @@
         <!-- Image -->
         <label for="img"><b>Select Image:</b></label>
         <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
+        <input type="hidden" id="currentimg" name="currentimg" value="${tour.img}" />
         <img id="showimg" src="${tour.img}" />
 
         <div id='removebtndiv'>
 
         </div>
-
         <button id="submitbtn" type="submit" name="submitbtn">Save</button>
     </div>
 </form:form>

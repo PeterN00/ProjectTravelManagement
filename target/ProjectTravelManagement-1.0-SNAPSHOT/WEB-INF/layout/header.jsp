@@ -11,7 +11,8 @@
     <a class="navbar-brand align-items-center" href="<c:url value="/" />">
         <span><img src="<c:url value="/resources/images/globe.png"/>" 
                  class="rounded-circle" width="30" style="float:left" /></span>
-        GlobTourism</a>
+        GlobTourism
+    </a>
     <div class="container-fluid">
         <ul class="navbar-nav">
             <li class="nav-item">
