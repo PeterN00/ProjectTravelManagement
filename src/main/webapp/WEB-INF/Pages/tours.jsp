@@ -5,6 +5,7 @@
 --%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
 <%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -64,8 +65,9 @@
                             <fmt:formatDate type = "both" 
                                             dateStyle = "long" timeStyle = "medium" 
                                             value = "${tour.departureTime}" /><br>
-                            ${tour.overview}
+
                         </p>
+                        <p id ="overview">${tour.overview}</p>
                     </div>
                 </a>
                 <br>
@@ -84,3 +86,14 @@
         </ul>
     </c:forEach>
 </div>
+
+<script>
+    window.onload = () => {
+    <c:forEach items='${tours}' var = "tour">
+        if (${fn:length(tour.overview)} > 500) {
+            text = '${fn:substring(tour.overview, 0, 500)}...';
+            document.getElementById("overview").innerHTML = text;
+        }
+    </c:forEach>
+    }
+</script>

@@ -22,7 +22,7 @@ create table Tour
     night tinyint,
     departure_point varchar(100) default 'Unknown',
     departure_time datetime,
-    overview varchar(255),
+    overview text,
     img varchar(255),
     primary key(id)
 );
@@ -32,7 +32,7 @@ create table Tour_Itinerary
 	id int auto_increment,
     tour_id int,
     `name` varchar(100) not null,
-    `description` varchar(255),
+    `description` text,
     foreign key (tour_id) references Tour(id) ON DELETE CASCADE,
     primary key(id)
 );
@@ -41,7 +41,7 @@ create table Tour_Highlight
 (
 	id int auto_increment,
     tour_id int,
-    highlight varchar(100) not null,
+    highlight varchar(255) not null,
     foreign key (tour_id) references Tour(id) ON DELETE CASCADE,
     primary key(id)
 );
@@ -83,7 +83,7 @@ create table News
 (
 	id int auto_increment,
     title varchar(100) not null,
-    `description` varchar(255) not null,
+    `description` text not null,
     `date` datetime default now(),
     primary key(id)
 );

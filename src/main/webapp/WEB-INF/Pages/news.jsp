@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -36,7 +37,7 @@
                 <div class="row">
                     <div class="col-md-7">
                         <h4><b>${news.title}</b></h4>
-                        <p class="newsdescription">${news.description}</p>
+                        <p id="description">${news.description}</p>
                     </div>
                     <div class="col-md-5">
                         <p>
@@ -63,4 +64,15 @@
         </ul>
     </c:forEach>
 </div>
+
+<script>
+    window.onload = () => {
+    <c:forEach items='${news}' var = "news">
+        if (${fn:length(news.description)} > 300) {
+            text = '${fn:substring(news.description, 0, 300)}...';
+            document.getElementById("description").innerHTML = text;
+        }
+    </c:forEach>
+    }
+</script>
 

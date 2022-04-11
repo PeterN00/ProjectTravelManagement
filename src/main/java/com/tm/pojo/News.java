@@ -53,7 +53,7 @@ public class News implements Serializable {
     private String title;
     @Basic(optional = false)
     @NotNull(message = "emptyFieldErr")
-    @Size(min = 1, max = 255)
+    @Size(min = 1, max = 5000)
     @Column(name = "description")
     private String description;
     @Column(name = "date")

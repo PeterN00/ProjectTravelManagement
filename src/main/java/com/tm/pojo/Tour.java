@@ -75,7 +75,7 @@ public class Tour implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date departureTime;
-    @Size(max = 255)
+    @Size(max = 5000)
     @Column(name = "overview")
     private String overview;
     @Size(max = 255)

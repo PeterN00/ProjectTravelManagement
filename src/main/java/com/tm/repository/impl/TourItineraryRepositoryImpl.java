@@ -12,6 +12,7 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
+import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
@@ -47,10 +48,22 @@ public class TourItineraryRepositoryImpl implements TourItineraryRepository {
     public List<TourItinerary> getItineraryByTourId(Integer tourId) {
         Session session = sessionFactory.getObject().getCurrentSession();
         
-        Tour tour = tourService.getTourById(tourId);
-        List<TourItinerary> list = tour.getTourItineraryList();
-        Hibernate.initialize(list);
-        return list;
+//        Tour tour = tourService.getTourById(tourId);
+//        List<TourItinerary> list = tour.getTourItineraryList();
+//        Hibernate.initialize(list);
+
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<TourItinerary> cq = cb.createQuery(TourItinerary.class);
+        
+        Root root = cq.from(TourItinerary.class);
+        
+        cq.select(root);
+        cq.where(cb.equal(root.get("tourId"), tourId));
+        cq.orderBy(cb.asc(root.get("name")));
+        
+        Query query = session.createQuery(cq);
+        
+        return query.getResultList();
     }
 
     @Override

@@ -41,7 +41,7 @@ public class TourHighlight implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull(message = "emptyFieldErr")
-    @Size(min = 1, max = 100)
+    @Size(min = 1, max = 255)
     @Column(name = "highlight")
     private String highlight;
     @JoinColumn(name = "tour_id", referencedColumnName = "id")

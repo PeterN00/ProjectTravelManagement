@@ -26,13 +26,6 @@ label{
     display: block;
 }
 
-.newsdescription{
-     width: 500px;
-     white-space: nowrap;
-     overflow: hidden;
-     text-overflow: ellipsis;
-}
-
 img{
   border: 3px solid #555;
 }
