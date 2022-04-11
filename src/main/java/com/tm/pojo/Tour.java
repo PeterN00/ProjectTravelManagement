@@ -56,7 +56,7 @@ public class Tour implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull(message = "emptyFieldErr")
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 100)
     @Column(name = "title")
     private String title;
     @Min(value = 1)
@@ -68,7 +68,7 @@ public class Tour implements Serializable {
     @Column(name = "night")
     @Min(value = 0)
     private Short night;
-    @Size(max = 50)
+    @Size(max = 100)
     @Column(name = "departure_point")
     private String departurePoint;
     @Column(name = "departure_time")

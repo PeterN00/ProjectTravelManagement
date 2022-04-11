@@ -16,11 +16,11 @@ create table `User`
 create table Tour
 (
 	id int auto_increment,
-    title varchar(50) not null,
+    title varchar(100) not null,
     price float default 0,
     `day` tinyint,
     night tinyint,
-    departure_point varchar(50) default 'Unknown',
+    departure_point varchar(100) default 'Unknown',
     departure_time datetime,
     overview varchar(255),
     img varchar(255),
@@ -31,7 +31,7 @@ create table Tour_Itinerary
 (
 	id int auto_increment,
     tour_id int,
-    `name` varchar(50) not null,
+    `name` varchar(100) not null,
     `description` varchar(255),
     foreign key (tour_id) references Tour(id) ON DELETE CASCADE,
     primary key(id)
@@ -93,7 +93,7 @@ create table News_Comment
 	id int auto_increment,
     user_id int,
     news_id int,
-    `comment` varchar(100) not null,
+    `comment` varchar(255) not null,
     `time` datetime,
     foreign key (user_id) references `User`(id) ON DELETE CASCADE,
     foreign key (news_id) references News(id) ON DELETE CASCADE,
@@ -101,15 +101,15 @@ create table News_Comment
 );
 
 insert into Tour(title, price, overview, departure_time, img) 
-values('Tour 1', 11, 'Tour 1 Overview', '2022-03-04 15:33', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img1_knmwxo.jpg'),
-('Tour 2', 12, 'Tour 2 Overview', '2022-01-03 03:33', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img2_dvtdyh.jpg'),
-('Tour 3', 13, 'Tour 3 Overview', '2022-02-04 07:33', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img3_bxk0we.jpg'),
-('Tour 4', 14, 'Tour 4 Overview', '2022-07-04 09:33', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img4_qsmmvd.jpg'),
-('Tour 5', 15, 'Tour 5 Overview', '2022-06-04 11:35', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png'),
-('Tour 6', 16, 'Tour 6 Overview', '2022-12-04 12:33', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png'),
-('Tour 7', 17, 'Tour 7 Overview', '2022-10-04 16:33', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png'),
-('Tour 8', 18, 'Tour 8 Overview', '2022-05-04 14:33', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png'),
-('Tour 9', 19, 'Tour 9 Overview', '2022-05-04 05:33', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5_cwgw9n.png');
+values('Tour 1', 11, 'Tour 1 Overview', '2022-03-04 15:33', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img1.jpg.jpg'),
+('Tour 2', 12, 'Tour 2 Overview', '2022-01-03 03:33', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img2.jpg.jpg'),
+('Tour 3', 13, 'Tour 3 Overview', '2022-02-04 07:33', 'https://res.cloudinary.com/petern/image/upload/v1649578606/travelmanagementproject_tourimg/img3.jpeg.jpg'),
+('Tour 4', 14, 'Tour 4 Overview', '2022-07-04 09:33', 'https://res.cloudinary.com/petern/image/upload/v1647505688/travelmanagementproject_tourimg/img4.jpg.jpg'),
+('Tour 5', 15, 'Tour 5 Overview', '2022-06-04 11:35', 'https://res.cloudinary.com/petern/image/upload/v1647505689/travelmanagementproject_tourimg/img5.png.png'),
+('Tour 6', 16, 'Tour 6 Overview', '2022-12-04 12:33', 'https://res.cloudinary.com/petern/image/upload/v1649677381/travelmanagementproject_tourimg/img5.png.png'),
+('Tour 7', 17, 'Tour 7 Overview', '2022-10-04 16:33', 'https://res.cloudinary.com/petern/image/upload/v1649677381/travelmanagementproject_tourimg/img5.png.png'),
+('Tour 8', 18, 'Tour 8 Overview', '2022-05-04 14:33', 'https://res.cloudinary.com/petern/image/upload/v1649677381/travelmanagementproject_tourimg/img5.png.png'),
+('Tour 9', 19, 'Tour 9 Overview', '2022-05-04 05:33', 'https://res.cloudinary.com/petern/image/upload/v1649677381/travelmanagementproject_tourimg/img5.png.png');
 
 insert into Tour_Highlight(tour_id, highlight)
 values(1, 'Highlight 1-1'),

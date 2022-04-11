@@ -67,7 +67,7 @@
     window.onload = () => {
         const ctx = document.getElementById('myChart').getContext('2d');
         drawChart(ctx, labels, data, 'pie', 'Revenue');
-    }
+    };
 </script>
 
 <script>

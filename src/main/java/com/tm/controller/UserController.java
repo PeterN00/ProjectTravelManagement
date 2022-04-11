@@ -64,7 +64,7 @@ public class UserController {
             @ModelAttribute(value = "user") @Valid User user,
             BindingResult result) {
 
-        if (result.hasErrors() == true) {
+        if (result.hasErrors()) {
             System.out.println(result);
             return "register";
         }

@@ -61,7 +61,7 @@
     window.onload = () => {
         const ctx = document.getElementById('myChart').getContext('2d');
         drawChart(ctx, labels, data, 'bar', 'Booking');
-    }
+    };
 </script>
 
 <script>

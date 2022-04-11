@@ -33,7 +33,7 @@ function displayImage(input) {
             if(curImg!=null){
                 img.src = curImg.value;
             }else{
-                img.src = 'https://res.cloudinary.com/petern/image/upload/v1649504989/travelmanagementproject_tourimg/Empty.jpg.jpg';
+                img.src = 'https://res.cloudinary.com/petern/image/upload/v1649679380/travelmanagementproject_tourimg/Empty.png.png';
             }
             btndiv.removeChild(btn);
         });
@@ -121,7 +121,6 @@ function drawChart(ctx, labels, data, type, label) {
 function addHighlightInput() {
     var input = document.createElement("input");
     input.style.cssText = 'margin-bottom: 1rem';
-    input.id = 'highlight[]';
     input.name = 'highlight[]';
     input.placeholder = 'Highlight...';
     document.getElementById("highlightdiv").appendChild(input);
@@ -137,7 +136,6 @@ function addItineraryInput() {
     var div = document.createElement("div");
     div.style.cssText = 'display: flex; flex-direction: column; margin-bottom: 2rem;';
     var inputName = document.createElement("input");
-    inputName.id = 'itineraryname[]';
     inputName.name = 'itineraryname[]';
     inputName.placeholder = 'Day (?): Doing?...';
 

@@ -74,7 +74,7 @@
         <label for="img"><b>Select Image:</b></label>
         <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
         <input type="hidden" id="currentimg" name="currentimg" value="${tour.img}" />
-        <img id="showimg" src="${tour.img}" />
+        <img id="showimg" src="${tour.img}" width="700" height="300" />
 
         <div id='removebtndiv'>
 
@@ -113,5 +113,5 @@
 
             document.getElementById("itinerarydiv").appendChild(div);
         </c:forEach>
-    }
+    };
 </script>

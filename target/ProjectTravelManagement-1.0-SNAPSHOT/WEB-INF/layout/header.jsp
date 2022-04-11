@@ -7,7 +7,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<nav class="navbar navbar-expand-sm navbar-toggleable-md " style="background-color: rgb(175,238,238)">
+<nav class="navbar navbar-expand-sm navbar-toggleable-md " style="background-color: #8FB9E0">
     <a class="navbar-brand align-items-center" href="<c:url value="/" />">
         <span><img src="<c:url value="/resources/images/globe.png"/>" 
                  class="rounded-circle" width="30" style="float:left" /></span>
