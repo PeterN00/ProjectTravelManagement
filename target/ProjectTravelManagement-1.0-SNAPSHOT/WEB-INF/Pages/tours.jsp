@@ -6,6 +6,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
+<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <div class="container">
@@ -37,11 +38,11 @@
             <div class="d-flex flex-column">
                 <div class="col-md-5">
                     <label for="fromdate" style="margin-right: 10px"><b>-From-</b></label>
-                    <input type="date" id="date" name="fromdate" style="width:30%">
+                    <input type="date" id="fromdate" name="fromdate" style="width:30%">
                 </div>
                 <div class="col-md-5">
                     <label for="todate" style="margin-right: 10px"><b>-To-</b></label>
-                    <input type="date" id="date" name="todate" style="width:30%">
+                    <input type="date" id="todate" name="todate" style="width:30%">
                 </div>
             </div>
             <div>
@@ -50,23 +51,27 @@
         </div>
     </form>
 
-    <div class="row">
-        <c:forEach items="${tours}" var="tour">
-            <div class="col-md-4 col-sm-12">
-                <div class="card">
-                    <img class="card-img-top" src="${tour.img}" alt="${tour.id}" width="300" height="300">
-                    <div class="card-body">
-                        <h4 class="card-title">${tour.title}</h4>
-                        <h4 class="card-title">${tour.price}$</h4>
-                        <p class="card-text">${tour.overview}</p>
-                        <a href="<c:url value = "/tours/${tour.id}" />" class="btn btn-primary">See More</a>
-                    </div>
-                </div>
-                <br>
-            </div>
-        </c:forEach>
-    </div>
+    <div class="w3-margin w3-container w3-padding">
+        <div class="grid-container">
+            <c:forEach items="${tours}" var="tour">
+                <a href="<c:url value = "/tours/${tour.id}" />">
+                    <div class="w3-container w3-border w3-round-large" style="padding:5px;background: #f9f9f9">
+                        <img src="${tour.img}" width="500px" height="300px" alt="${tour.id}" class="w3-left w3-round-large w3-margin-right">
 
+                        <p style="font-size: 1em; padding-top:5px;" >
+                            <b style="font-size: 1em;">${tour.title}</b><br>
+                            ${tour.price}$<br>
+                            <fmt:formatDate type = "both" 
+                                            dateStyle = "long" timeStyle = "medium" 
+                                            value = "${tour.departureTime}" /><br>
+                            ${tour.overview}
+                        </p>
+                    </div>
+                </a>
+                <br>
+            </c:forEach>
+        </div>
+    </div>
 </div>
 
 <div class="d-flex justify-content-center">

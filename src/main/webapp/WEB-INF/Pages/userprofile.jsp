@@ -24,5 +24,5 @@
     <p>Full name: ${user.fullName}</p>
 
     <c:url value = "/users/${user.username}/edit" var="editAction" />
-    <a href="${editAction}">Edit</a>
+    <a href="${editAction}" class="btn btn-primary">Edit</a>
 </div>

@@ -6,12 +6,37 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
+.news:link, .news:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.news:hover, .news:active {
+  border-color: blue;
+  color: black;
+}
+
 label{
     display: block;
 }
+
+.newsdescription{
+     width: 500px;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+}
+
 img{
   border: 3px solid #555;
 }
+
 .button,button {
   background-color: #04AA6D;
   color: white;
@@ -23,17 +48,21 @@ img{
   text-align: center;
   font-weight: bold;
 }
+
 .button,button:hover {
   opacity: 0.8;
 }
+
 .nav-item, .nav-link{
     font-weight: bold;
 }
+
 .cancelbtn {
     width: 100%;
     padding: 10px 18px;
     background-color: #f44336;
 }
+
 .modal-sm {
     display: none;
     position: fixed; 
@@ -46,12 +75,14 @@ img{
     background-color: rgba(0,0,0,0.4); 
     padding-top: 60px;
 }
+
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto 15% auto; 
     border: 1px solid #888;
     width: 80%;  
 }
+
 .close {
     position: absolute;
     right: 25px;
@@ -60,19 +91,23 @@ img{
     font-size: 35px;
     font-weight: bold;
 }
+
 .close:hover,
 .close:focus {
   color: red;
   cursor: pointer;
 }
+
 .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
 }
+
 @-webkit-keyframes animatezoom {
   from {-webkit-transform: scale(0)} 
   to {-webkit-transform: scale(1)}
 }
+
 @keyframes animatezoom {
   from {transform: scale(0)} 
   to {transform: scale(1)}

@@ -38,11 +38,11 @@
                 <div class="d-flex flex-column">
                     <div class="col-md-5">
                         <label for="fromdate" style="margin-right: 10px"><b>-From-</b></label>
-                        <input type="date" id="date" name="fromdate" style="width:30%">
+                        <input type="date" id="fromdate" name="fromdate" style="width:30%">
                     </div>
                     <div class="col-md-5">
                         <label for="todate" style="margin-right: 10px"><b>-To-</b></label>
-                        <input type="date" id="date" name="todate" style="width:30%">
+                        <input type="date" id="todate" name="todate" style="width:30%">
                     </div>
                 </div>
                 <div>

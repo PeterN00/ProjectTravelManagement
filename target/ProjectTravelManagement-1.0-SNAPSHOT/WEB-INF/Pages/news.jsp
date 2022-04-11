@@ -32,15 +32,21 @@
 
     <c:forEach items="${news}" var="news">
         <div class="container">
-            <a href="<c:url value = "/news/${news.id}" />" class="btn btn-primary d-flex flex-column">
-                <h4><b>${news.title}</b></h4>
-                <p>${news.description}</p>
-                <p>
-                    Last Modified: 
-                    <fmt:formatDate type = "both" 
-                                    dateStyle = "long" timeStyle = "medium" 
-                                    value = "${news.date}" />
-                </p>
+            <a href="<c:url value = "/news/${news.id}" />" class="news d-flex">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h4><b>${news.title}</b></h4>
+                        <p class="newsdescription">${news.description}</p>
+                    </div>
+                    <div class="col-md-5">
+                        <p>
+                            Last Modified: 
+                            <fmt:formatDate type = "both" 
+                                            dateStyle = "long" timeStyle = "medium" 
+                                            value = "${news.date}" />
+                        </p>
+                    </div>
+                </div>
             </a>
         </div>
         <br>
@@ -57,3 +63,4 @@
         </ul>
     </c:forEach>
 </div>
+

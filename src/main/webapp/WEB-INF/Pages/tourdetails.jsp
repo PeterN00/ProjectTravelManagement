@@ -12,15 +12,15 @@
 <br>
 <div class="container">
     <c:if test="${msg != null}">
-            <div class="alert" style="background-color: green">
-                <span class="closebtnalert" 
-                      onclick="this.parentElement.style.display = 'none';">&times;
-                </span> 
-                ${msg}
-            </div>
-        </c:if>
+        <div class="alert" style="background-color: green">
+            <span class="closebtnalert" 
+                  onclick="this.parentElement.style.display = 'none';">&times;
+            </span> 
+            ${msg}
+        </div>
+    </c:if>
     <div class="row">  
-        <img src="${tour.img}"  width="700" height="300" alt="tour img" style="float:left; margin-right: 10px">
+        <img src="${tour.img}"  width="700" height="300" alt="tour img" style="float:left; margin: 10px">
         <div class="col-md-4">
             <h4><b>${tour.title} (${tour.day} days ${tour.night} nights)</b></h4>
             <p>Price: ${tour.price}$</p>
@@ -32,7 +32,7 @@
                                 value = "${tour.departureTime}" />
             </p>
             <c:url value = "/tours/${tour.id}/book" var="bookAction" />
-            <a href="${bookAction}">Book</a>
+            <a href="${bookAction}" class="btn btn-primary">Book</a>
         </div>
 
         <div class="col-md-4">
@@ -42,10 +42,11 @@
                 <a href="${editAction}" class="btn btn-primary">Edit</a>
 
                 <c:if test="${pageContext.request.userPrincipal.authorities == '[Admin]'}">
-                    <c:url value = "/tours/${tour.id}/delete" var="deleteAction" />
-                    <form:form action ="${deleteAction}">
-                        <button id="delsubmit" type="submit" name="delbtn">Delete</button>
-                    </form:form>
+                    <button id="delbtn" type="button" name="delbtn" 
+                            onclick="document.getElementById('delModal').style.display = 'block'"
+                            style="width:auto">
+                        Delete
+                    </button>
                 </c:if>
             </c:if> 
         </div>
@@ -61,19 +62,23 @@
 
 <div class="container">
     <h2><b>Highlights</b></h2>
-    <c:forEach items='${highlights}' var='highlight'>
-        <p>- ${highlight.highlight}</p>
-    </c:forEach>
+    <ul>
+        <c:forEach items='${highlights}' var='highlight'>
+            <li>${highlight.highlight}</li>
+            </c:forEach>
+    </ul>
 </div>
 
 <hr>
 
 <div class="container">
     <h2><b>Itinerary</b></h2>
-    <c:forEach items='${itinerary}' var='itinerary'>
-        <h3><b>${itinerary.name}</b></h3>
-        <p>${itinerary.description}</p>
-    </c:forEach>
+    <ul>
+        <c:forEach items='${itinerary}' var='itinerary'>
+            <li><b>${itinerary.name}</b></li>
+            <p>${itinerary.description}</p>
+        </c:forEach>
+    </ul>
 </div>
 
 <hr>
@@ -114,3 +119,27 @@
         </div>
     </c:forEach>
 </div>
+
+<div id="delModal" class="modal">
+    <div class="modal-content animate" style="width:30%">
+        <div class="modal-header">
+            <h2>Confirmation</h2>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete this tour?</p>
+        </div>
+        <div class="modal-footer">
+            <a href="<c:url value = "/tours/${tour.id}/delete" />" class="btn btn-primary" id="delConfirm">Yes</a>
+            <button type="button" onclick="modal.style.display = 'none'" style="width:auto">No</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    var modal = document.getElementById('delModal');
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
