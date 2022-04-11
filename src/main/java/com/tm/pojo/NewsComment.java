@@ -45,7 +45,7 @@ public class NewsComment implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "emptyFieldErr")
     @Size(min = 1, max = 100)
     @Column(name = "comment")
     private String comment;

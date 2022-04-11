@@ -7,8 +7,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<nav class="navbar navbar-expand-sm navbar-toggleable-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="<c:url value="/" />">GlobTourism</a>
+<nav class="navbar navbar-expand-sm navbar-toggleable-md " style="background-color: rgb(175,238,238)">
+    <a class="navbar-brand align-items-center" href="<c:url value="/" />">
+        <span><img src="<c:url value="/resources/images/globe.png"/>" 
+                 class="rounded-circle" width="30" style="float:left" /></span>
+        GlobTourism</a>
     <div class="container-fluid">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -22,7 +25,7 @@
 
     <c:if test="${pageContext.request.userPrincipal.name == null}">
         <button onclick="document.getElementById('login').style.display = 'block'" 
-                style="width: 100px">
+                style="width: 120px">
             Sign In
         </button>
     </c:if>
@@ -55,12 +58,11 @@
               </a>
         </c:if>
         <a class="nav-link row"
-           style="color: red; text-align: center"
+           style="color: red; text-align: center; justify-content: center; display: flex; margin-right: 5px"
            href="<c:url value="/users/${pageContext.request.userPrincipal.name}" />">
             <img src="${pageContext.session.getAttribute("currentUser").img}" 
                  class="rounded-circle" width="40" style="float:left" />
             ${pageContext.request.userPrincipal.name}
-            ${pageContext.request.userPrincipal.authorities}
         </a>
         <a class="nav-link button"
            style="width: 140px"

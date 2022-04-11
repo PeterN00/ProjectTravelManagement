@@ -55,16 +55,18 @@ public class Tour implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "emptyFieldErr")
     @Size(min = 1, max = 50)
     @Column(name = "title")
     private String title;
-    @Min(value = 0)
+    @Min(value = 1)
     @Column(name = "price")
     private Float price;
     @Column(name = "day")
+    @Min(value = 1)
     private Short day;
     @Column(name = "night")
+    @Min(value = 0)
     private Short night;
     @Size(max = 50)
     @Column(name = "departure_point")

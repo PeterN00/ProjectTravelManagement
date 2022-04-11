@@ -48,7 +48,7 @@ public class TourReview implements Serializable {
     @Column(name = "rate")
     private Short rate;
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "emptyFieldErr")
     @Size(min = 1, max = 255)
     @Column(name = "comment")
     private String comment;
