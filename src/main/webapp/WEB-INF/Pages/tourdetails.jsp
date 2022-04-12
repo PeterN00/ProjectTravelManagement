@@ -22,7 +22,13 @@
     <div class="row">  
         <img src="${tour.img}"  width="700" height="300" alt="tour img" style="float:left; margin: 10px">
         <div class="col-md-4">
-            <h4><b>${tour.title} (${tour.day} days ${tour.night} nights)</b></h4>
+            <h4><b>${tour.title} - ${tour.day} days 
+                    <span><c:if test="${tour.night!=null}">
+                            ${tour.night} nights
+                        </c:if>
+                    </span>
+                </b>
+            </h4>
             <p>Price: ${tour.price}$</p>
             <p>Departure Point: ${tour.departurePoint}</p>
             <p>

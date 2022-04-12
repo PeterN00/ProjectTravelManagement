@@ -23,7 +23,7 @@
     </c:if>
 
     <form>
-        <div class="form-group">
+        <div class="form-group" style="padding: 20px">
             <div>
                 <input class="form-control text-center" id="toursearch" placeholder="Search by titles..." name="search">
             </div>
@@ -91,7 +91,7 @@
     window.onload = () => {
     <c:forEach items='${tours}' var = "tour">
         if (${fn:length(tour.overview)} > 500) {
-            text = '${fn:substring(tour.overview, 0, 500)}...';
+            var text = '${fn:substring(tour.overview, 0, 500)}...';
             document.getElementById("overview").innerHTML = text;
         }
     </c:forEach>

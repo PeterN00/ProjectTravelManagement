@@ -72,7 +72,7 @@
         <button type="button" onclick="removeLastItinerary()" style="width:auto">-</button>
         
         <!-- Image -->
-        <label for="img"><b>Select Image:</b></label>
+        <label for="img" style="margin-top: 30px"><b>SELECT IMAGE:</b></label>
         <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
         <img id="showimg" width="700" height="300" />
 

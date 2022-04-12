@@ -73,6 +73,11 @@ public class TourItinerary implements Serializable {
     }
 
     public String getName() {
+        if(name!=null){
+            name = name.replaceAll("\\\\", "");
+            name = name.replaceAll("\'", "");
+            name = name.replaceAll("\"", "");
+        }
         return name;
     }
 
@@ -81,6 +86,11 @@ public class TourItinerary implements Serializable {
     }
 
     public String getDescription() {
+        if(description!=null){
+            description = description.replaceAll("\\\\", "");
+            description = description.replaceAll("\'", "");
+            description = description.replaceAll("\"", "");
+        }
         return description;
     }
 

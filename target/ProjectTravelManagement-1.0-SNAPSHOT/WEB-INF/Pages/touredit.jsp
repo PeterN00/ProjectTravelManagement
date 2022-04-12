@@ -5,6 +5,7 @@
 --%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -71,7 +72,7 @@
         <button type="button" onclick="removeLastItinerary()" style="width:auto">-</button>
 
         <!-- Image -->
-        <label for="img"><b>Select Image:</b></label>
+        <label for="img" style="margin-top: 30px"><b>SELECT IMAGE:</b></label>
         <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
         <input type="hidden" id="currentimg" name="currentimg" value="${tour.img}" />
         <img id="showimg" src="${tour.img}" width="700" height="300" />
@@ -99,7 +100,7 @@
             var inputName = document.createElement("input");
             inputName.id = 'itineraryname[]';
             inputName.name = 'itineraryname[]';
-            inputName.value = '${itinerary.name}';
+            inputName.value = '${fn:replace(itinerary.name, '\'', "")}';
 
             var inputDescription = document.createElement("textarea");
             inputDescription.id = 'itinerarydescription[]';

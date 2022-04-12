@@ -69,6 +69,11 @@ public class TourHighlight implements Serializable {
     }
 
     public String getHighlight() {
+        if(highlight!=null){
+            highlight = highlight.replaceAll("\\\\", "");
+            highlight = highlight.replaceAll("\'", "");
+            highlight = highlight.replaceAll("\"", "");
+        }
         return highlight;
     }
 

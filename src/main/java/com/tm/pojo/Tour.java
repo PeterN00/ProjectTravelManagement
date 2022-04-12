@@ -161,6 +161,11 @@ public class Tour implements Serializable {
     }
 
     public String getOverview() {
+        if(overview!=null){
+            overview = overview.replaceAll("\\\\", "");
+            overview = overview.replaceAll("\'", "");
+            overview = overview.replaceAll("\"", "");
+        }
         return overview;
     }
 

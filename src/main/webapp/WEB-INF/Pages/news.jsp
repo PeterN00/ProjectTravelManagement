@@ -69,7 +69,7 @@
     window.onload = () => {
     <c:forEach items='${news}' var = "news">
         if (${fn:length(news.description)} > 300) {
-            text = '${fn:substring(news.description, 0, 300)}...';
+            var text = '${fn:substring(news.description, 0, 300)}...';
             document.getElementById("description").innerHTML = text;
         }
     </c:forEach>

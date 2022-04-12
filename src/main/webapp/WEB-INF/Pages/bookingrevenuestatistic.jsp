@@ -5,6 +5,7 @@
 --%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <h2 class="text-center"><b>Booking Revenue Statistic</b></h2>
@@ -22,7 +23,11 @@
                     <td>${statistic[0]}</td>
                     <td>${statistic[1]}</td>
                     <td>${statistic[2]}, ${statistic[3]}</td>
-                    <td>${statistic[4]}</td>
+                    <td>
+                        <fmt:formatNumber 
+                        value="${statistic[4]}" 
+                        maxFractionDigits="2"/>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
