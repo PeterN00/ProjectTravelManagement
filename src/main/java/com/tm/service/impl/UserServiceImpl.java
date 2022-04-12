@@ -62,4 +62,5 @@ public class UserServiceImpl implements UserService {
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         this.userRepository.editUser(user);
     }
+    
 }

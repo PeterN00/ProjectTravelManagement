@@ -5,6 +5,8 @@
 package com.tm.service;
 
 import com.tm.pojo.Booking;
+import com.tm.pojo.User;
+import java.util.List;
 
 /**
  *
@@ -12,4 +14,5 @@ import com.tm.pojo.Booking;
  */
 public interface BookingService {
     void booking(Booking booking, Integer tourId);
+    List<Object[]> getBookingList(User user);
 }

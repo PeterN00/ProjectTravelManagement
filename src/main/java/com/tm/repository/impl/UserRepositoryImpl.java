@@ -59,4 +59,5 @@ public class UserRepositoryImpl implements  UserRepository{
         Session session = sessionFactory.getObject().getCurrentSession();
         session.update(user);
     }
+
 }

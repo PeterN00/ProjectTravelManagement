@@ -44,8 +44,6 @@ public class TourHighlightRepositoryImpl implements TourHighlightRepository{
     
     @Override
     public List<TourHighlight> getHighlightByTourId(Integer tourId) {
-        Session session = sessionFactory.getObject().getCurrentSession();
-        
         Tour tour = tourService.getTourById(tourId);
         List<TourHighlight> list = tour.getTourHighlightList();
         Hibernate.initialize(list);

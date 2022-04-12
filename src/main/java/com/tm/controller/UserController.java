@@ -7,6 +7,7 @@ package com.tm.controller;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.tm.pojo.User;
+import com.tm.service.BookingService;
 import com.tm.service.UserService;
 import java.io.IOException;
 import java.util.Map;
@@ -35,7 +36,9 @@ public class UserController {
     private UserService userService;
     @Autowired
     private Cloudinary cloudinary;
-
+    @Autowired
+    private BookingService bookingService;
+    
     public void uploadImgFile(User user) {
         if (!user.getImgFile().isEmpty()) {
             try {
@@ -90,6 +93,7 @@ public class UserController {
     public String userProfile(@PathVariable("username") String username, Model model) {
         User user = userService.getUserByUsername(username);
         model.addAttribute("user", user);
+        model.addAttribute("bookinglist", bookingService.getBookingList(user));
         model.addAttribute("pageTitle", username);
         return "userprofile";
     }

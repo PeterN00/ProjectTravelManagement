@@ -5,8 +5,10 @@
 package com.tm.service.impl;
 
 import com.tm.pojo.Booking;
+import com.tm.pojo.User;
 import com.tm.repository.BookingRepository;
 import com.tm.service.BookingService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,11 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void booking(Booking booking, Integer tourId) {
         this.bookingRepository.booking(booking, tourId);
+    }
+
+    @Override
+    public List<Object[]> getBookingList(User user) {
+        return bookingRepository.getBookingList(user);
     }
     
 }
