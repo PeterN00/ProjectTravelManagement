@@ -125,6 +125,7 @@ function addHighlightInput() {
     input.placeholder = 'Highlight...';
     document.getElementById("highlightdiv").appendChild(input);
 }
+
 function removeLastHighlight() {
     var highlightdiv = document.getElementById('highlightdiv');
     var childs = highlightdiv.childNodes;
@@ -151,6 +152,7 @@ function addItineraryInput() {
 
     document.getElementById("itinerarydiv").appendChild(div);
 }
+
 function removeLastItinerary() {
     var itinerarydiv = document.getElementById('itinerarydiv');
     var childs = itinerarydiv.childNodes;

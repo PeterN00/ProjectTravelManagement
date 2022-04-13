@@ -23,13 +23,13 @@
 
     <div class="container">
         <label for="title"><b>Title:</b></label>
-        <form:input placeholder="Enter Title" path="title" name="title" />
+        <form:input placeholder="Title..." path="title" name="title" />
         <form:errors path="title" cssClass="text-danger" />
 
         <label for="description"><b>Description:</b></label>
-        <form:textarea placeholder="Enter Description" path="description" name="description" style="width: 100%; height: 25%" />
+        <form:textarea placeholder="Description..." path="description" name="description" style="width: 100%; height: 25%" />
         <form:errors path="description" cssClass="text-danger" />
-        
+
         <button id="submitbtn" type="submit" name="submitbtn">Submit</button>
     </div>
 </form:form>

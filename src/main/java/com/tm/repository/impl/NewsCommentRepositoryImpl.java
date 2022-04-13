@@ -74,7 +74,7 @@ public class NewsCommentRepositoryImpl implements NewsCommentRepository {
         preList.add(cb.equal(rootNC.get("newsId"), rootN.get("id")));
         preList.add(cb.equal(rootNC.get("newsId"), newsId));
         
-        cq.multiselect(rootNC.get("id"), rootU.get("username"), 
+        cq.multiselect(rootNC.get("id"), rootU.get("username"), rootU.get("img"),
                 rootNC.get("comment"), rootNC.get("time"));
         cq.where(preList.toArray(new Predicate[] {}));
         

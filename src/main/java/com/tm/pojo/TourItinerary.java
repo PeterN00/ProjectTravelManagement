@@ -41,7 +41,7 @@ public class TourItinerary implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull(message = "emptyFieldErr")
+    @NotNull(message = "{emptyFieldErr}")
     @Size(min = 1, max = 100)
     @Column(name = "name")
     private String name;

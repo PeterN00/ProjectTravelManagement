@@ -6,8 +6,10 @@ package com.tm.controller;
 
 import com.tm.pojo.TourReview;
 import com.tm.service.TourReviewService;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +29,13 @@ public class TourReviewController {
     @PostMapping("/{id}/review")
     public String reviewHandler(@PathVariable("id") Integer id,
             @RequestParam(name = "rating", defaultValue = "0") String rate,
-            @ModelAttribute(value = "review") TourReview review){
+            @ModelAttribute(value = "review") @Valid TourReview review,
+            BindingResult result){
+        
+        if(result.hasErrors()){
+            System.out.println(result);
+            return "redirect:/tours/{id}";
+        }
         
         tourReviewService.review(review, id, rate);
         return "redirect:/tours/{id}";

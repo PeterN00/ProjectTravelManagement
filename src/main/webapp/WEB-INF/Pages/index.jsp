@@ -8,8 +8,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <div
-     style="background-image: url('<c:url value="/resources/images/indexBackground.png" />');
-     background-repeat: no-repeat; padding-top: 400px; background-position: center center; position: relative">
+    style="background-image: url('<c:url value="/resources/images/indexBackground.png" />');
+    background-repeat: no-repeat; padding-top: 400px; background-position: center center; position: relative">
     <br>
     <img class="indexicon" src="<c:url value="/resources/images/GTIcon.png" />">
     <c:if test="${msg!=null}">
@@ -26,7 +26,7 @@
         <div class="row justify-content-center">
             <div class="text-center text-white" style="font-size: 20px">
                 <h1 class="mb-5"><b>Welcome To GlobTourism</b></h1>
-                        <c:url value="/tours" var="tourSearch" />
+                <c:url value="/tours" var="tourSearch" />
                 <form action="${tourSearch}">
                     <div class="form-group">
                         <div>

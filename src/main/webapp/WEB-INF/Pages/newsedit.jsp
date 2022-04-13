@@ -10,7 +10,7 @@
 
 <c:url value="/news/${news.id}/edit" var="savenews" />
 <form:form action="${savenews}" method="post" modelAttribute="news">
-    
+
     <h1 class="text-center">EDIT NEWS</h1>
 
     <c:if test="${msg!=null}">

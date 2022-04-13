@@ -13,19 +13,19 @@
     <h1 class="text-center">REGISTRATION FORM</h1>
     <div class="container">
         <label for="usrname"><b>Username</b></label>
-        <form:input placeholder="Enter Username" path="username" name="usrname" />
+        <form:input placeholder="Username..." path="username" name="usrname" />
         <form:errors path="username" cssClass="text-danger" />
 
         <label for="fullname"><b>Full Name</b></label>
-        <form:input placeholder="Enter Full Name" path="fullName" name="fullname" />
+        <form:input placeholder="Full Name..." path="fullName" name="fullname" />
         <form:errors path="fullName" cssClass="text-danger" />
 
         <label for="psw"><b>Password</b></label>
-        <form:password placeholder="Enter Password" path="password" name="psw" />
+        <form:password placeholder="Password..." path="password" name="psw" />
         <form:errors path="password" cssClass="text-danger" />
 
         <label for="repsw"><b>Retype Password</b></label>
-        <form:password placeholder="Retyped Password" path="retypePassword" name="repsw" />
+        <form:password placeholder="Retyped Password..." path="retypePassword" name="repsw" />
 
         <c:choose>
             <c:when test="${pageContext.request.userPrincipal.name != null
@@ -72,12 +72,12 @@
         <button type="submit" name="regbtn">Register</button>
     </div>
 </form:form>
-    
+
 <script>
     var imgfile = document.getElementById("img");
     var img = document.getElementById("showimg");
     if (imgfile.value == '') {
-        img.src = 'https://res.cloudinary.com/petern/image/upload/v1649223665/travelmanagementproject_userimg/Empty_oqkskc.jpg';
+        img.src = 'https://res.cloudinary.com/petern/image/upload/v1649824745/travelmanagementproject_userimg/Empty.png.png';
     }
 </script>
-    
+

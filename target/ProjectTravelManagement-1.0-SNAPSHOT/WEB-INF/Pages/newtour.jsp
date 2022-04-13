@@ -24,11 +24,11 @@
 
     <div class="container">
         <label for="title"><b>Title:</b></label>
-        <form:input placeholder="Enter Title" path="title" name="title" />
+        <form:input placeholder="Title..." path="title" name="title" />
         <form:errors path="title" cssClass="text-danger" />
 
         <label for="price"><b>Price:</b></label>
-        <form:input placeholder="Enter Price" path="price" name="price" />
+        <form:input value="0" path="price" name="price" />
         <form:errors path="price" cssClass="text-danger" />
 
         <label for="day"><b>Number of Day:</b></label>
@@ -40,16 +40,16 @@
         <form:errors path="night" cssClass="text-danger" />
 
         <label for="deppoint"><b>Departure Point:</b></label>
-        <form:input placeholder="Enter Departure Point" path="departurePoint" name="deppoint" />
+        <form:input placeholder="Departure Point..." path="departurePoint" name="deppoint" />
         <form:errors path="departurePoint" cssClass="text-danger" />
 
         <label for="deptime"><b>Departure Time:</b></label>
         <form:input type="datetime-local" path="departureTime" id="deptime" name="deptime" />
 
         <label for="overview"><b>Description Overview:</b></label>
-        <form:textarea placeholder="Enter Overview for Description" path="overview" name="overview" style="width: 100%; height: 25%" />
+        <form:textarea placeholder="Description overview..." path="overview" name="overview" style="width: 100%; height: 25%" />
         <form:errors path="overview" cssClass="text-danger" />
-        
+
         <!-- Highlight -->
         <label style="margin-top: 10px"><b>-HIGHLIGHTS-</b></label>
 
@@ -58,7 +58,7 @@
         </div>
         <button type="button" onclick="addHighlightInput()" style="width:auto">+</button>
         <button type="button" onclick="removeLastHighlight()" style="width:auto">-</button>
-        
+
         <!-- Itinerary -->
         <label style="margin-top: 10px"><b>-ITINERARY-</b></label>
 
@@ -70,7 +70,7 @@
         </div>
         <button type="button" onclick="addItineraryInput()" style="width:auto">+</button>
         <button type="button" onclick="removeLastItinerary()" style="width:auto">-</button>
-        
+
         <!-- Image -->
         <label for="img" style="margin-top: 30px"><b>SELECT IMAGE:</b></label>
         <form:input type="file" path="imgFile" id="img" name="img" accept="image/*" onchange="displayImage(this)" />
@@ -88,6 +88,6 @@
     var imgfile = document.getElementById("img");
     var img = document.getElementById("showimg");
     if (imgfile.value == '') {
-        img.src = 'https://res.cloudinary.com/petern/image/upload/v1649223641/travelmanagementproject_tourimg/Empty_k2jyq6.jpg';
+        img.src = 'https://res.cloudinary.com/petern/image/upload/v1649679380/travelmanagementproject_tourimg/Empty.png.png';
     }
 </script>

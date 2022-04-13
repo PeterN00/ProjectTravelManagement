@@ -40,7 +40,7 @@ public class TourHighlight implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull(message = "emptyFieldErr")
+    @NotNull(message = "{emptyFieldErr}")
     @Size(min = 1, max = 255)
     @Column(name = "highlight")
     private String highlight;

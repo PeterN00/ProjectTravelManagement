@@ -18,7 +18,6 @@
                         dateStyle = "long" timeStyle = "medium" 
                         value = "${news.date}" />
     </p>
-    <p>${news.description}</p>
 
     <c:if test="${pageContext.request.userPrincipal.name != null
                   && pageContext.request.userPrincipal.authorities != '[Customer]'}">
@@ -34,13 +33,16 @@
         </c:if>
     </c:if>
 
+    <p>${news.description}</p>
 </div>
+
+<hr>
 
 <div class="container">
     <h2><b>Comments</b></h2>
     <c:url value="/news/${news.id}/comment" var = "comment" />
     <form:form action="${comment}" method="post" modelAttribute="comment">
-        <form:textarea placeholder="Comment Here..." path="comment" name="comment" style="width: 100%; height: 25%" />
+        <form:textarea id="cmt" placeholder="Comment Here..." path="comment" name="comment" style="width: 100%; height: 25%" />
         <form:errors path="comment" cssClass="text-danger" />
 
         <button id="submitbtn" type="submit" name="submitbtn">Submit</button>
@@ -51,15 +53,16 @@
     <c:forEach items="${comments}" var = "comments">
         <div class="row">
             <div class="col-md-7">
+                <img src="${comments[2]}" class="rounded-circle" width="40" style="float:left" />
                 <p><b>${comments[1]}</b></p>
-                <p>${comments[2]}</p>
+                <p>${comments[3]}</p>
             </div>
             <div class="col-md-3">
                 <p>
                     At: 
                     <fmt:formatDate type = "both" 
                                     dateStyle = "long" timeStyle = "medium" 
-                                    value = "${comments[3]}" />
+                                    value = "${comments[4]}" />
                 </p>
             </div>
         </div>

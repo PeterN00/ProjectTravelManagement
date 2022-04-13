@@ -112,7 +112,11 @@
         <div class="row">
             <div class="col-md-7">
                 <img src="${reviews[2]}" class="rounded-circle" width="40" style="float:left" />
-                <p><b>${reviews[1]} - ${reviews[3]}/5</b></p>
+                <p><b>${reviews[1]}</b>
+                    <c:forEach begin = "1" end = "${reviews[3]}">
+                        <span class="fa fa-star checked" style="color: orange"></span>
+                    </c:forEach>
+                </p>
                 <p>${reviews[4]}</p>
             </div>
             <div class="col-md-3">

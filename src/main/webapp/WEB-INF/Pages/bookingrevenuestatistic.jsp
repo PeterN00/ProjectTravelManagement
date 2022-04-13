@@ -25,13 +25,13 @@
                     <td>${statistic[2]}, ${statistic[3]}</td>
                     <td>
                         <fmt:formatNumber 
-                        value="${statistic[4]}" 
-                        maxFractionDigits="2"/>
+                            value="${statistic[4]}" 
+                            maxFractionDigits="2"/>$
                     </td>
                 </tr>
             </c:forEach>
         </table>
-        
+
         <form id = "limitform">
             <select onchange="limitSubmit()" id="limit" name = "limit">
                 <option value ="" selected>Choose limit</option>
@@ -39,7 +39,7 @@
                 <option value ="10">Top 10</option>
             </select>
         </form>
-        
+
         <form>
             <div class="form-group">
                 <div class="d-flex flex-column">
@@ -55,7 +55,7 @@
             </div>
         </form>
     </div>
-    
+
     <div class="col-md-7">
         <canvas id="myChart" width="700" height="700"></canvas>
     </div>
@@ -65,8 +65,8 @@
     const labels = [];
     const data = [];
     <c:forEach items="${statistic}" var="statistic">
-        labels.push('${statistic[1]} (${statistic[2]},${statistic[3]})');
-        data.push('${statistic[4]}');
+    labels.push('${statistic[1]} (${statistic[2]},${statistic[3]})');
+    data.push('${statistic[4]}');
     </c:forEach>
 
     window.onload = () => {
@@ -76,7 +76,7 @@
 </script>
 
 <script>
-    function limitSubmit(){
+    function limitSubmit() {
         document.getElementById("limitform").submit();
     }
 </script>

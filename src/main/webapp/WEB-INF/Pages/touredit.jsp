@@ -86,33 +86,33 @@
 
 <script>
     window.onload = () => {
-        <c:forEach items='${highlights}' var='highlight'>
-            var input = document.createElement("input");
-            input.style.cssText = 'margin-bottom: 1rem';
-            input.id = 'highlight[]';
-            input.name = 'highlight[]';
-            input.value = '${highlight.highlight}';
-            document.getElementById("highlightdiv").appendChild(input);
-        </c:forEach>
-        <c:forEach items='${itinerary}' var='itinerary'>
-            var div = document.createElement("div");
-            div.style.cssText = 'display: flex; flex-direction: column; margin-bottom: 2rem;';
-            var inputName = document.createElement("input");
-            inputName.id = 'itineraryname[]';
-            inputName.name = 'itineraryname[]';
-            inputName.value = '${fn:replace(itinerary.name, '\'', "")}';
+    <c:forEach items='${highlights}' var='highlight'>
+        var input = document.createElement("input");
+        input.style.cssText = 'margin-bottom: 1rem';
+        input.id = 'highlight[]';
+        input.name = 'highlight[]';
+        input.value = '${highlight.highlight}';
+        document.getElementById("highlightdiv").appendChild(input);
+    </c:forEach>
+    <c:forEach items='${itinerary}' var='itinerary'>
+        var div = document.createElement("div");
+        div.style.cssText = 'display: flex; flex-direction: column; margin-bottom: 2rem;';
+        var inputName = document.createElement("input");
+        inputName.id = 'itineraryname[]';
+        inputName.name = 'itineraryname[]';
+        inputName.value = '${fn:replace(itinerary.name, '\'', "")}';
 
-            var inputDescription = document.createElement("textarea");
-            inputDescription.id = 'itinerarydescription[]';
-            inputDescription.name = 'itinerarydescription[]';
-            inputDescription.value = '${itinerary.description}';
-            inputDescription.rows = 3;
-            inputDescription.cols = 70;
+        var inputDescription = document.createElement("textarea");
+        inputDescription.id = 'itinerarydescription[]';
+        inputDescription.name = 'itinerarydescription[]';
+        inputDescription.value = '${itinerary.description}';
+        inputDescription.rows = 3;
+        inputDescription.cols = 70;
 
-            div.appendChild(inputName);
-            div.appendChild(inputDescription);
+        div.appendChild(inputName);
+        div.appendChild(inputDescription);
 
-            document.getElementById("itinerarydiv").appendChild(div);
-        </c:forEach>
+        document.getElementById("itinerarydiv").appendChild(div);
+    </c:forEach>
     };
 </script>

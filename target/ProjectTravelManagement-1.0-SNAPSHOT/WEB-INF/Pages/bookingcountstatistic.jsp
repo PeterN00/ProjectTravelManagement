@@ -24,7 +24,7 @@
                 </tr>
             </c:forEach>
         </table>
-        
+
         <form id = "limitform">
             <select onchange="limitSubmit()" id="limit" name = "limit">
                 <option value ="" selected>Choose limit</option>
@@ -32,7 +32,7 @@
                 <option value ="10">Top 10</option>
             </select>
         </form>
-        
+
         <form>
             <div class="form-group">
                 <div>
@@ -44,7 +44,7 @@
             </div>
         </form>
     </div>
-    
+
     <div class="col-md-7">
         <canvas id="myChart" width="500" height="500"></canvas>
     </div>
@@ -54,8 +54,8 @@
     const labels = [];
     const data = [];
     <c:forEach items="${statistic}" var="statistic">
-        labels.push('${statistic[1]}');
-        data.push('${statistic[2]}');
+    labels.push('${statistic[1]}');
+    data.push('${statistic[2]}');
     </c:forEach>
 
     window.onload = () => {
@@ -65,7 +65,7 @@
 </script>
 
 <script>
-    function limitSubmit(){
+    function limitSubmit() {
         document.getElementById("limitform").submit();
     }
 </script>

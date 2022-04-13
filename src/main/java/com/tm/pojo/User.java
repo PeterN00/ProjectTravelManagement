@@ -47,19 +47,19 @@ public class User implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull(message = "emptyFieldErr")
+    @NotNull(message = "{emptyFieldErr}")
     @Size(min = 1, max = 50)
     @Column(name = "username")
     private String username;
     @Basic(optional = false)
-    @NotNull(message = "emptyFieldErr")
+    @NotNull(message = "{emptyFieldErr}")
     @Size(min = 1, max = 100)
     @Column(name = "password")
     private String password;
     @Transient
     private String retypePassword;
     @Basic(optional = false)
-    @NotNull(message = "emptyFieldErr")
+    @NotNull(message = "{emptyFieldErr}")
     @Size(min = 1, max = 100)
     @Column(name = "full_name")
     private String fullName;
