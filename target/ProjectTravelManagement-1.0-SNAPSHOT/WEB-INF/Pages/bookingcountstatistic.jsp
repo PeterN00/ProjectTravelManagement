@@ -28,6 +28,7 @@
         <form id = "limitform">
             <select onchange="limitSubmit()" id="limit" name = "limit">
                 <option value ="" selected>Choose limit</option>
+                <option value ="3">Top 3</option>
                 <option value ="5">Top 5</option>
                 <option value ="10">Top 10</option>
             </select>
@@ -60,7 +61,7 @@
 
     window.onload = () => {
         const ctx = document.getElementById('myChart').getContext('2d');
-        drawChart(ctx, labels, data, 'bar', 'Booking');
+        drawChart(ctx, labels, data, 'bar', 'Booking Count');
     };
 </script>
 

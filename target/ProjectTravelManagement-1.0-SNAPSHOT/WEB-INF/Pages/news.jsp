@@ -32,24 +32,17 @@
     </form>
 
     <c:forEach items="${news}" var="news">
-        <div class="container">
-            <a href="<c:url value = "/news/${news.id}" />" class="news d-flex">
-                <div class="row">
-                    <div class="col-md-7">
-                        <h4><b>${news.title}</b></h4>
-                        <p id="description">${news.description}</p>
-                    </div>
-                    <div class="col-md-5">
-                        <p>
-                            Last Modified: 
-                            <fmt:formatDate type = "both" 
-                                            dateStyle = "long" timeStyle = "medium" 
-                                            value = "${news.date}" />
-                        </p>
-                    </div>
-                </div>
-            </a>
-        </div>
+        <a href="<c:url value = "/news/${news.id}" />" class="news d-flex flex-column">
+            <div class="text-center">
+                <h3><b>${news.title}</b></h3>
+                <p>
+                    Last Modified: 
+                    <fmt:formatDate type = "both" 
+                                    dateStyle = "long" timeStyle = "medium" 
+                                    value = "${news.date}" />
+                </p>
+            </div>
+        </a>
         <br>
     </c:forEach>
 </div>

@@ -82,7 +82,7 @@ create table Booking
 create table News
 (
 	id int auto_increment,
-    title varchar(100) not null,
+    title varchar(255) not null,
     `description` text not null,
     `date` datetime default now(),
     primary key(id)

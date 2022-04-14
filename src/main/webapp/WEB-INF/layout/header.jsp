@@ -33,7 +33,7 @@
 
     <c:if test="${pageContext.request.userPrincipal.authorities == '[Admin]'}">
         <a class="nav-link"
-           style="color: green; text-align: center"
+           style="text-align: center"
            href="<c:url value="/statistics" />">
             Statistics
         </a>
@@ -43,17 +43,17 @@
         <c:if test="${pageContext.request.userPrincipal.authorities == '[Admin]'
                       || pageContext.request.userPrincipal.authorities == '[Employee]'}">
               <a class="nav-link"
-                 style="color: green; text-align: center"
+                 style="text-align: center"
                  href="<c:url value="/tours/add" />">
                   Add Tour
               </a>
               <a class="nav-link"
-                 style="color: green; text-align: center"
+                 style="text-align: center"
                  href="<c:url value="/news/add" />">
                   Add News
               </a>
               <a class="nav-link"
-                 style="color: green; text-align: center"
+                 style="text-align: center"
                  href="<c:url value="/users/register" />">
                   Register User
               </a>

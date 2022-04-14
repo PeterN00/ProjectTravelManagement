@@ -30,11 +30,10 @@
             <br>
             <div class="row justify-content-center">
                 <p><b>-Price Range-</b></p>
-                <input type="range" min="1" max="${highestprice}" value="${highestprice/2}" class="slider" 
+                <input type="range" min="1" max="${highestprice}" value="${highestprice}" class="slider" 
                        id="pricerange" name="pricerange"
-                       onchange="displayMaxPriceRangeValue()"
                        style="width: 50%; margin-left: 10px; margin-right: 10px">
-                <p><b>Max: <span id="maxvalue"></span></b>$</p>
+                <p><b>Max: <span id="maxvalue">${highestprice}</span></b>$</p>
             </div>
             <div class="row justify-content-center align-items-center text-center">
                 <div class="col-md-6">
@@ -64,9 +63,10 @@
                             ${tour.price}$<br>
                             <fmt:formatDate type = "both" 
                                             dateStyle = "long" timeStyle = "medium" 
-                                            value = "${tour.departureTime}" /><br>
-
+                                            value = "${tour.departureTime}" />
+                            <br>
                         </p>
+
                         <p id ="overview">${tour.overview}</p>
                     </div>
                 </a>
@@ -96,4 +96,13 @@
         }
     </c:forEach>
     }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#pricerange').on('input', function () {
+            v = $('#pricerange').val();
+            $('#maxvalue').text(v);
+        });
+    });
 </script>
