@@ -27,12 +27,16 @@ public class TicketTypeRepositoryImpl implements TicketTypeRepository {
     @Override
     public TicketType getTicketType(boolean type) {
         Session session = sessionFactory.getObject().getCurrentSession();
+        
         int typeId;
         if(type==true)
             typeId = 1;
         else
             typeId = 0;
-        Query q = session.createQuery("select t from TicketType t where type="+typeId);
+        
+        Query q = session.createQuery("select t from TicketType t where type=:typeId");
+        q.setParameter("typeId", typeId);
+        
         return (TicketType) q.getSingleResult();
     }
     

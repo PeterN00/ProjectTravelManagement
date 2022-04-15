@@ -56,6 +56,7 @@ public class TourRepositoryImpl implements TourRepository{
         
         
         cq.where(preList.toArray(new Predicate[]{}));
+        cq.orderBy(cb.desc(root.get("price")));
         
         Query q = session.createQuery(cq);
         
@@ -86,9 +87,9 @@ public class TourRepositoryImpl implements TourRepository{
     @Override
     public Tour getTourById(Integer id) {
         Session session = sessionFactory.getObject().getCurrentSession();
-        Query q = session.createQuery("select t from Tour t where t.id="+id);
-        Object obj = q.getSingleResult();
-        return (Tour) obj;
+        Query q = session.createQuery("select t from Tour t where t.id=:id");
+        q.setParameter("id", id);
+        return (Tour) q.getSingleResult();
     }
 
     @Override

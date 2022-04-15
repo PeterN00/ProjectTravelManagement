@@ -47,6 +47,8 @@ public class NewsRepositoryImpl implements NewsRepository{
             cq.where(p);
         }
         
+        cq.orderBy(cb.desc(root.get("date")));
+        
         Query q = session.createQuery(cq);
         
         int pageSize = Integer.parseInt(env.getProperty("maximumNewsDisplayed"));
@@ -70,9 +72,9 @@ public class NewsRepositoryImpl implements NewsRepository{
     @Override
     public News getNewsById(Integer id) {
         Session session = sessionFactory.getObject().getCurrentSession();
-        Query q = session.createQuery("select n from News n where n.id="+id);
-        Object obj = q.getSingleResult();
-        return (News) obj;
+        Query q = session.createQuery("select n from News n where n.id=:id");
+        q.setParameter("id", id);
+        return (News) q.getSingleResult();
     }
 
     @Override
